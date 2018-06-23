@@ -8,21 +8,32 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: rgb(247, 239, 31);
+  height: 100px;
   padding: 20px;
-  color: white;
+  color: rgb(7, 7, 7);
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-family: 'Freckle Face', cursive;
+  font-size: 4em;
 }
 
-.App-intro {
-  font-size: large;
+p {
+  font-family: 'Love Ya Like A Sister', cursive;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.ControlCenter {
+  border: 3px solid black;
+  border-radius: 30px;
+  height: 30em;
+}
+
+.nav {
+  background-color: #020202;
+  
+}
+a {
+  color: #fff;
+  font-family: 'Love Ya Like A Sister', cursive;
 }
