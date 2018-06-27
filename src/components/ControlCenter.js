@@ -5,7 +5,12 @@ class ControlCenter extends Component {
   render() {
     return (
       <div className="Garden">
-        <p>control center</p>
+        <button className="btn">Water</button>
+        <button className="btn">Weed</button>
+
+        <p className="ctrl-title">Inventory</p>
+
+        <p className="ctrl-title">Bank</p>
 
       </div>
     );

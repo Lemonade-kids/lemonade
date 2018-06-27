@@ -3,9 +3,37 @@ import './App.css';
 import Garden from './components/Garden';
 import SellingStand from './components/SellingStand';
 import SupplyStore from './components/SupplyStore';
+import Kitchen from './components/Kitchen';
 import ControlCenter from './components/ControlCenter';
 
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.showComponent = this.showComponent.bind(this);
+  }
+  state = { whichComponent: <Garden /> };
+
+  handleClick(event) {
+    let id = event.target.id;
+    this.setState({
+      whichComponent: this.showComponent(id)
+    });
+  }
+  showComponent(id) {
+    switch (id) {
+      case 'garden':
+        return <Garden />;
+      case 'supply':
+        return <SupplyStore />;
+      case 'stand':
+        return <SellingStand />;
+      case 'kitchen':
+        return <Kitchen />;
+      default:
+        return null;
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -14,19 +42,22 @@ class App extends Component {
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <a className="nav-link active" href="#">Start Over</a>
+            <p className="nav-link active" id="startover">Start Over</p>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Garden</a>
+            <p className="nav-link" id="garden" onClick={this.handleClick.bind(this)}>Garden</p>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Supply Store</a>
+            <p className="nav-link" id="supply" onClick={this.handleClick.bind(this)}>Supply Store</p>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Selling Stand</a>
+            <p className="nav-link" id="kitchen" onClick={this.handleClick.bind(this)}>Kitchen</p>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Help</a>
+            <p className="nav-link" id="stand" onClick={this.handleClick.bind(this)}>Market</p>
+          </li>
+          <li className="nav-item">
+            <p className="nav-link" id="help">Help</p>
           </li>
         </ul>
         <div className="container">
@@ -36,10 +67,11 @@ class App extends Component {
             </div>
             <div className="col-sm-9">
               <div className="Gameboard">
-                {/* will apply a switch statement here in order to know which component to render?  */}
+              {this.state.whichComponent}
+                {/* will apply a switch statement here in order to know which component to render? 
                 <Garden />
                 <SupplyStore />
-                <SellingStand />
+                <SellingStand /> */}
               </div>
             </div>
           </div>

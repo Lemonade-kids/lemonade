@@ -27,13 +27,26 @@ p {
   border: 3px solid black;
   border-radius: 30px;
   height: 30em;
+  margin-top: 10px;
 }
 
 .nav {
   background-color: #020202;
-  
+  color: #fff;
 }
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.ctrl-title {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.btn {
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin: 5px;
+  background-color: aliceblue;
 }
