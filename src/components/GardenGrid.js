@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Produce from './Produce';
 import Dirt from '../images/dirt.png';
 import Weed from '../images/weed.png';
 import Grass from '../images/grass.png';
-import Sprout from '../images/sprout.png';
 
 const weeds = [Grass, Weed, Dirt];
 
@@ -24,7 +24,7 @@ class GardenGrid extends Component {
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
+                <div className="grid-item-small"><Produce /></div>
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
                 <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
