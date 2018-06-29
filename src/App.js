@@ -68,10 +68,6 @@ class App extends Component {
             <div className="col-sm-9">
               <div className="Gameboard">
               {this.state.whichComponent}
-                {/* will apply a switch statement here in order to know which component to render? 
-                <Garden />
-                <SupplyStore />
-                <SellingStand /> */}
               </div>
             </div>
           </div>

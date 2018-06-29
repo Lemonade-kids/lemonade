@@ -50,3 +50,51 @@ a {
   margin: 5px;
   background-color: aliceblue;
 }
+
+.Gameboard {
+  border: 3px solid black;
+  border-radius: 30px;
+  height: 30em;
+  margin-top: 10px;
+}
+
+.weeds {
+  width: 20%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  background-color: #4C3A27;
+  padding: 1px;
+  height: 30em;
+  border-radius: 30px;
+}
+
+.grid-container-small {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  background-color: #4C3A27;
+  height: auto;
+  border-radius: 30px;
+}
+
+.grid-item {
+  background-color: rgba(49, 34, 6, 0.8);
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  border-radius: 30px;
+  height: 10em;
+}
+
+.grid-item-small {
+  background-color: rgba(49, 34, 6, 0.8);
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  border-radius: 30px;
+  height: 3em;
+}
