@@ -5,14 +5,15 @@ import SellingStand from './components/SellingStand';
 import SupplyStore from './components/SupplyStore';
 import Kitchen from './components/Kitchen';
 import ControlCenter from './components/ControlCenter';
-
+import StartScreen from './components/StartScreen';
+import LogIn from './components/LogIn';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.showComponent = this.showComponent.bind(this);
   }
-  state = { whichComponent: <Garden /> };
+  state = { whichComponent: <LogIn /> };
 
   handleClick(event) {
     let id = event.target.id;
@@ -30,6 +31,8 @@ class App extends Component {
         return <SellingStand />;
       case 'kitchen':
         return <Kitchen />;
+      case 'startover':
+        return <StartScreen />;
       default:
         return null;
     }
@@ -42,7 +45,7 @@ class App extends Component {
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <p className="nav-link active" id="startover">Start Over</p>
+            <p className="nav-link" id="startover" onClick={this.handleClick.bind(this)}>Start Over</p>
           </li>
           <li className="nav-item">
             <p className="nav-link" id="garden" onClick={this.handleClick.bind(this)}>Garden</p>

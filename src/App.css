@@ -67,7 +67,7 @@ a {
 }
 
 .produce-large {
-  width: 100%;
+  width: 120%;
 }
 
 .grid-container {
@@ -106,4 +106,20 @@ a {
   background-size: cover;
   border-radius: 30px;
   height: 3em;
+}
+
+.Kitchen {
+  height: 31em;
+  background-image: url(./images/kitchenwall.png);
+  background-size: cover;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
+.workspace {
+  height: 20em;
+}
+
+.oven {
+  width: 50%;
 }
