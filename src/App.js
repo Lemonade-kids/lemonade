@@ -5,21 +5,38 @@ import SellingStand from './components/SellingStand';
 import SupplyStore from './components/SupplyStore';
 import Kitchen from './components/Kitchen';
 import ControlCenter from './components/ControlCenter';
+import StartScreen from './components/StartScreen';
+import LogIn from './components/LogIn';
+import CCGarden from './components/controlcentercomponents/CCGarden';
+import CCKitchen from './components/controlcentercomponents/CCKitchen';
+import CCMarket from './components/controlcentercomponents/CCMarket';
+import CCStore from './components/controlcentercomponents/CCStore';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.showComponent = this.showComponent.bind(this);
+    // this.showCCComponent = this.showCCComponent.bind(this);
   }
-  state = { whichComponent: <Garden /> };
+  state = { whichComponent: <LogIn /> }
+            ;
 
   handleClick(event) {
     let id = event.target.id;
     this.setState({
-      whichComponent: this.showComponent(id)
+      whichComponent: this.showComponent(id),
+      whichCCComponent: this.showCCComponent(id)
+
     });
   }
+
+  // handleClick(event) {
+  //   let id = event.target.id;
+  //   this.setState({
+  //     whichCCComponent: this.showCCComponent(id)
+  //   });
+  // }
   showComponent(id) {
     switch (id) {
       case 'garden':
@@ -30,10 +47,27 @@ class App extends Component {
         return <SellingStand />;
       case 'kitchen':
         return <Kitchen />;
+      case 'startover':
+        return <StartScreen />;
       default:
         return null;
     }
   }
+  showCCComponent(id) {
+    switch (id) {
+      case 'garden':
+      return <CCGarden />;
+      case 'supply':
+      return <CCStore />;
+      case 'stand':
+      return <CCMarket />;
+      case 'kitchen':
+      return <CCKitchen />
+      default:
+      return null;
+    }
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,7 +76,7 @@ class App extends Component {
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <p className="nav-link active" id="startover">Start Over</p>
+            <p className="nav-link" id="startover" onClick={this.handleClick.bind(this)}>Start Over</p>
           </li>
           <li className="nav-item">
             <p className="nav-link" id="garden" onClick={this.handleClick.bind(this)}>Garden</p>
@@ -62,8 +96,9 @@ class App extends Component {
         </ul>
         <div className="container">
           <div className="row">
-            <div className="col-sm-3 ControlCenter">
+            <div className="col-sm-3 Control-Center">
               <ControlCenter />
+              {this.state.whichCCComponent}
             </div>
             <div className="col-sm-9">
               <div className="Gameboard">

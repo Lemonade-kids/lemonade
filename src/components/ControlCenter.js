@@ -4,9 +4,7 @@ import '../App.css';
 class ControlCenter extends Component {
   render() {
     return (
-      <div className="Garden">
-        <button className="btn">Water</button>
-        <button className="btn">Weed</button>
+      <div className="ControlCenter">
 
         <p className="ctrl-title">Inventory</p>
 
