@@ -73,13 +73,20 @@ a {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  background-image: url(./images/dirt.png);
-  background-size: cover;
-  background-color: #4C3A27;
   padding: 1px;
   height: inherit;
   border: 6px solid black;
   border-radius: 30px;
+}
+
+.garden-grid {
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  background-color: #4C3A27;
+}
+
+.store-grid {
+  background-color: oldlace;
 }
 
 .grid-container-small {
@@ -93,11 +100,19 @@ a {
 }
 
 .grid-item {
+  
+  border-radius: 30px;
+  height: 10em;
+}
+
+.grid-item-garden {
   background-color: rgba(49, 34, 6, 0.8);
   background-image: url(./images/dirt.png);
   background-size: cover;
-  border-radius: 30px;
-  height: 10em;
+}
+
+.grid-item-store {
+  background-color: antiquewhite;
 }
 
 .grid-item-small {

@@ -8,32 +8,32 @@ class Garden extends Component {
   render() {
     return (
       <div className="Garden">
-        <div className="grid-container">
-          <div className="grid-item">
+        <div className="grid-container garden-grid">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
-          <div className="grid-item">
+          <div className="grid-item grid-item-garden">
             <GardenGrid />
           </div>
         </div>
