@@ -9,11 +9,11 @@ let seed = 'lemon';
 const whichCrop = (seed) => {
     switch (seed) {
         case 'blueberry':
-          return <img src={BlueberryBush} className="produce-large" />;
+          return <img src={BlueberryBush} className="produce-large" alt="blueberry" />;
         case 'lemon':
-          return <img src={LemonTree} className="produce-large" />;
+          return <img src={LemonTree} className="produce-large" alt="lemon" />;
         case 'squash':
-          return <img src={BlueberryBush} className="produce-large" />;
+          return <img src={BlueberryBush} className="produce-large" alt="squash" />;
         default:
           return null;
       }
