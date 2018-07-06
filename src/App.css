@@ -2,9 +2,17 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.StartScreen {
+  height: 31em;
+  background-size: cover;
+  border: 6px solid black;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.start {
+  margin: 20%;
+  font-size: 150%;
 }
 
 .App-header {
@@ -24,10 +32,19 @@ p {
 }
 
 .Control-Center {
-  border: 3px solid black;
+  border: 6px solid black;
   border-radius: 30px;
-  height: 30em;
+  height: 31em;
   margin-top: 10px;
+  background-color: silver;
+}
+
+.form-control {
+  align-self: right;
+  text-align: center;
+  width: 30%;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #000;
 }
 
 .nav {
@@ -130,10 +147,15 @@ a {
   border-radius: 30px;
 }
 
+.SellingStand {
+  height: 31em;
+}
+
 .workspace {
   height: 20em;
 }
 
 .oven {
   width: 50%;
+  float: right;
 }

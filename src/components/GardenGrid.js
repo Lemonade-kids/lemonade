@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import '../App.css';
 import Produce from './Produce';
-import Dirt from '../images/dirt.png';
-import Weed from '../images/weed.png';
-import Grass from '../images/grass.png';
+import Weeds from './Weeds';
 
-const weeds = [Grass, Weed, Dirt];
+// const weeds = [Grass, Weed, Dirt];
 
-const getRandomInt = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-};
+// const getRandomInt = (max) => {
+//     return Math.floor(Math.random() * Math.floor(max));
+// };
 
-let makeWeeds = getRandomInt(weeds.length);
-console.log(weeds[getRandomInt(makeWeeds)]);
+// let makeWeeds = getRandomInt(weeds.length);
+// console.log(weeds[getRandomInt(makeWeeds)]);
 
 
 class GardenGrid extends Component {
@@ -20,15 +18,15 @@ class GardenGrid extends Component {
         return (
             <div className="GardenGrid">
             <div className="grid-container-small">
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
                 <div className="grid-item-small"><Produce /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small"><Weeds /></div>
             </div>
             </div>
         );
