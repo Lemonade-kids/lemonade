@@ -5,7 +5,8 @@
 .StartScreen {
   height: 31em;
   background-size: cover;
-  border: 6px solid black;
+  border: 13px dotted rgb(250, 13, 13);
+  /*border: 18px solid #000);*/
   border-radius: 30px;
   text-align: center;
 }
@@ -96,6 +97,15 @@ a {
   border-radius: 30px;
 }
 
+.grid-container-store {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 1px;
+  height: inherit;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
 .garden-grid {
   background-image: url(./images/dirt.png);
   background-size: cover;
@@ -128,6 +138,12 @@ a {
 }
 
 .grid-item-store {
+  border-radius: 30px;
+  height: 15em;
+  width: 20.5em;
+  background-image: url(./images/shelf.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   background-color: antiquewhite;
 }
 
@@ -137,6 +153,15 @@ a {
   background-size: cover;
   border-radius: 30px;
   height: 3em;
+}
+
+.sugar, .flour, .milk {
+  height: 70%;
+}
+
+.eggs {
+  width: 50%;
+  margin-top: 30%;
 }
 
 .Kitchen {

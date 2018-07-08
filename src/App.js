@@ -15,29 +15,22 @@ import CCStore from './components/controlcentercomponents/CCStore';
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    this.showComponent = this.showComponent.bind(this);
-    // this.showCCComponent = this.showCCComponent.bind(this);
+    super(props); // must call super or else 'this' will be uninitialized
+    this.showComponent = this.showComponent.bind(this); // bind ties the onclick to 'this'
   }
-  state = { whichComponent: <LogIn /> }
-            ;
+  state = { whichComponent: <LogIn /> };
 
-  handleClick(event) {
+  handleClick(event) { // this is what happens when the click is clicked
     let id = event.target.id;
     this.setState({
-      whichComponent: this.showComponent(id),
+      whichComponent: this.showComponent(id), // look! can call TWO functions with one onclick!
       whichCCComponent: this.showCCComponent(id)
 
     });
   }
 
-  // handleClick(event) {
-  //   let id = event.target.id;
-  //   this.setState({
-  //     whichCCComponent: this.showCCComponent(id)
-  //   });
-  // }
-  showComponent(id) {
+  // case switch for rendering the right component on the gameboard
+  showComponent(id) { 
     switch (id) {
       case 'garden':
         return <Garden />;
@@ -53,6 +46,7 @@ class App extends Component {
         return null;
     }
   }
+  // case switch for rendering the component-specific buttons in control center
   showCCComponent(id) {
     switch (id) {
       case 'garden':
