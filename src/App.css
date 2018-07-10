@@ -51,6 +51,7 @@ p {
   width: 30%;
   font-family: 'Love Ya Like A Sister', cursive;
   color: #000;
+  margin: -10px 5px 5px 5px;
 }
 
 .nav {
@@ -167,6 +168,7 @@ a {
 .eggs {
   width: 50%;
   margin-top: 30%;
+  margin-bottom: -4%;
 }
 
 .Kitchen {
@@ -186,7 +188,15 @@ a {
 }
 
 .oven, .counter {
-  width: 90%;
   float: right;
+}
+
+.oven {
+  width: 90%;
   margin-top: 15%;
+}
+
+.counter {
+  width: 98%;
+  margin-top: 7%;
 }

@@ -5,9 +5,14 @@ import Flour from '../images/flour.png';
 import Milk from '../images/milk.png';
 import Eggs from '../images/eggs.png';
 
-let runningTotal = 10;
+
 
 class StoreGrid extends Component {
+  constructor(props) {
+    super(props);
+    
+}
+  
   render() {
     return (
       <div className="StoreGrid">

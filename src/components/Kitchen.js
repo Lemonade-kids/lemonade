@@ -10,7 +10,7 @@ class Kitchen extends Component {
     return (
       <div className="Kitchen">
         <div className="workspace">
-        <Oven />
+        <Counter />
         </div>
       </div>
     );

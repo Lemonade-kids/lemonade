@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import '../App.css';
-import Oven from '../images/oven.png';
-//import Counter from '../images.counter.png';
+import CounterPic from '../images/counter.png';
 
 class Counter extends Component {
   render() {
     return (
       <div className="Counter">
         <div className="counter">
-        <p>I'm a counter</p>
+        <img src={ CounterPic } alt="counter" className="counter" />
         </div>
       </div>
     );
