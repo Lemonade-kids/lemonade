@@ -2,9 +2,23 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.StartScreen {
+  height: 31em;
+  background-size: cover;
+  border: 6px solid #000;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.start-border {
+  border: 40px solid rgb(245, 112, 112);
+  height: 30.25em;
+  border-radius: 20px;
+}
+
+.start {
+  margin: 15%;
+  font-size: 150%;
 }
 
 .App-header {
@@ -23,17 +37,166 @@ p {
   font-family: 'Love Ya Like A Sister', cursive;
 }
 
-.ControlCenter {
-  border: 3px solid black;
+.Control-Center {
+  border: 6px solid black;
   border-radius: 30px;
-  height: 30em;
+  height: 31em;
+  margin-top: 10px;
+  background-color: silver;
+}
+
+.form-control {
+  align-self: right;
+  text-align: center;
+  width: 30%;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #000;
+  margin: -10px 5px 5px 5px;
 }
 
 .nav {
   background-color: #020202;
-  
+  color: #fff;
 }
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.ctrl-title {
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.btn {
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin: 5px;
+  background-color: aliceblue;
+}
+
+.Gameboard {
+  border: 6px solid black;
+  border-radius: 30px;
+  height: inherit;
+  margin-top: 10px;
+}
+
+.weeds {
+  width: 25%;
+}
+
+.produce-small {
+  width: 60%;
+}
+
+.produce-large {
+  width: 120%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 1px;
+  height: inherit;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
+.grid-container-store {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 1px;
+  height: inherit;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
+.garden-grid {
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  background-color: #4C3A27;
+}
+
+.store-grid {
+  background-color: oldlace;
+}
+
+.grid-container-small {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  background-color: #4C3A27;
+  height: auto;
+  border-radius: 30px;
+}
+
+.grid-item {
+  border-radius: 30px;
+  height: 10em;
+}
+
+.grid-item-garden {
+  background-color: rgba(49, 34, 6, 0.8);
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+}
+
+.grid-item-store {
+  border-radius: 20px;
+  height: 15em;
+  width: 20.75em;
+  background-image: url(./images/shelf.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: antiquewhite;
+}
+
+.grid-item-small {
+  background-color: rgba(49, 34, 6, 0.8);
+  background-image: url(./images/dirt.png);
+  background-size: cover;
+  border-radius: 30px;
+  height: 3em;
+}
+
+.sugar, .flour, .milk {
+  height: 70%;
+}
+
+.eggs {
+  width: 50%;
+  margin-top: 30%;
+  margin-bottom: -4%;
+}
+
+.Kitchen {
+  height: 31em;
+  background-image: url(./images/kitchenwall.png);
+  background-size: cover;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
+.SellingStand {
+  height: 31em;
+}
+
+.workspace {
+  height: 20em;
+}
+
+.oven, .counter {
+  float: right;
+}
+
+.oven {
+  width: 90%;
+  margin-top: 15%;
+}
+
+.counter {
+  width: 98%;
+  margin-top: 7%;
 }
