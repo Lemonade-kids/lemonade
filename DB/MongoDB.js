@@ -11,7 +11,7 @@ var UserSchema = new Schema ({
         type: string, 
         require: true
     },
-    Seeds: [
+    Seeds: 
         { 
             SeedName: {
                 type: string,
@@ -21,10 +21,9 @@ var UserSchema = new Schema ({
             Quantity: {
                 type: number
             }
-        }
-    ],
+        },
 
-    Crops: [
+    Crops: 
         { 
             CropName: {
                 type: string,
@@ -34,8 +33,7 @@ var UserSchema = new Schema ({
             Quantity: {
                 type: number
             }
-        }
-    ],
+        },
     
     Ingredients: [
         { 
@@ -50,7 +48,9 @@ var UserSchema = new Schema ({
         }
     ],
 
-    Money: number
+    Money: {
+        type: number
+    }
 });
 
 var User = mongoose.model("User", UserSchema);
