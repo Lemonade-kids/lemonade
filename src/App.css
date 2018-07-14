@@ -193,10 +193,77 @@ a {
 
 .oven {
   width: 90%;
-  margin-top: 15%;
+  margin-top: 15em;
 }
 
 .counter {
   width: 98%;
   margin-top: 7%;
+}
+
+.rooster {
+  margin: 0 5% 1% 0;
+}
+
+.SellingStand {
+  background-image: url(./images/marketbackground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 6px solid black;
+  border-radius: 30px;
+}
+
+.fadeInCloud {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+ 
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+ 
+  to {
+    opacity: 1;
+  }
+}
+
+.cloud {
+  width: 30%;
+  opacity: 0;
+  position: relative;
+  -webkit-animation-name: cloud; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 15s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-name: cloud;
+  animation-duration: 15s;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes cloud {
+  0%   {left:-275px; top:0px; opacity: 0;}
+  25% {opacity: 1;}
+  100% {left:300px; top:0px; opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes cloud {
+  0%   {left:-275px; top:0px; opacity: 0;}
+  25% {opacity: 1;}
+  100% {left:300px; top:0px; opacity: 0;}
+}
+
+.stand {
+  margin: 8.5em;
+  width: 30%;
 }

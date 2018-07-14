@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Rooster from './images/rooster.png';
 import Garden from './components/Garden';
 import SellingStand from './components/SellingStand';
 import SupplyStore from './components/SupplyStore';
@@ -66,7 +67,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Lemonade Stand</h1>
+          <h1 className="App-title"><img src={ Rooster } alt="rooster logo" width="70px" className="rooster" />CFK Market Stand</h1>
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
