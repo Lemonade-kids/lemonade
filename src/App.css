@@ -213,30 +213,6 @@ a {
   border-radius: 30px;
 }
 
-.fadeInCloud {
-  -webkit-animation-name: fadeIn;
-  animation-name: fadeIn;
-}
-
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
- 
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
- 
-  to {
-    opacity: 1;
-  }
-}
-
 .cloud {
   width: 30%;
   opacity: 0;
@@ -251,14 +227,14 @@ a {
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes cloud {
-  0%   {left:-275px; top:0px; opacity: 0;}
+  0%   {left:-270px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
 
 /* Standard syntax */
 @keyframes cloud {
-  0%   {left:-275px; top:0px; opacity: 0;}
+  0%   {left:-270px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
