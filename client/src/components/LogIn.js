@@ -3,6 +3,7 @@ import '../App.css';
 import StartScreen from './StartScreen';
 import BlueberryBush from '../images/blueberrybush.png';
 import LemonTree from '../images/lemontree.png';
+import API from '../utils/API';
 
 
 class LogIn extends Component {
@@ -15,6 +16,7 @@ class LogIn extends Component {
   }
 
   handleClick() {
+    API.newUser()//json obj
     this.setState({
       letsPlay: <StartScreen />
     });
@@ -41,17 +43,19 @@ class LogIn extends Component {
           </div>
 
           <div>
-            <img src= {LemonTree} alt="lemons" className="loginLemon"/> 
-            <button type="button" className="btn btn-outline-primary">Lemons</button>
+            <img src={LemonTree} alt="lemons" className="loginLemon"/> 
+            <button onClick={this.handleClick.bind(this)} type="button" className="btn btn-outline-primary">Lemons</button>
+
+           
           </div>
 
           <div>
             <img src= {BlueberryBush} alt="blueberry" className="loginBlueberry"/> 
-            <button type="button" className="btn btn-outline-primary">Blueberries</button>
+            <button onClick={this.handleClick.bind(this)} type="button" className="btn btn-outline-primary">Blueberries</button>
           </div>
 
           <div>
-            <button type="button" className="btn btn-outline-primary">Squash</button>
+            <button onClick={this.handleClick.bind(this)} type="button" className="btn btn-outline-primary">Squash</button>
           </div>
 
       </form>
