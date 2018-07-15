@@ -36,7 +36,7 @@ class Weeds extends Component {
         return (
             <div className="Weeds">
             <div className="grid-container-small">
-                <div className="grid-item-small">{/*props.state.whichAction*/}</div>
+                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} className="weeds" alt="weeds" /></div>
             </div>
             </div>
         );

@@ -4,7 +4,7 @@ import Sprout from '../images/sprout.png';
 import BlueberryBush from '../images/blueberrybush.png';
 import LemonTree from '../images/lemontree.png';
 
-let seed = 'lemon';
+let seed = '';
 
 const whichCrop = (seed) => {
     switch (seed) {
@@ -15,7 +15,7 @@ const whichCrop = (seed) => {
         case 'squash':
           return <img src={BlueberryBush} className="produce-large" alt="squash" />;
         default:
-          return null;
+          return <img src={Sprout} className="produce-large" alt="sprout" />;
       }
 };
 
