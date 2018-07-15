@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Rooster from './images/rooster.png';
 import Garden from './components/Garden';
 import SellingStand from './components/SellingStand';
 import SupplyStore from './components/SupplyStore';
@@ -7,6 +8,7 @@ import Kitchen from './components/Kitchen';
 import ControlCenter from './components/ControlCenter';
 import StartScreen from './components/StartScreen';
 import LogIn from './components/LogIn';
+import Help from './components/Help';
 import CCGarden from './components/controlcentercomponents/CCGarden';
 import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
@@ -42,6 +44,8 @@ class App extends Component {
         return <Kitchen />;
       case 'startover':
         return <StartScreen />;
+      case 'help':
+        return <Help />;
       default:
         return null;
     }
@@ -66,6 +70,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1 className="App-title"><img src={ Rooster } alt="rooster logo" width="70px" className="rooster" />CFK Market Stand</h1>
           <h1 className="App-title">Lemonade Stand</h1>
         </header>
         <ul className="nav justify-content-center">
@@ -85,6 +90,7 @@ class App extends Component {
             <p className="nav-link" id="stand" onClick={this.handleClick.bind(this)}>Market</p>
           </li>
           <li className="nav-item">
+            <p className="nav-link" id="help" onClick={this.handleClick.bind(this)}>Help</p>
             <p className="nav-link" id="help">Help</p>
           </li>
         </ul>

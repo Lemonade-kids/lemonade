@@ -14,6 +14,7 @@ class StartScreen extends Component {
     //   })
     // }
  // }
+
   render() {
     return (
       <div className="StartScreen">
