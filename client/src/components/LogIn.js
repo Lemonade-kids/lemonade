@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import '../App.css';
 import StartScreen from './StartScreen';
+
 import Blueberries from '../images/blueberries.png';
 import Lemons from '../images/lemons.png';
 import Squashes from '../images/squashes.png';
+import API from '../utils/API';
 
 
 class LogIn extends Component {
@@ -16,6 +18,7 @@ class LogIn extends Component {
   }
 
   handleClick() {
+    API.newUser()//json obj
     this.setState({
       letsPlay: <StartScreen />
     });
@@ -41,7 +44,6 @@ class LogIn extends Component {
               </div>
             </div>
           </div>
-
           <div className="loginChoice">
             <img src= { Lemons } alt="lemons" className="loginLemon loginFruit"/> 
             <button type="button" className="btn btn-outline-secondary">Lemons</button>
@@ -51,10 +53,10 @@ class LogIn extends Component {
 
             <img src= { Squashes } alt="squash" className="loginSquash loginFruit" />
             <button type="button" className="btn btn-outline-secondary">Squash</button>
+
           </div>
 
       </form>
-
       <button className="btn btn-outline-primary" onClick={this.handleClick.bind(this)}>Let's play!</button>
       </div>
     

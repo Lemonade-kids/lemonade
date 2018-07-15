@@ -1,7 +1,27 @@
+
 /* Top navbar, basic layout's styling */
 
 .App {
   text-align: center;
+}
+
+.StartScreen {
+  height: 31em;
+  background-size: cover;
+  border: 6px solid #000;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.start-border {
+  border: 40px solid rgb(245, 112, 112);
+  height: 30.25em;
+  border-radius: 20px;
+}
+
+.start {
+  margin: 15%;
+  font-size: 150%;
 }
 
 .App-header {
@@ -18,6 +38,23 @@
 
 p {
   font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.Control-Center {
+  border: 6px solid black;
+  border-radius: 30px;
+  height: 31em;
+  margin-top: 10px;
+  background-color: silver;
+}
+
+.form-control {
+  align-self: right;
+  text-align: center;
+  width: 30%;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #000;
+  margin: -10px 5px 5px 5px;
 }
 
 .nav {
@@ -200,6 +237,7 @@ a {
   margin-bottom: -4%;
 }
 
+
 /* Kitchen */
 
 .Kitchen {
@@ -208,6 +246,10 @@ a {
   background-size: cover;
   border: 6px solid black;
   border-radius: 30px;
+}
+
+.SellingStand {
+  height: 31em;
 }
 
 .workspace {

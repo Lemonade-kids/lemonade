@@ -10,7 +10,6 @@ class SellingStand extends Component {
         <img src={ Cloud } alt="cloud" className="cloud" />
         <img src={ Cloud } alt="cloud" className="cloud-two" />
         <img src={ Stand } alt="stand" className="stand" />
-
       </div>
     );
   }
