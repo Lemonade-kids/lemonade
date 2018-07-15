@@ -8,6 +8,7 @@ class SellingStand extends Component {
     return (
       <div className="SellingStand">
         <img src={ Cloud } alt="cloud" className="cloud" />
+        <img src={ Cloud } alt="cloud" className="cloud-two" />
         <img src={ Stand } alt="stand" className="stand" />
 
       </div>

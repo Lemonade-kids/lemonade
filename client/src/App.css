@@ -1,41 +1,7 @@
+/* Top navbar, basic layout's styling */
+
 .App {
   text-align: center;
-}
-
-.StartScreen, .LogIn {
-  height: 31em;
-  background-size: cover;
-  border: 6px solid #000;
-  border-radius: 30px;
-  text-align: center;
-}
-
-.LogIn {
-  background-image: url(./images/gingham.jpg);
-  align-items: stretch;
-}
-
-#inputPassword {
-  width: 40%;
-}
-
-.loginChoice {
-  margin: -5% 1% 3% 1%;
-}
-
-.loginFruit {
-  width: 30%;
-}
-
-.start-border {
-  border: 40px solid rgb(245, 112, 112);
-  height: 30.25em;
-  border-radius: 20px;
-}
-
-.start {
-  margin: 15%;
-  font-size: 150%;
 }
 
 .App-header {
@@ -52,27 +18,6 @@
 
 p {
   font-family: 'Love Ya Like A Sister', cursive;
-}
-
-.Control-Center {
-  border: 6px solid black;
-  border-radius: 30px;
-  height: 31em;
-  margin-top: 10px;
-  background-color: silver;
-}
-
-.form-group {
-  margin: 5% 1%;
-}
-
-.form-control {
-  align-self: right;
-  text-align: center;
-  width: 30%;
-  font-family: 'Love Ya Like A Sister', cursive;
-  color: #000;
-  margin: -10px 5px 5px 5px;
 }
 
 .nav {
@@ -102,6 +47,69 @@ a {
   height: inherit;
   margin-top: 10px;
 }
+
+/* Start screen and LogIn */
+
+.StartScreen, .LogIn {
+  height: 31em;
+  background-size: cover;
+  border: 6px solid #000;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.LogIn {
+  background-image: url(./images/gingham.jpg);
+  align-items: stretch;
+}
+
+#inputPassword {
+  width: 40%;
+}
+
+.loginChoice {
+  margin: -3% 1% 3% 1%;
+}
+
+.loginFruit {
+  width: 30%;
+}
+
+.start-border {
+  border: 40px solid rgb(245, 112, 112);
+  height: 30.25em;
+  border-radius: 20px;
+}
+
+.start {
+  margin: 15%;
+  font-size: 150%;
+}
+
+.Control-Center {
+  border: 6px solid black;
+  border-radius: 30px;
+  height: 31em;
+  margin-top: 10px;
+  background-color: silver;
+}
+
+/* Form styling used in LogIn and Supply Store */
+
+.form-group {
+  margin: 5% 1%;
+}
+
+.form-control {
+  align-self: right;
+  text-align: center;
+  width: 30%;
+  font-family: 'Love Ya Like A Sister', cursive;
+  color: #000;
+  margin: -10px 5px 5px 5px;
+}
+
+/* Garden and Supply Store */
 
 .weeds {
   width: 25%;
@@ -192,16 +200,14 @@ a {
   margin-bottom: -4%;
 }
 
+/* Kitchen */
+
 .Kitchen {
   height: 31em;
   background-image: url(./images/kitchenwall.png);
   background-size: cover;
   border: 6px solid black;
   border-radius: 30px;
-}
-
-.SellingStand {
-  height: 31em;
 }
 
 .workspace {
@@ -226,8 +232,11 @@ a {
   margin: 0 5% 1% 0;
 }
 
+/* Market */
+
 .SellingStand {
   background-image: url(./images/marketbackground.png);
+  height: 31em;
   background-size: cover;
   background-repeat: no-repeat;
   border: 6px solid black;
@@ -246,16 +255,43 @@ a {
   animation-duration: 15s;
 }
 
+.cloud-two {
+  width: 10%;
+  margin-top: 20%;
+  opacity: 0;
+  position: relative;
+  -webkit-animation-name: cloud-two; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 25s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-name: cloud-two;
+  animation-duration: 25s;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes cloud {
-  0%   {left:-270px; top:0px; opacity: 0;}
+  0%   {left:-260px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
 
 /* Standard syntax */
 @keyframes cloud {
-  0%   {left:-270px; top:0px; opacity: 0;}
+  0%   {left:-260px; top:0px; opacity: 0;}
+  25% {opacity: 1;}
+  100% {left:300px; top:0px; opacity: 0;}
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes cloud-two {
+  0%   {left:-300px; top:0px; opacity: 0;}
+  25% {opacity: 1;}
+  100% {left:300px; top:0px; opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes cloud-two {
+  0%   {left:-300px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
@@ -263,4 +299,17 @@ a {
 .stand {
   margin: 8.5em;
   width: 30%;
+}
+
+.closed-sign {
+  width: 90%;
+}
+
+/* Help Box */
+
+.Help {
+  height: 31em;
+  background-color: rgb(80, 133, 177);
+  border: 6px solid black;
+  border-radius: 30px;
 }

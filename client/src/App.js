@@ -8,6 +8,7 @@ import Kitchen from './components/Kitchen';
 import ControlCenter from './components/ControlCenter';
 import StartScreen from './components/StartScreen';
 import LogIn from './components/LogIn';
+import Help from './components/Help';
 import CCGarden from './components/controlcentercomponents/CCGarden';
 import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
@@ -43,6 +44,8 @@ class App extends Component {
         return <Kitchen />;
       case 'startover':
         return <StartScreen />;
+      case 'help':
+        return <Help />;
       default:
         return null;
     }
@@ -86,7 +89,7 @@ class App extends Component {
             <p className="nav-link" id="stand" onClick={this.handleClick.bind(this)}>Market</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="help">Help</p>
+            <p className="nav-link" id="help" onClick={this.handleClick.bind(this)}>Help</p>
           </li>
         </ul>
         <div className="container">
