@@ -3,8 +3,9 @@ import '../App.css';
 import Sprout from '../images/sprout.png';
 import BlueberryBush from '../images/blueberrybush.png';
 import LemonTree from '../images/lemontree.png';
+import SquashPlant from '../images/squash.png';
 
-let seed = '';
+let seed = 'squash';
 
 const whichCrop = (seed) => {
     switch (seed) {
@@ -13,9 +14,9 @@ const whichCrop = (seed) => {
         case 'lemon':
           return <img src={LemonTree} className="produce-large" alt="lemon" />;
         case 'squash':
-          return <img src={BlueberryBush} className="produce-large" alt="squash" />;
+          return <img src={SquashPlant} className="produce-large" alt="squash" />;
         default:
-          return <img src={Sprout} className="produce-large" alt="sprout" />;
+          return <img src={Sprout} className="produce-small" alt="sprout" />;
       }
 };
 

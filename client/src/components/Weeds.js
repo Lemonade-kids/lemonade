@@ -36,7 +36,7 @@ class Weeds extends Component {
         return (
             <div className="Weeds">
             <div className="grid-container-small">
-                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)]} className="weeds" alt="weeds" /></div>
+                <div className="grid-item-small"><img src={weeds[getRandomInt(weeds.length)] /* Dirt */} className="weeds" alt="weeds" /></div>
             </div>
             </div>
         );

@@ -5,6 +5,17 @@
   text-align: center;
 }
 
+footer {
+  margin-top: 2px;
+  clear: both;
+  float: left;
+  width: 35%;
+}
+
+.footer {
+  color: grey;
+}
+
 .StartScreen {
   height: 31em;
   background-size: cover;
@@ -55,6 +66,11 @@ p {
   font-family: 'Love Ya Like A Sister', cursive;
   color: #000;
   margin: -10px 5px 5px 5px;
+}
+
+input:focus {
+  outline: 0;
+
 }
 
 .nav {
@@ -153,11 +169,11 @@ a {
 }
 
 .produce-small {
-  width: 60%;
+  width: 80%;
 }
 
 .produce-large {
-  width: 120%;
+  width: 200%;
 }
 
 .grid-container {
@@ -224,7 +240,7 @@ a {
   background-image: url(./images/dirt.png);
   background-size: cover;
   border-radius: 30px;
-  height: 3em;
+  height: 1.5em;
 }
 
 .sugar, .flour, .milk {
@@ -246,10 +262,6 @@ a {
   background-size: cover;
   border: 6px solid black;
   border-radius: 30px;
-}
-
-.SellingStand {
-  height: 31em;
 }
 
 .workspace {
@@ -312,14 +324,14 @@ a {
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes cloud {
-  0%   {left:-260px; top:0px; opacity: 0;}
+  0%   {left:-250px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
 
 /* Standard syntax */
 @keyframes cloud {
-  0%   {left:-260px; top:0px; opacity: 0;}
+  0%   {left:-250px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
@@ -339,7 +351,8 @@ a {
 }
 
 .stand {
-  margin: 8.5em;
+  margin: 7em;
+  position: relative;
   width: 30%;
 }
 
