@@ -2,12 +2,29 @@
   text-align: center;
 }
 
-.StartScreen {
+.StartScreen, .LogIn {
   height: 31em;
   background-size: cover;
   border: 6px solid #000;
   border-radius: 30px;
   text-align: center;
+}
+
+.LogIn {
+  background-image: url(./images/gingham.jpg);
+  align-items: stretch;
+}
+
+#inputPassword {
+  width: 40%;
+}
+
+.loginChoice {
+  margin: -5% 1% 3% 1%;
+}
+
+.loginFruit {
+  width: 30%;
 }
 
 .start-border {
@@ -43,6 +60,10 @@ p {
   height: 31em;
   margin-top: 10px;
   background-color: silver;
+}
+
+.form-group {
+  margin: 5% 1%;
 }
 
 .form-control {
