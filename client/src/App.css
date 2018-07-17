@@ -6,10 +6,8 @@
 }
 
 footer {
-  margin-top: 2px;
+  margin-top: 10px;
   clear: both;
-  float: left;
-  width: 35%;
 }
 
 .footer {
@@ -297,10 +295,24 @@ a {
   border-radius: 30px;
 }
 
+.water {
+  opacity: 0;
+  height: 30em;
+  float: none;
+  position: absolute;
+  margin: 0.5em 30% 0 -45%;
+  width: 90%;
+  border-radius: 30px;
+  -webkit-animation-name: water;
+  -webkit-animation-duration: 4s;
+  animation-name: water;
+  animation-duration: 4s;
+}
+
 .cloud {
   width: 30%;
   opacity: 0;
-  position: relative;
+  position: inherit;
   -webkit-animation-name: cloud; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 15s; /* Safari 4.0 - 8.0 */
   -webkit-animation-timing-function: ease-in-out;
@@ -313,13 +325,33 @@ a {
   width: 10%;
   margin-top: 20%;
   opacity: 0;
-  position: relative;
+  position: absolute;
   -webkit-animation-name: cloud-two; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 25s; /* Safari 4.0 - 8.0 */
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
   animation-name: cloud-two;
   animation-duration: 25s;
+}
+
+@-webkit-keyframes water {
+  0% {opacity: 0;}
+  20% {opacity: 0.7;}
+  40% {opacity: 0.3;}
+  60% {opacity: 0.7;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.7;}
+  100% {opacity: 0;}
+}
+
+@keyframes water {
+  0% {opacity: 0;}
+  20% {opacity: 0.7;}
+  40% {opacity: 0.3;}
+  60% {opacity: 0.7;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.7;}
+  100% {opacity: 0;}
 }
 
 /* Safari 4.0 - 8.0 */
@@ -351,8 +383,8 @@ a {
 }
 
 .stand {
-  margin: 7em;
-  position: relative;
+  margin-top: 15em;
+  position: inherit;
   width: 30%;
 }
 

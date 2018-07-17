@@ -106,7 +106,7 @@ class App extends Component {
           </div>
         </div>
         <footer>
-          <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a>.</p>
+          <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
         </footer>
       </div>
     );
