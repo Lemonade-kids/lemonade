@@ -23,6 +23,8 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "if-env": "^1.0.4",
-    "mongoose": "^5.2.3"
+    "mongoose": "^5.2.3",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }
