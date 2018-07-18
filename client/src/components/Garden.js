@@ -9,7 +9,7 @@ class Garden extends Component {
   render() {
     return (
       <div className="Garden">
-      <img src={ Water } className="water" alt="water" />
+      {/* {<img src={ Water } className="water" alt="water" />} */}
         <div className="grid-container garden-grid">
           <div className="grid-item grid-item-garden">
             <GardenGrid />

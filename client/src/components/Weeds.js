@@ -3,7 +3,6 @@ import '../App.css';
 import Dirt from '../images/dirt.png';
 import Weed from '../images/weed.png';
 import Grass from '../images/grass.png';
-import CCGarden from './controlcentercomponents/CCGarden';
 
 const weeds = [Grass, Weed, Dirt];
 
