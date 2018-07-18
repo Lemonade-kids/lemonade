@@ -19,16 +19,16 @@ class Produce extends Component {
 
     switch (seed) {
       case 'blueberry':
-        tmp = BlueberryBush //<img src={BlueberryBush} className="produce-large" alt="blueberry" />;
+        tmp = BlueberryBush
         break;
       case 'lemon':
-        tmp = LemonTree //<img src={LemonTree} className="produce-large" alt="lemon" />;
+        tmp = LemonTree
         break;
       case 'squash':
-        tmp = SquashPlant //<img src={SquashPlant} className="produce-large" alt="squash" />;
+        tmp = SquashPlant
         break;
       default:
-        tmp = Sprout //<img src={Sprout} className="produce-small" alt="sprout" />;
+        tmp = Sprout
         break;
     }
 
@@ -38,7 +38,7 @@ class Produce extends Component {
   grow(seed) {
     setTimeout(() => {
       this.whichCrop(seed)
-    }, 8000)
+    }, 7000)
   }
 
   render() {
