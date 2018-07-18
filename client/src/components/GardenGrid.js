@@ -12,7 +12,7 @@ class GardenGrid extends Component {
                 <div className="grid-item-small"><Weeds /></div>
                 <div className="grid-item-small"><Weeds /></div>
                 <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Produce /></div>
+                <div className="grid-item-garden"><Produce /></div>
                 <div className="grid-item-small"><Weeds /></div>
                 <div className="grid-item-small"><Weeds /></div>
                 <div className="grid-item-small"><Weeds /></div>

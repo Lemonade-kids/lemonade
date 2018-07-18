@@ -5,6 +5,15 @@
   text-align: center;
 }
 
+footer {
+  margin-top: 10px;
+  clear: both;
+}
+
+.footer {
+  color: grey;
+}
+
 .StartScreen {
   height: 31em;
   background-size: cover;
@@ -55,6 +64,11 @@ p {
   font-family: 'Love Ya Like A Sister', cursive;
   color: #000;
   margin: -10px 5px 5px 5px;
+}
+
+input:focus {
+  outline: 0;
+
 }
 
 .nav {
@@ -153,11 +167,11 @@ a {
 }
 
 .produce-small {
-  width: 60%;
+  width: 80%;
 }
 
 .produce-large {
-  width: 120%;
+  width: 170%;
 }
 
 .grid-container {
@@ -224,7 +238,7 @@ a {
   background-image: url(./images/dirt.png);
   background-size: cover;
   border-radius: 30px;
-  height: 3em;
+  height: 1.5em;
 }
 
 .sugar, .flour, .milk {
@@ -246,10 +260,6 @@ a {
   background-size: cover;
   border: 6px solid black;
   border-radius: 30px;
-}
-
-.SellingStand {
-  height: 31em;
 }
 
 .workspace {
@@ -279,16 +289,30 @@ a {
 .SellingStand {
   background-image: url(./images/marketbackground.png);
   height: 31em;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: repeat-x;
   border: 6px solid black;
   border-radius: 30px;
+}
+
+.water {
+  opacity: 0;
+  height: 30em;
+  float: none;
+  position: absolute;
+  margin: 0.5em 30% 0 -45%;
+  width: 90%;
+  border-radius: 30px;
+  -webkit-animation-name: water;
+  -webkit-animation-duration: 4s;
+  animation-name: water;
+  animation-duration: 4s;
 }
 
 .cloud {
   width: 30%;
   opacity: 0;
-  position: relative;
+  position: inherit;
   -webkit-animation-name: cloud; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 15s; /* Safari 4.0 - 8.0 */
   -webkit-animation-timing-function: ease-in-out;
@@ -301,7 +325,7 @@ a {
   width: 10%;
   margin-top: 20%;
   opacity: 0;
-  position: relative;
+  position: absolute;
   -webkit-animation-name: cloud-two; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 25s; /* Safari 4.0 - 8.0 */
   -webkit-animation-timing-function: ease-in-out;
@@ -310,16 +334,36 @@ a {
   animation-duration: 25s;
 }
 
+@-webkit-keyframes water {
+  0% {opacity: 0;}
+  20% {opacity: 0.7;}
+  40% {opacity: 0.3;}
+  60% {opacity: 0.7;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.7;}
+  100% {opacity: 0;}
+}
+
+@keyframes water {
+  0% {opacity: 0;}
+  20% {opacity: 0.7;}
+  40% {opacity: 0.3;}
+  60% {opacity: 0.7;}
+  70% {opacity: 0.3;}
+  80% {opacity: 0.7;}
+  100% {opacity: 0;}
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes cloud {
-  0%   {left:-260px; top:0px; opacity: 0;}
+  0%   {left:-250px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
 
 /* Standard syntax */
 @keyframes cloud {
-  0%   {left:-260px; top:0px; opacity: 0;}
+  0%   {left:-250px; top:0px; opacity: 0;}
   25% {opacity: 1;}
   100% {left:300px; top:0px; opacity: 0;}
 }
@@ -339,7 +383,8 @@ a {
 }
 
 .stand {
-  margin: 8.5em;
+  margin-top: 15em;
+  position: inherit;
   width: 30%;
 }
 
