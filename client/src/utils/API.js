@@ -17,6 +17,7 @@ export default {
     // saveArticle: function(articleData) {
     //   return axios.post("/api/articles", articleData);
     // },
+    //saves user info to database
     newUser: function(UserData) {
       return axios.post("/api/user", UserData);
     }
