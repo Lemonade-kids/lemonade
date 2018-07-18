@@ -7,7 +7,7 @@ import SquashPlant from '../images/squash.png';
 
 class Produce extends Component {
   state = {
-    crop: ''
+    crop: Sprout, className: "produce-small"
   }
   constructor(props) {
     super(props);
@@ -32,23 +32,19 @@ class Produce extends Component {
         break;
     }
 
-    this.setState({ crop: tmp })
+    this.setState({ crop: tmp, className: "produce-large" })
   }
 
   grow(seed) {
     setTimeout(() => {
       this.whichCrop(seed)
-    }, 5000)
+    }, 8000)
   }
 
   render() {
     return (
        <div className="Produce">
-       <img src={this.state.crop} className="produce-large" alt="squash" />
-       {/* {setTimeout(grow(seed)), 4000)} */}
-        {/* {whichCrop(seed)} */}
-        {}
-
+       <img src={this.state.crop} className={this.state.className} alt={this.tmp} />
       </div>
     );
   }

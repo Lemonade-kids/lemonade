@@ -171,7 +171,7 @@ a {
 }
 
 .produce-large {
-  width: 200%;
+  width: 170%;
 }
 
 .grid-container {
@@ -289,8 +289,8 @@ a {
 .SellingStand {
   background-image: url(./images/marketbackground.png);
   height: 31em;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: contain;
+  background-repeat: repeat-x;
   border: 6px solid black;
   border-radius: 30px;
 }
