@@ -10,8 +10,12 @@ class Kitchen extends Component {
   render() {
     return (
       <div className="Kitchen">
+        <ul id="make">
+          <li>
+            <span className="bar kitchen-bar"></span><h3>Preparing your Product!</h3></li>
+        </ul>
         <div className="workspace">
-        <Counter />
+          <Counter />
         </div>
       </div>
     );

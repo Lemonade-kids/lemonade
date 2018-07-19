@@ -26,7 +26,7 @@ class Weeds extends Component {
             case 'weed':
             return <img src={Dirt} alt="dirt" className="weeds" />;
             case 'harvest':
-            return
+            return null;
             default:
             return <img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" />;
         }

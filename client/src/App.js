@@ -13,7 +13,7 @@ import CCGarden from './components/controlcentercomponents/CCGarden';
 import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
 import CCStore from './components/controlcentercomponents/CCStore';
-
+import Dirt from './images/dirt.png';
 
 class App extends Component {
   constructor(props) {
@@ -46,6 +46,8 @@ class App extends Component {
         return <StartScreen />;
       case 'help':
         return <Help />;
+      case 'harvest':
+        return <Dirt />
       default:
         return null;
     }

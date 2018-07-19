@@ -11,7 +11,7 @@ class Produce extends Component {
   }
   constructor(props) {
     super(props);
-    this.grow('squash')
+    this.grow('blueberry')
   }
 
   whichCrop(seed) {
