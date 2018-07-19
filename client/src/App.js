@@ -13,6 +13,8 @@ import CCGarden from './components/controlcentercomponents/CCGarden';
 import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
 import CCStore from './components/controlcentercomponents/CCStore';
+import { Navbar, Button } from 'react-bootstrap';
+import './App.css';
 
 
 class App extends Component {
@@ -30,7 +32,7 @@ class App extends Component {
 
     });
   }
-
+      
   // case switch for rendering the right component on the gameboard
   showComponent(id) { 
     switch (id) {

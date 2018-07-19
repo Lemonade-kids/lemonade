@@ -1,7 +1,12 @@
 {
   "name": "lemonade",
   "version": "0.1.0",
-  "private": true,
+  "private": true, 
+  "proxy": {
+    "/api":  {
+        "target": "http://localhost:3001"
+    }
+},
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.4.1",

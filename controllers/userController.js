@@ -15,24 +15,43 @@ module.exports = {
       .then(dbUser => res.json(dbUser))
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
-    const user = {
-      Username: req.body.Username,
-      Password: req.body.Password,
-      SeedName: req.body.SeedName,
-      SeedQuantity: req.body.SeedQuantity,
-      CropName: req.body.CropName,
-      CropQuantity: req.body.CropQuantity,
-      IngredientName: req.body.IngredientName,
-      IngredientQuantity: req.body.IngredientQuantity,
-      Money: req.body.Money
-    };
-    
-   db.User
-      .create(user)
-      .then(dbUser => res.json(dbUser))
-      .catch(err => res.status(422).json(err));
-  },
+
+  // if user found, then set session and return user
+  login: function(req, res) {
+    const {user, pwd} = req.body;
+    console.log("login", req.body);
+    db.User
+       .findOne({user, pwd})
+       .then(dbUser => {
+         if(dbUser.length) {
+          req.session.userId = dbUser._id;
+          res.json(dbUser);
+         } else {
+           // access denied
+           res.status(403).json(dbUser);
+         }
+       })
+       .catch(err => {
+         console.log(err)
+         res.status(403).json(err);
+       })
+   },
+
+   create: function(req, res) {
+     const {user, pwd } = req.body;
+     db.User
+       .find({user})
+       .then(dbUser => {
+         if(dbUser.length) {
+          res.status(404).send("Username already exists");
+         } else {
+           return db.User.create(req.body).then((user) => {
+             res.json(user);
+           })
+         }
+       })
+       .catch(err => res.status(404).json(err));
+   },
   update: function(req, res) {
    db.User
       .findOneAndUpdate({ _id: req.params.id }, req.body)
