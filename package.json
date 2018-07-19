@@ -6,7 +6,7 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*' server.js\" \"npm run client\"",
     "client": "cd client && npm run start",
     "install": "cd client; yarn install;",
     "build": "cd client && npm run build",
@@ -19,12 +19,19 @@
     "nodemon": "^1.18.2"
   },
   "dependencies": {
+    "auth0-js": "^9.7.2",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.15.4",
+    "history": "^4.7.2",
     "if-env": "^1.0.4",
-    "mongoose": "^5.2.3",
+
+    "mongoose": "^5.2.4",
+    "react-bootstrap": "^0.32.1"
+
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
+
   }
 }
