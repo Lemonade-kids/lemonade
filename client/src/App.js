@@ -14,6 +14,7 @@ import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
 import CCStore from './components/controlcentercomponents/CCStore';
 import Dirt from './images/dirt.png';
+import StartScreenButtons from './components/StartScreenButtons';
 
 class App extends Component {
   constructor(props) {
@@ -43,11 +44,18 @@ class App extends Component {
       case 'kitchen':
         return <Kitchen />;
       case 'startover':
-        return <StartScreen />;
+        return <div className="StartScreen">
+        <div className="start-border">
+        <StartScreen />
+          <StartScreenButtons onClick={this.handleClick.bind(this)}/>
+          </div>
+          </div>;
       case 'help':
         return <Help />;
-      case 'harvest':
-        return <Dirt />
+      case 'start-over':
+        return <LogIn />;
+      case 'nevermind':
+        return <Garden />
       default:
         return null;
     }
