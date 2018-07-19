@@ -1,27 +1,43 @@
 import React, { Component } from 'react';
 import '../App.css';
-
-const inventory = [2, 6, 8];
-let bankAccount = 10.00;
+import {connect} from 'react-redux';
 
 class ControlCenter extends Component {
+  // state = {
+  //   user: [
+  //           { login: "" , password : "" },
+  //           { Bank : 123.00, Lemons : 0 },
+  //           { squash:10, blueberries : 0 },
+  //           { products : 100 , gardenGrowth : 0 },
+  //           { flour : 10, sugar:0 }
+  // ]
+  // }
   render() {
     return (
       <div className="ControlCenter">
 
         <p className="ctrl-title">Inventory: </p>
-        <p>Flour: { inventory[0] } pounds</p>
-        <p>Eggs: { inventory[1] }</p>
-        <p>Sugar: { inventory[2] } cups</p>
+        <p>Lemons: {this.props.lem}</p>
+        <p>Sugar: {this.props.sug } cups</p>
+        <p>Product: {this.props.prod} </p>
 
         <div className="dropdown-divider"></div>
 
-        <p className="ctrl-title">Bank</p>
-        <p>${ bankAccount }</p>
+        <p className="ctrl-title">Bank :${this.props.cash}</p>
+        <p></p>
+        
 
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return{
+    lem: state.Lemons,
+    cash: state.Bank,
+    prod: state.product,
+    sug: state.sugar
+  };
+}
 
-export default ControlCenter;
+export default connect(mapStateToProps)(ControlCenter);

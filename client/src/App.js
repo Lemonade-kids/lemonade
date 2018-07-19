@@ -15,7 +15,8 @@ import CCMarket from './components/controlcentercomponents/CCMarket';
 import CCStore from './components/controlcentercomponents/CCStore';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
-
+import Dirt from './images/dirt.png';
+import StartScreenButtons from './components/StartScreenButtons';
 
 class App extends Component {
   constructor(props) {
@@ -45,9 +46,18 @@ class App extends Component {
       case 'kitchen':
         return <Kitchen />;
       case 'startover':
-        return <StartScreen />;
+        return <div className="StartScreen">
+        <div className="start-border">
+        <StartScreen />
+          <StartScreenButtons onClick={this.handleClick.bind(this)}/>
+          </div>
+          </div>;
       case 'help':
         return <Help />;
+      case 'start-over':
+        return <LogIn />;
+      case 'nevermind':
+        return <Garden />
       default:
         return null;
     }
@@ -73,7 +83,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title"><img src={ Rooster } alt="rooster logo" width="70px" className="rooster" />CFK Market Stand</h1>
-          <h1 className="App-title">Lemonade Stand</h1>
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
@@ -93,7 +102,6 @@ class App extends Component {
           </li>
           <li className="nav-item">
             <p className="nav-link" id="help" onClick={this.handleClick.bind(this)}>Help</p>
-            <p className="nav-link" id="help">Help</p>
           </li>
         </ul>
         <div className="container">
@@ -109,6 +117,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <footer>
+          <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
+        </footer>
       </div>
     );
   }
