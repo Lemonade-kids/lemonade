@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import '../App.css';
 import GardenGrid from './GardenGrid';
-import Water from '../images/water.png';
 
 
 class Garden extends Component {
-
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
-      <div className="Garden">
-      {/* {<img src={ Water } className="water" alt="water" />} */}
         <div className="grid-container garden-grid">
           <div className="grid-item grid-item-garden">
             <GardenGrid />
@@ -39,7 +38,6 @@ class Garden extends Component {
             <GardenGrid />
           </div>
         </div>
-      </div>
     );
   }
 }

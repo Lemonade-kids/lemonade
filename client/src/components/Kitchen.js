@@ -9,7 +9,7 @@ class Kitchen extends Component {
   // stove or oven depending on chosen ingredient for game
   render() {
     return (
-      <div className="Kitchen">
+      <div>
         <ul id="make">
           <li>
             <span className="bar kitchen-bar"></span><h3>Preparing your Product!</h3></li>

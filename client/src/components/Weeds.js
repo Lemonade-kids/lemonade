@@ -17,20 +17,20 @@ console.log(weeds[getRandomInt(makeWeeds)]);
 class Weeds extends Component {
     constructor(props) {
         super(props)
-        props.CCGarden;
+        //props.CCGarden;
     }
-    whichAction(action) {
-        switch (action) {
-            case 'water':
-            return null;
-            case 'weed':
-            return <img src={Dirt} alt="dirt" className="weeds" />;
-            case 'harvest':
-            return null;
-            default:
-            return <img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" />;
-        }
-    }
+    // whichAction(action) {
+    //     switch (action) {
+    //         case 'water':
+    //         return null;
+    //         case 'weed':
+    //         return <img src={Dirt} alt="dirt" className="weeds" />;
+    //         case 'harvest':
+    //         return null;
+    //         default:
+    //         return <img src={weeds[getRandomInt(weeds.length)]} alt="weed" className="weeds" />;
+    //     }
+    // }
     render() {
         return (
             <div className="Weeds">
