@@ -7,6 +7,7 @@ import Lemons from '../images/lemons.png';
 import Squashes from '../images/squashes.png';
 import API from '../utils/API';
 // import LetsPlayButton from './LetsPlayButton';
+import axios from 'axios';
 
 
 class LogIn extends Component {
@@ -15,17 +16,47 @@ class LogIn extends Component {
     //this.state = {isToggleOn: true};
 
     // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {gender: "male"};
+    this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.state = {
+      user: "",
+      pwd: "",
+      gender: "male"};
   }
 
-  handleClick(event) {
+  update = (event) => {
+    const {name, value} = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleLoginClick = (event) => {
     event.preventDefault(); 
-    API.newUser()
+    API.login(this.state).then(() => {
+      console.log("this is wrking");
+      //axios.post("login", {user: this.state.username, pwd: this.state.password})
+    })
+    // todo: check to see if login worked
     this.setState({
       letsPlay: <StartScreen/>, 
       gender: "female"
     });
+  }
+
+  handleNewUserClick = (event) => {
+    event.preventDefault(); 
+    API.newUser(this.state).then(() => {
+      console.log("hit thi nw")
+     //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
+    })
+    // todo: check to see if user exists, etc.
+    this.setState({
+      letsPlay: <StartScreen/>,
+      user: document.getElementById("user").value,
+      pwd: document.getElementById("pwd").value,
+      gender: "female"
+    });
+
   }
 
   render() {
@@ -45,37 +76,21 @@ class LogIn extends Component {
         <div className="LogIn">
           <form>
             <div style={{display:FirstDiv}} className="form-group row">
-              <label className="sr-only" htmlFor="inlineFormInputGroup">Create Username</label>
-              <label className="sr-only" htmlFor="inlineFormInputGroupUsername2"> Create Username</label>
-              <div className="input-group mb-2 mr-sm-2">
-                <div className="input-group-prepend">
-                </div>
-                <input type="text" className="form-control col-sm-5" id="inlineFormInputGroupUsername2" placeholder="Create Username"></input>
-              </div>
-              <div className="form-group row">
-                <label htmlFor="inputPassword" className="col-sm-2 col-form-label"></label>
-                <div className="col-sm-1" />
-                <div className="col-sm-9 password-box">
-                  <input type="password" className="form-control" id="inputPassword" placeholder=" Create Password"></input>
-                </div>
-              </div>
-            </div>
-            <div style={{display:FirstDiv}} className="form-group row">
               <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
-              <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Username</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
                 </div>
-                <input type="text" className="form-control col-sm-5" id="inlineFormInputGroupUsername2" placeholder="Username"></input>
+                <input type="text" className="form-control col-sm-5" id="user" name="user" onChange={this.update} placeholder="Username"></input>
               </div>
               <div className="form-group row">
                 <label htmlFor="inputPassword" className="col-sm-2 col-form-label"></label>
                 <div className="col-sm-1" />
                 <div className="col-sm-9 password-box">
-                  <input type="password" className="form-control" id="inputPassword" placeholder="Password"></input>
+                  <input type="password" className="form-control" id="pwd" name="pwd" onChange={this.update} placeholder="Password"></input>
                 </div>
               </div>
-              <button className="btn btn-outline-primary" onClick={this.handleClick.bind(this)}>Submit</button>
+              <button className="btn btn-outline-primary" onClick={this.handleNewUserClick.bind(this)}>Sign Up</button>
+              <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
             </div>
            
           <div style={{display:SecondDiv}} gender="female" className={SecondDiv}>
@@ -89,9 +104,8 @@ class LogIn extends Component {
               <img src={Squashes} alt="squash" className="loginSquash loginFruit" />
               <button type="button" className="btn btn-outline-secondary">Squash</button>
             </div>
-            {/* <LetsPlayButton onClick={this.props.onClick} /> */}
-            <button className='btn btn-outline-primary' id="lets-play">Let's play!</button>     
-      
+            <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Let's play!</button>
+            
             </div>
             </form>
           
