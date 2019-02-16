@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../App.css';
-import Weeds from '../Weeds';
 
 
-class CCGarden extends Component {
+class CCGarden extends React.Component {
   render() {
+    console.log(this.props.onClick)
     return (
-      <div className="CCGarden">
-      <button className="btn" id="water" action="water" onClick={this.hideWeeds}>Water</button>
-        <button className="btn" id="weed" action="weed"  onClick={this.hideWeeds}>Weed</button>
-        <button className="btn" id="harvest" action="harvest" onClick={this.hideWeeds}>Harvest</button>
+      <div className="CCGarden"> 
+      <button className="btn" data-valuename="waterBtn" onClick={this.props.onClick}>Water</button>
+        <button className="btn" data-valuename="weedBtn" action="weed"  onClick={this.props.onClick}>Weed</button>
+        <button className="btn" data-valuename="harvestBtn" action="harvest" onClick={this.props.onClick}>Harvest</button>
       </div>
     );
   }

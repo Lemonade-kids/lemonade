@@ -13,56 +13,45 @@ import CCGarden from './components/controlcentercomponents/CCGarden';
 import CCKitchen from './components/controlcentercomponents/CCKitchen';
 import CCMarket from './components/controlcentercomponents/CCMarket';
 import CCStore from './components/controlcentercomponents/CCStore';
-//import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
-import Dirt from './images/dirt.png';
 import StartScreenButtons from './components/StartScreenButtons';
 import KitchenButton from './components/KitchenButton';
 //import LetsPlayButton from './components/LetsPlayButton';
-import CCGardenHarvestButton from './components/controlcentercomponents/CCGardenHarvestButton';
-import CCGardenWeedButton from './components/controlcentercomponents/CCGardenWeedButton';
-import CCGardenWaterButton from './components/controlcentercomponents/CCGardenWaterButton';
-import Water from './images/water.png';
+import water from './images/water.png'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props); // must call super or else 'this' will be uninitialized
-    this.showComponent = this.showComponent.bind(this); // bind ties the onclick to 'this'
+  state = {
+    whichComponent: <LogIn />,
+    watered: false,
+    weeded: false,
+    harvested: false
   }
-  state = { whichComponent: <LogIn /> };
 
-  handleClick(event) { // this is what happens when the click is clicked
+  tendGarden = (event) => {
+    let id = event.target.dataset.valuename;
+    if (id === 'waterBtn') {
+      console.log('watered')
+      this.setState({
+        watered: true
+      });
+      return <img src={water} className="water" alt="water" />;
+    }
+    if (id === 'weedBtn') {
+      console.log('weeded')
+    }
+    if (id === 'harvestBtn') {
+      console.log('harvested')
+    }
+  }
+
+  handleClick = (event) => { // this is what happens when the click is clicked
     let id = event.target.id;
     this.setState({
       whichComponent: this.showComponent(id), // look! can call TWO functions with one onclick!
       whichCCComponent: this.showCCComponent(id)
 
     });
-  }
-
-  waterGarden(event) {
-    let id = event.target.id;
-    if (id === 'water') {
-      this.setState({
-        clicked: true
-        });
-        return <img src= { Water } className="water" alt="water" />;
-    }
-  }
-
-  weedGarden(event) {
-    let id = event.target.id;
-    if (id === 'weed') {
-      return;
-    }
-  }
-
-  harvestGarden(event) {
-    let id = event.target.id;
-    if (id === 'harvest') {
-      return;
-    }
   }
 
   // case switch for rendering the right component on the gameboard
@@ -80,13 +69,13 @@ class App extends Component {
       case 'kitchen':
         return <div className="Kitchen">
           <Kitchen />
-          <KitchenButton onClick={this.handleClick.bind(this)} />
+          <KitchenButton />
         </div>;
       case 'startover':
         return <div className="StartScreen">
           <div className="start-border">
             <StartScreen />
-            <StartScreenButtons onClick={this.handleClick.bind(this)} />
+            <StartScreenButtons />
           </div>
         </div>;
       case 'help':
@@ -109,15 +98,13 @@ class App extends Component {
         return null;
     }
   }
-  // case switch for rendering the component-specific buttons in control center
+  // case switch for rendering the component-specific 
+  // buttons in control center
   showCCComponent(id) {
     switch (id) {
       case 'garden':
         return <div className="CCGarden">
-          <CCGarden />
-          <CCGardenWaterButton onClick={this.waterGarden.bind(this)} />
-          <CCGardenWeedButton onClick={this.weedGarden.bind(this)} />
-          <CCGardenHarvestButton onClick={this.harvestGarden.bind(this)} />
+          <CCGarden onClick={this.tendGarden} />
         </div>;
       case 'supply':
         return <CCStore />;
@@ -129,10 +116,7 @@ class App extends Component {
         return <CCMarket />
       case 'nevermind':
         return <div className="CCGarden">
-          <CCGarden />
-          <CCGardenWaterButton onClick={this.waterGarden.bind(this)} />
-          <CCGardenWeedButton onClick={this.weedGarden.bind(this)} />
-          <CCGardenHarvestButton onClick={this.harvestGarden.bind(this)} />
+          <CCGarden onClick={this.tendGarden} />
         </div>;
       default:
         return null;
@@ -147,22 +131,22 @@ class App extends Component {
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <p className="nav-link" id="startover" onClick={this.handleClick.bind(this)}>Start Over</p>
+            <p className="nav-link" id="startover" onClick={this.handleClick}>Start Over</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="garden" onClick={this.handleClick.bind(this)}>Garden</p>
+            <p className="nav-link" id="garden" onClick={this.handleClick}>Garden</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="supply" onClick={this.handleClick.bind(this)}>Supply Store</p>
+            <p className="nav-link" id="supply" onClick={this.handleClick}>Supply Store</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="kitchen" onClick={this.handleClick.bind(this)}>Kitchen</p>
+            <p className="nav-link" id="kitchen" onClick={this.handleClick}>Kitchen</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="stand" onClick={this.handleClick.bind(this)}>Market</p>
+            <p className="nav-link" id="stand" onClick={this.handleClick}>Market</p>
           </li>
           <li className="nav-item">
-            <p className="nav-link" id="help" onClick={this.handleClick.bind(this)}>Help</p>
+            <p className="nav-link" id="help" onClick={this.handleClick}>Help</p>
           </li>
         </ul>
         <div className="container">

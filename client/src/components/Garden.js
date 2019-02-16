@@ -4,9 +4,14 @@ import GardenGrid from './GardenGrid';
 
 
 class Garden extends Component {
-  constructor(props) {
-    super(props);
+
+  
+
+  tendGarden = (event) => {
+    let id = event.target.dataset.valuename
+
   }
+
   render() {
     return (
         <div className="grid-container garden-grid">

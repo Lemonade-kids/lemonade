@@ -8,15 +8,15 @@ class GardenGrid extends Component {
         return (
             <div className="GardenGrid">
             <div className="grid-container-small">
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-garden"><Produce /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
-                <div className="grid-item-small"><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-garden" data-valuename='produce'><Produce /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
+                <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
             </div>
             </div>
         );

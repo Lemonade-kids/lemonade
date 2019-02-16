@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 import StartScreen from './StartScreen';
 
@@ -12,18 +12,12 @@ import axios from 'axios';
 
 
 
-class LogIn extends Component {
-  constructor(props) {
-    super(props);
-    //this.state = {isToggleOn: true};
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.state = {
+class LogIn extends React.Component {
+    state = {
       user: "",
       pwd: "",
-      gender: "male"};
-  }
+      gender: "male"
+    }
 
   update = (event) => {
     const {name, value} = event.target;
