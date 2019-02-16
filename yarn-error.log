@@ -1,0 +1,68 @@
+Arguments: 
+  /usr/local/Cellar/node/8.7.0/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  8.7.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/liztrenholme/Documents/GitHub/lemonade/package.json: Unexpected string in JSON at position 913
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1130:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
+
+npm manifest: 
+  {
+    "name": "lemonade",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+      "start:prod": "node server.js",
+      "start:dev": "concurrently \"nodemon --ignore 'client/*' server.js\" \"npm run client\"",
+      "client": "cd client && npm run start",
+      "install": "cd client; yarn install;",
+      "build": "cd client && npm run build",
+      "heroku-postbuild": "npm run build"
+    },
+    "author": "Danielle, Liz, Nate",
+    "license": "ISC",
+    "devDependencies": {
+      "concurrently": "^3.6.0",
+      "nodemon": "^1.18.2"
+    },
+    "dependencies": {
+      "auth0-js": "^9.7.2",
+      "axios": "^0.16.2",
+      "body-parser": "^1.17.2",
+      "cookie-session": "^2.0.0-beta.3",
+      "express": "^4.15.4",
+      "history": "^4.7.2",
+      "if-env": "^1.0.4",
+  
+      "mongoose": "^5.2.4",
+      "react-bootstrap": "^0.32.1"
+  
+      "react-redux": "^5.0.7",
+      "redux": "^4.0.0"
+  
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

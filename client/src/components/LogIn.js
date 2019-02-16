@@ -1,76 +1,70 @@
-import React, { Component } from 'react';
-import '../App.css';
-import StartScreen from './StartScreen';
+import React from 'react'
+import '../App.css'
+import StartScreen from './StartScreen'
 
-import Blueberries from '../images/blueberries.png';
-import Lemons from '../images/lemons.png';
-import Squashes from '../images/squashes.png';
-import API from '../utils/API';
+import Blueberries from '../images/blueberries.png'
+import Lemons from '../images/lemons.png'
+import Squashes from '../images/squashes.png'
+import API from '../utils/API'
 
 // import LetsPlayButton from './LetsPlayButton';
-import axios from 'axios';
+// import axios from 'axios'
 
 
 
-class LogIn extends Component {
-  constructor(props) {
-    super(props);
-    //this.state = {isToggleOn: true};
-
-    // This binding is necessary to make `this` work in the callback
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.state = {
-      user: "",
-      pwd: "",
-      gender: "male"};
-  }
+class LogIn extends React.Component {
+    state = {
+      user: '',
+      pwd: '',
+      gender: 'male'
+    }
 
   update = (event) => {
-    const {name, value} = event.target;
+    const {name, value} = event.target
     this.setState({
       [name]: value
-    });
+    })
   }
 
   handleLoginClick = (event) => {
-    event.preventDefault(); 
+    event.preventDefault() 
     API.login(this.state).then(() => {
-      console.log("this is wrking");
+      console.log('this is wrking')
       //axios.post("login", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if login worked
     this.setState({
       letsPlay: <StartScreen/>, 
-      gender: "female"
-    });
+      gender: 'female'
+    })
   }
 
   handleNewUserClick = (event) => {
-    event.preventDefault(); 
+    event.preventDefault() 
     API.newUser(this.state).then(() => {
-      console.log("hit thi nw")
+      console.log('hit thi nw')
      //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if user exists, etc.
     this.setState({
       letsPlay: <StartScreen/>,
-      user: document.getElementById("user").value,
-      pwd: document.getElementById("pwd").value,
-      gender: "female"
-    });
+      user: document.getElementById('user').value,
+      pwd: document.getElementById('pwd').value,
+      gender: 'female'
+    })
 
   }
 
   render() {
-    var FirstDiv = "";
-    var SecondDiv = "";
-    if(this.state.gender === "male"){
-        SecondDiv = "none";
-        FirstDiv = "block";
+    var FirstDiv = ''
+    var SecondDiv = ''
+    if(this.state.gender === 'male'){
+        SecondDiv = 'none'
+        FirstDiv = 'block'
     }
     else{
-        FirstDiv = "none";
-        SecondDiv = "block";
+        FirstDiv = 'none'
+        SecondDiv = 'block'
     } 
 
     return (
@@ -107,15 +101,15 @@ class LogIn extends Component {
               <button type="button" className="btn btn-outline-secondary">Squash</button>
             </div>
 
-            <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Let's play!</button>
+            <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}><p>Let's play!</p></button>
 
             </div>
             </form>
           
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default LogIn;
+export default LogIn
