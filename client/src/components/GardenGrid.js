@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import '../App.css';
-import Produce from './Produce';
-import Weeds from './Weeds';
+import React, { Component } from 'react'
+import '../App.css'
+import Produce from './Produce'
+import Weeds from './Weeds'
 
 class GardenGrid extends Component {
     render() {
@@ -19,8 +19,8 @@ class GardenGrid extends Component {
                 <div className="grid-item-small" data-valuename='weed'><Weeds /></div>
             </div>
             </div>
-        );
+        )
     }
 }
 
-export default GardenGrid;
+export default GardenGrid

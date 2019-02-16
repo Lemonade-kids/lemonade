@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import '../App.css';
-import GardenGrid from './GardenGrid';
+import React, { Component } from 'react'
+import '../App.css'
+import GardenGrid from './GardenGrid'
 
 
 class Garden extends Component {
-
-  
-
-  tendGarden = (event) => {
-    let id = event.target.dataset.valuename
-
-  }
-
   render() {
     return (
         <div className="grid-container garden-grid">
@@ -43,8 +35,8 @@ class Garden extends Component {
             <GardenGrid />
           </div>
         </div>
-    );
+    )
   }
 }
 
-export default Garden;
+export default Garden

@@ -11,6 +11,7 @@
         "Atomics": "readable",
         "SharedArrayBuffer": "readable"
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -22,7 +23,7 @@
         "react"
     ],
     "rules": {
-        "semi": ["error", "always"],
+        "semi": ["error", "never"],
         "quotes": ["error", "single"]
     }
 }

@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import './App.css';
-import Rooster from './images/rooster.png';
-import Garden from './components/Garden';
-import SellingStand from './components/SellingStand';
-import SupplyStore from './components/SupplyStore';
-import Kitchen from './components/Kitchen';
-import ControlCenter from './components/ControlCenter';
-import StartScreen from './components/StartScreen';
-import LogIn from './components/LogIn';
-import Help from './components/Help';
-import CCGarden from './components/controlcentercomponents/CCGarden';
-import CCKitchen from './components/controlcentercomponents/CCKitchen';
-import CCMarket from './components/controlcentercomponents/CCMarket';
-import CCStore from './components/controlcentercomponents/CCStore';
-import './App.css';
-import StartScreenButtons from './components/StartScreenButtons';
-import KitchenButton from './components/KitchenButton';
+import React from 'react'
+import './App.css'
+import Rooster from './images/rooster.png'
+import Garden from './components/Garden'
+import SellingStand from './components/SellingStand'
+import SupplyStore from './components/SupplyStore'
+import Kitchen from './components/Kitchen'
+import ControlCenter from './components/ControlCenter'
+import StartScreen from './components/StartScreen'
+import LogIn from './components/LogIn'
+import Help from './components/Help'
+import CCGarden from './components/controlcentercomponents/CCGarden'
+import CCKitchen from './components/controlcentercomponents/CCKitchen'
+import CCMarket from './components/controlcentercomponents/CCMarket'
+import CCStore from './components/controlcentercomponents/CCStore'
+import './App.css'
+import StartScreenButtons from './components/StartScreenButtons'
+import KitchenButton from './components/KitchenButton'
 //import LetsPlayButton from './components/LetsPlayButton';
 import water from './images/water.png'
 
 
-class App extends Component {
+class App extends React.Component {
   state = {
     whichComponent: <LogIn />,
     watered: false,
@@ -29,29 +29,29 @@ class App extends Component {
   }
 
   tendGarden = (event) => {
-    let id = event.target.dataset.valuename;
+    let id = event.target.dataset.valuename
     if (id === 'waterBtn') {
-      console.log('watered')
+      // console.log('watered')
       this.setState({
         watered: true
-      });
-      return <img src={water} className="water" alt="water" />;
+      })
+      return <img src={water} className="water" alt="water" />
     }
     if (id === 'weedBtn') {
-      console.log('weeded')
+      // console.log('weeded')
     }
     if (id === 'harvestBtn') {
-      console.log('harvested')
+      // console.log('harvested')
     }
   }
 
   handleClick = (event) => { // this is what happens when the click is clicked
-    let id = event.target.id;
+    let id = event.target.id
     this.setState({
       whichComponent: this.showComponent(id), // look! can call TWO functions with one onclick!
       whichCCComponent: this.showCCComponent(id)
 
-    });
+    })
   }
 
   // case switch for rendering the right component on the gameboard
@@ -63,25 +63,25 @@ class App extends Component {
           <Garden />
         </div>
       case 'supply':
-        return <SupplyStore />;
+        return <SupplyStore />
       case 'stand':
-        return <SellingStand />;
+        return <SellingStand />
       case 'kitchen':
         return <div className="Kitchen">
           <Kitchen />
           <KitchenButton />
-        </div>;
+        </div>
       case 'startover':
         return <div className="StartScreen">
           <div className="start-border">
             <StartScreen />
             <StartScreenButtons />
           </div>
-        </div>;
+        </div>
       case 'help':
-        return <Help />;
+        return <Help />
       case 'start-over':
-        return <LogIn />;
+        return <LogIn />
       case 'nevermind':
         return <div className="Garden">
           {this.state.watered}
@@ -95,7 +95,7 @@ class App extends Component {
           <Garden />
         </div>
       default:
-        return null;
+        return null
     }
   }
   // case switch for rendering the component-specific 
@@ -105,11 +105,11 @@ class App extends Component {
       case 'garden':
         return <div className="CCGarden">
           <CCGarden onClick={this.tendGarden} />
-        </div>;
+        </div>
       case 'supply':
-        return <CCStore />;
+        return <CCStore />
       case 'stand':
-        return <CCMarket />;
+        return <CCMarket />
       case 'kitchen':
         return <CCKitchen />
       case 'go-to-market':
@@ -117,9 +117,9 @@ class App extends Component {
       case 'nevermind':
         return <div className="CCGarden">
           <CCGarden onClick={this.tendGarden} />
-        </div>;
+        </div>
       default:
-        return null;
+        return null
     }
   }
 
@@ -166,8 +166,8 @@ class App extends Component {
           <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
         </footer>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
