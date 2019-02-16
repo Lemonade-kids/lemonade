@@ -6,8 +6,10 @@ import Blueberries from '../images/blueberries.png';
 import Lemons from '../images/lemons.png';
 import Squashes from '../images/squashes.png';
 import API from '../utils/API';
+
 // import LetsPlayButton from './LetsPlayButton';
 import axios from 'axios';
+
 
 
 class LogIn extends Component {
@@ -104,8 +106,9 @@ class LogIn extends Component {
               <img src={Squashes} alt="squash" className="loginSquash loginFruit" />
               <button type="button" className="btn btn-outline-secondary">Squash</button>
             </div>
+
             <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Let's play!</button>
-            
+
             </div>
             </form>
           
