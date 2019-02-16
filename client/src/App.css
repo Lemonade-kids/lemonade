@@ -119,11 +119,13 @@ a {
 }
 
 .loginChoice {
+  display: inline-grid;
+  grid-template-columns: auto auto;
   margin: 10% 1% 3% 1%;
 }
 
 .loginFruit {
-  width: 30%;
+  width: 70%;
 }
 
 .start-border {

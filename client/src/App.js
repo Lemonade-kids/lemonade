@@ -22,10 +22,17 @@ import water from './images/water.png'
 
 class App extends React.Component {
   state = {
-    whichComponent: <LogIn />,
+    whichComponent: <LogIn playWithProduce={this.playWithProduce} pickProduce={this.pickProduce} />,
+    producePicked: '',
     watered: false,
     weeded: false,
     harvested: false
+  }
+/** pick produce, set state with picked, pass on to props with which one picked
+ * grows in garden, gets made in kitchen, sells-- need to figure out how flow happens, could use react router & window.loc.replace
+ */
+  pickProduce = () => {
+
   }
 
   tendGarden = (event) => {

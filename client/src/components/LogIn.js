@@ -46,32 +46,21 @@ class LogIn extends React.Component {
      //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if user exists, etc.
-    this.setState({
-      letsPlay: <StartScreen/>,
-      user: document.getElementById('user').value,
-      pwd: document.getElementById('pwd').value,
-      gender: 'female'
-    })
+  //   this.setState({
+  //     letsPlay: <StartScreen/>,
+  //     user: document.getElementById('user').value,
+  //     pwd: document.getElementById('pwd').value,
+  //     gender: 'female'
+  //   })
 
   }
 
   render() {
-    var FirstDiv = ''
-    var SecondDiv = ''
-    if(this.state.gender === 'male'){
-        SecondDiv = 'none'
-        FirstDiv = 'block'
-    }
-    else{
-        FirstDiv = 'none'
-        SecondDiv = 'block'
-    } 
-
     return (
-      <div gender="male" className={FirstDiv}>
+      <div>
         <div className="LogIn">
           <form>
-            <div style={{display:FirstDiv}} className="form-group row">
+            {/* <div style={{display:FirstDiv}} className="form-group row">
               <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
@@ -87,21 +76,42 @@ class LogIn extends React.Component {
               </div>
               <button className="btn btn-outline-primary" onClick={this.handleNewUserClick.bind(this)}>Sign Up</button>
               <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
-            </div>
+            </div> */}
            
-          <div style={{display:SecondDiv}} gender="female" className={SecondDiv}>
+          {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
+          <div>
             <div className="loginChoice">
-              <img src={Lemons} alt="lemons" className="loginLemon loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Lemons</button>
+              <img src={Lemons} 
+              alt="lemons" 
+              className="loginLemon loginFruit" />
+              <button 
+              type="button" 
+              className="btn btn-outline-secondary"
+              data-valuename='lemon'
+              pickProduce={this.props.pickProduce}>Lemons</button>
 
-              <img src={Blueberries} alt="blueberry" className="loginBlueberry loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Blueberries</button>
+              <img src={Blueberries} 
+              alt="blueberry" 
+              className="loginBlueberry loginFruit" />
+              <button 
+              type="button" 
+              className="btn btn-outline-secondary"
+              data-valuename='blueberry'
+              pickProduce={this.props.pickProduce}>Blueberries</button>
 
-              <img src={Squashes} alt="squash" className="loginSquash loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Squash</button>
+              <img src={Squashes} 
+              alt="squash" 
+              className="loginSquash loginFruit" />
+              <button 
+              type="button" 
+              className="btn btn-outline-secondary"
+              data-valuename="squash"
+              pickProduce={this.props.pickProduce}>Squash</button>
             </div>
 
-            <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}><p>Let's play!</p></button>
+            <button 
+            className="btn btn-outline-primary" 
+            play={this.props.playWithProduce}>Let's play!</button>
 
             </div>
             </form>
