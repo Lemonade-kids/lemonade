@@ -4,15 +4,6 @@ import '../App.css';
 class StartScreenButtons extends Component {
   constructor(props) {
     super(props);
-    //   this.showChoice = this.showChoice.bind(this);
-    // }
-
-    // handleChoice(event) {
-    //   let id = event.target.id;
-    //   this.setState({
-    //     whichChoice: this.showChoice
-    //   })
-    // }
  }
 
   render() {

@@ -17,6 +17,13 @@ import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
 import Dirt from './images/dirt.png';
 import StartScreenButtons from './components/StartScreenButtons';
+import KitchenButton from './components/KitchenButton';
+//import LetsPlayButton from './components/LetsPlayButton';
+import CCGardenHarvestButton from './components/controlcentercomponents/CCGardenHarvestButton';
+import CCGardenWeedButton from './components/controlcentercomponents/CCGardenWeedButton';
+import CCGardenWaterButton from './components/controlcentercomponents/CCGardenWaterButton';
+import Water from './images/water.png';
+
 
 class App extends Component {
   constructor(props) {
@@ -33,31 +40,71 @@ class App extends Component {
 
     });
   }
-      
+
+  waterGarden(event) {
+    let id = event.target.id;
+    if (id === 'water') {
+      this.setState({
+        clicked: true
+        });
+        return <img src= { Water } className="water" alt="water" />;
+    }
+  }
+
+  weedGarden(event) {
+    let id = event.target.id;
+    if (id === 'weed') {
+      return;
+    }
+  }
+
+  harvestGarden(event) {
+    let id = event.target.id;
+    if (id === 'harvest') {
+      return;
+    }
+  }
+
   // case switch for rendering the right component on the gameboard
-  showComponent(id) { 
+  showComponent(id) {
     switch (id) {
       case 'garden':
-        return <Garden />;
+        return <div className="Garden">
+          {this.state.watered}
+          <Garden />
+        </div>
       case 'supply':
         return <SupplyStore />;
       case 'stand':
         return <SellingStand />;
       case 'kitchen':
-        return <Kitchen />;
+        return <div className="Kitchen">
+          <Kitchen />
+          <KitchenButton onClick={this.handleClick.bind(this)} />
+        </div>;
       case 'startover':
         return <div className="StartScreen">
-        <div className="start-border">
-        <StartScreen />
-          <StartScreenButtons onClick={this.handleClick.bind(this)}/>
+          <div className="start-border">
+            <StartScreen />
+            <StartScreenButtons onClick={this.handleClick.bind(this)} />
           </div>
-          </div>;
+        </div>;
       case 'help':
         return <Help />;
       case 'start-over':
         return <LogIn />;
       case 'nevermind':
-        return <Garden />
+        return <div className="Garden">
+          {this.state.watered}
+          <Garden />
+        </div>
+      case 'go-to-market':
+        return <SellingStand />
+      case 'lets-play':
+        return <div className="Garden">
+          {this.state.watered}
+          <Garden />
+        </div>
       default:
         return null;
     }
@@ -66,15 +113,29 @@ class App extends Component {
   showCCComponent(id) {
     switch (id) {
       case 'garden':
-      return <CCGarden />;
+        return <div className="CCGarden">
+          <CCGarden />
+          <CCGardenWaterButton onClick={this.waterGarden.bind(this)} />
+          <CCGardenWeedButton onClick={this.weedGarden.bind(this)} />
+          <CCGardenHarvestButton onClick={this.harvestGarden.bind(this)} />
+        </div>;
       case 'supply':
-      return <CCStore />;
+        return <CCStore />;
       case 'stand':
-      return <CCMarket />;
+        return <CCMarket />;
       case 'kitchen':
-      return <CCKitchen />
+        return <CCKitchen />
+      case 'go-to-market':
+        return <CCMarket />
+      case 'nevermind':
+        return <div className="CCGarden">
+          <CCGarden />
+          <CCGardenWaterButton onClick={this.waterGarden.bind(this)} />
+          <CCGardenWeedButton onClick={this.weedGarden.bind(this)} />
+          <CCGardenHarvestButton onClick={this.harvestGarden.bind(this)} />
+        </div>;
       default:
-      return null;
+        return null;
     }
   }
 
@@ -82,7 +143,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title"><img src={ Rooster } alt="rooster logo" width="70px" className="rooster" />CFK Market Stand</h1>
+          <h1 className="App-title"><img src={Rooster} alt="rooster logo" width="70px" className="rooster" />CFK Market Stand</h1>
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
@@ -112,7 +173,7 @@ class App extends Component {
             </div>
             <div className="col-sm-9">
               <div className="Gameboard">
-              {this.state.whichComponent}
+                {this.state.whichComponent}
               </div>
             </div>
           </div>

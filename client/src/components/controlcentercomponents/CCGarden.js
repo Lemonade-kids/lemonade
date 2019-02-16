@@ -4,18 +4,6 @@ import Weeds from '../Weeds';
 
 
 class CCGarden extends Component {
-    constructor(props) {
-        super(props);
-        // this.hideWeeds = this.hideWeeds.bind(this);
-    }
-    hideWeeds(event){
-        let action = event.target.action;
-        // this.setState({
-        //     doAction: this.whichAction(action)
-        // })
-        console.log(this);
-    }
-
   render() {
     return (
       <div className="CCGarden">
