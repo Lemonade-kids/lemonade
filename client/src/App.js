@@ -65,10 +65,6 @@ class App extends Component {
     }
   }
 
-<<<<<<< HEAD
-      
-=======
->>>>>>> master
   // case switch for rendering the right component on the gameboard
   showComponent(id) {
     switch (id) {
