@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
-import '../App.css';
-import Oven from './Oven';
-import Counter from './Counter';
+import React, { Component } from 'react'
+import '../App.css'
+import Oven from './Oven'
+import Counter from './Counter'
+import KitchenButton from './KitchenButton'
+
 
 class Kitchen extends Component {
 
@@ -16,10 +18,11 @@ class Kitchen extends Component {
         </ul>
         <div className="workspace">
           <Counter />
+          <KitchenButton />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Kitchen;
+export default Kitchen

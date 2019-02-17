@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import '../App.css';
-import Sprout from '../images/sprout.png';
-import BlueberryBush from '../images/blueberrybush.png';
-import LemonTree from '../images/lemontree.png';
-import SquashPlant from '../images/squash.png';
+import React, { Component } from 'react'
+import '../App.css'
+import Sprout from '../images/sprout.png'
+import BlueberryBush from '../images/blueberrybush.png'
+import LemonTree from '../images/lemontree.png'
+import SquashPlant from '../images/squash.png'
 
 class Produce extends Component {
   state = {
-    crop: Sprout, className: "produce-small"
+    crop: Sprout, className: 'produce-small'
   }
   constructor(props) {
-    super(props);
-    this.grow('squash')
+    super(props)
+    this.grow(this.props.producePicked)
   }
 
   whichCrop(seed) {
@@ -20,19 +20,19 @@ class Produce extends Component {
     switch (seed) {
       case 'blueberry':
         tmp = BlueberryBush
-        break;
+        break
       case 'lemon':
         tmp = LemonTree
-        break;
+        break
       case 'squash':
         tmp = SquashPlant
-        break;
+        break
       default:
         tmp = Sprout
-        break;
+        break
     }
 
-    this.setState({ crop: tmp, className: "produce-large" })
+    this.setState({ crop: tmp, className: 'produce-large' })
   }
 
   grow(seed) {
@@ -43,11 +43,13 @@ class Produce extends Component {
 
   render() {
     return (
-       <div className="Produce">
-       <img src={this.state.crop} className={this.state.className} alt={this.tmp} />
+      <div className="Produce">
+        <img src={this.props.harvested ? null : this.state.crop}
+          className={this.state.className}
+          alt={this.tmp} />
       </div>
-    );
+    )
   }
 }
 
-export default Produce;
+export default Produce

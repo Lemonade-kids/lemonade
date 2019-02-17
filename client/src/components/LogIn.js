@@ -13,53 +13,54 @@ import API from '../utils/API'
 
 
 class LogIn extends React.Component {
-    state = {
-      user: '',
-      pwd: '',
-      gender: 'male'
-    }
+  state = {
+    user: '',
+    pwd: '',
+    gender: 'male'
+  }
 
   update = (event) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
     this.setState({
       [name]: value
     })
   }
 
   handleLoginClick = (event) => {
-    event.preventDefault() 
+    event.preventDefault()
     API.login(this.state).then(() => {
       console.log('this is wrking')
       //axios.post("login", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if login worked
     this.setState({
-      letsPlay: <StartScreen/>, 
+      letsPlay: <StartScreen />,
       gender: 'female'
     })
   }
 
   handleNewUserClick = (event) => {
-    event.preventDefault() 
+    event.preventDefault()
     API.newUser(this.state).then(() => {
       console.log('hit thi nw')
-     //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
+      //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if user exists, etc.
-  //   this.setState({
-  //     letsPlay: <StartScreen/>,
-  //     user: document.getElementById('user').value,
-  //     pwd: document.getElementById('pwd').value,
-  //     gender: 'female'
-  //   })
+    //   this.setState({
+    //     letsPlay: <StartScreen/>,
+    //     user: document.getElementById('user').value,
+    //     pwd: document.getElementById('pwd').value,
+    //     gender: 'female'
+    //   })
 
   }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="LogIn">
-          <form>
+          {/* <form> */}
             {/* <div style={{display:FirstDiv}} className="form-group row">
               <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
               <div className="input-group mb-2 mr-sm-2">
@@ -77,45 +78,45 @@ class LogIn extends React.Component {
               <button className="btn btn-outline-primary" onClick={this.handleNewUserClick.bind(this)}>Sign Up</button>
               <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
             </div> */}
-           
-          {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
-          <div>
-            <div className="loginChoice">
-              <img src={Lemons} 
-              alt="lemons" 
-              className="loginLemon loginFruit" />
-              <button 
-              type="button" 
-              className="btn btn-outline-secondary"
-              data-valuename='lemon'
-              onClick={this.props.pickProduce}>Lemons</button>
 
-              <img src={Blueberries} 
-              alt="blueberry" 
-              className="loginBlueberry loginFruit" />
-              <button 
-              type="button" 
-              className="btn btn-outline-secondary"
-              data-valuename='blueberry'
-              onClick={this.props.pickProduce}>Blueberries</button>
+            {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
+            <div>
+              <div className="loginChoice">
+                <img src={Lemons}
+                  alt="lemons"
+                  className="loginLemon loginFruit" />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename='lemon'
+                  onClick={this.props.pickProduce}>Lemons</button>
 
-              <img src={Squashes} 
-              alt="squash" 
-              className="loginSquash loginFruit" />
-              <button 
-              type="button" 
-              className="btn btn-outline-secondary"
-              data-valuename="squash"
-              onClick={this.props.pickProduce}>Squash</button>
+                <img src={Blueberries}
+                  alt="blueberry"
+                  className="loginBlueberry loginFruit" />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename='blueberry'
+                  onClick={this.props.pickProduce}>Blueberries</button>
+
+                <img src={Squashes}
+                  alt="squash"
+                  className="loginSquash loginFruit" />
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename="squash"
+                  onClick={this.props.pickProduce}>Squash</button>
+              </div>
+
+              <button
+                className="btn btn-outline-primary"
+                onClick={this.props.playWithProduce}>Let's play!</button>
+
             </div>
+          {/* </form> */}
 
-            <button 
-            className="btn btn-outline-primary" 
-            onClick={this.props.playWithProduce}>Let's play!</button>
-
-            </div>
-            </form>
-          
         </div>
       </div>
     )

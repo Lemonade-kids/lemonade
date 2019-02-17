@@ -110,7 +110,7 @@ a {
 }
 
 .LogIn {
-  background-image: url(./images/gingham.jpg);
+  background-image: url('./images/gingham.jpg');
   align-items: stretch;
 }
 
@@ -168,6 +168,10 @@ a {
   width: 25%;
 }
 
+.weeded {
+  opacity: 0;
+}
+
 .produce-small {
   width: 80%;
 }
@@ -175,6 +179,20 @@ a {
 .produce-large {
   width: 170%;
 }
+
+.harvestBtn {
+  opacity: 0;
+  animation: harvest-button 1s;
+  -webkit-animation: harvest-button 1s;
+  -webkit-animation-delay: 8s;
+  animation-delay: 8s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes harvest-button {0%  {opacity: 0;} 100%{opacity: 1;}  }
+@-webkit-keyframes harvest-button {0%  {opacity: 0;} 100%{opacity: 1;}  }
+
 
 .grid-container {
   display: grid;
@@ -195,7 +213,7 @@ a {
 }
 
 .garden-grid {
-  background-image: url(./images/dirt.png);
+  background-image: url('./images/dirt.png');
   background-size: cover;
   background-color: #4C3A27;
 }
@@ -207,7 +225,7 @@ a {
 .grid-container-small {
   display: grid;
   grid-template-columns: auto auto auto;
-  background-image: url(./images/dirt.png);
+  background-image: url('./images/dirt.png');
   background-size: cover;
   background-color: #4C3A27;
   height: auto;
@@ -221,7 +239,7 @@ a {
 
 .grid-item-garden {
   background-color: rgba(49, 34, 6, 0.8);
-  background-image: url(./images/dirt.png);
+  background-image: url('./images/dirt.png');
   background-size: cover;
 }
 
@@ -229,7 +247,7 @@ a {
   border-radius: 20px;
   height: 15em;
   width: 20.75em;
-  background-image: url(./images/shelf.png);
+  background-image: url('./images/shelf.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-color: antiquewhite;
@@ -237,7 +255,7 @@ a {
 
 .grid-item-small {
   background-color: rgba(49, 34, 6, 0.8);
-  background-image: url(./images/dirt.png);
+  background-image: url('./images/dirt.png');
   background-size: cover;
   border-radius: 30px;
   height: 1.5em;
@@ -258,7 +276,7 @@ a {
 
 .Kitchen {
   height: 31em;
-  background-image: url(./images/kitchenwall.png);
+  background-image: url('./images/kitchenwall.png');
   background-size: cover;
   border: 6px solid black;
   border-radius: 30px;
@@ -362,7 +380,7 @@ a {
 /* Market */
 
 .SellingStand {
-  background-image: url(./images/marketbackground.png);
+  background-image: url('./images/marketbackground.png');
   height: 31em;
   background-size: contain;
   background-repeat: repeat-x;

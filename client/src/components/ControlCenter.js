@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import '../App.css';
-import {connect} from 'react-redux';
+import React, { Component } from 'react'
+import '../App.css'
+import {connect} from 'react-redux'
 
 class ControlCenter extends Component {
   // state = {
@@ -28,7 +28,7 @@ class ControlCenter extends Component {
         
 
       </div>
-    );
+    )
   }
 }
 const mapStateToProps = state => {
@@ -37,7 +37,7 @@ const mapStateToProps = state => {
     cash: state.Bank,
     prod: state.product,
     sug: state.sugar
-  };
+  }
 }
 
-export default connect(mapStateToProps)(ControlCenter);
+export default connect(mapStateToProps)(ControlCenter)
