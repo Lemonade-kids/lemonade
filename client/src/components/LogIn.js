@@ -88,7 +88,7 @@ class LogIn extends React.Component {
               type="button" 
               className="btn btn-outline-secondary"
               data-valuename='lemon'
-              pickProduce={this.props.pickProduce}>Lemons</button>
+              onClick={this.props.pickProduce}>Lemons</button>
 
               <img src={Blueberries} 
               alt="blueberry" 
@@ -97,7 +97,7 @@ class LogIn extends React.Component {
               type="button" 
               className="btn btn-outline-secondary"
               data-valuename='blueberry'
-              pickProduce={this.props.pickProduce}>Blueberries</button>
+              onClick={this.props.pickProduce}>Blueberries</button>
 
               <img src={Squashes} 
               alt="squash" 
@@ -106,12 +106,12 @@ class LogIn extends React.Component {
               type="button" 
               className="btn btn-outline-secondary"
               data-valuename="squash"
-              pickProduce={this.props.pickProduce}>Squash</button>
+              onClick={this.props.pickProduce}>Squash</button>
             </div>
 
             <button 
             className="btn btn-outline-primary" 
-            play={this.props.playWithProduce}>Let's play!</button>
+            onClick={this.props.playWithProduce}>Let's play!</button>
 
             </div>
             </form>
