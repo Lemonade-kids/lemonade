@@ -6,18 +6,16 @@ import KitchenButton from './KitchenButton'
 
 
 class Kitchen extends Component {
-
-  // need an if/else to decide whether to render 
-  // stove or oven depending on chosen ingredient for game
   render() {
+    console.log(this.props.producePicked)
     return (
-      <div>
+      <div className='Kitchen'>
         <ul id="make">
           <li>
             <span className="bar kitchen-bar"></span><h3>Preparing your Product!</h3></li>
         </ul>
         <div className="workspace">
-          <Counter />
+          {this.props.producePicked === 'lemon' ? <Counter /> : <Oven />}
           <KitchenButton />
         </div>
       </div>

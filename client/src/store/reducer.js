@@ -1,6 +1,6 @@
 const initialState = {
-    login: "",
-    password: "",
+    login: '',
+    password: '',
     Bank: 123,
     Lemons: 12,
     squash: 10,
@@ -14,23 +14,24 @@ const initialState = {
     water: false,
     harvested:false,
     cooked: false,
-    weeded: false
+    weeded: false,
+    producePicked: 'lemon'
 
 }
 
 
 const reducer = (state = initialState, action) => {
     if (action.type === 'SAVE') {
-         return Object.assign({}, state, { Bank: state.Bank + action.Bank })
+         Object.assign({}, state, { Bank: state.Bank + action.Bank })
          Object.assign({}, state, { product: state.product - action.inventory })
-    } else if(action.type === "GAME") {
+    } else if(action.type === 'GAME') {
         console.log(state.winnings + state.Bank)
     } else if(action.type === 'SAVEPROD'){
         return Object.assign({}, state, { product: state.product - action.inventory })
     }
-    return state;
+    return state
     
 
-};
+}
 
-export default reducer;
+export default reducer

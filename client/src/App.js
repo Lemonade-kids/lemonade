@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
+import {connect} from 'react-redux'
 import Rooster from './images/rooster.png'
 import Garden from './components/Garden'
 import SellingStand from './components/SellingStand'
@@ -14,7 +15,6 @@ import CCGarden from './components/controlcentercomponents/CCGarden'
 import CCKitchen from './components/controlcentercomponents/CCKitchen'
 import CCMarket from './components/controlcentercomponents/CCMarket'
 import CCStore from './components/controlcentercomponents/CCStore'
-//import LetsPlayButton from './components/LetsPlayButton';
 import water from './images/water.png'
 
 
@@ -70,12 +70,67 @@ class App extends React.Component {
 
     })
   }
+
+  // case switch for rendering the right component on the gameboard
+  // showComponent(id) {
+  //   switch (id) {
+  //     case 'garden':
+  //       return <div className="Garden">
+  //         {this.state.watered}
+  //         <Garden />
+  //       </div>
+  //     case 'supply':
+  //       return <SupplyStore />
+  //     case 'stand':
+  //       return <SellingStand />
+  //     case 'kitchen':
+  //       return <div className="Kitchen">
+  //         <Kitchen />
+  //         <KitchenButton />
+  //       </div>
+  //     case 'startover':
+  //       return <div className="StartScreen">
+  //         <div className="start-border">
+  //           <StartScreen />
+  //           <StartScreenButtons />
+  //         </div>
+  //       </div>
+  //     case 'help':
+  //       return <Help />
+  //     case 'start-over':
+  //       return <LogIn
+  //         playWithProduce={this.playWithProduce}
+  //         pickProduce={this.pickProduce} />
+  //     case 'nevermind':
+  //       return <div className="Garden">
+  //         {this.state.watered}
+  //         <Garden />
+  //       </div>
+  //     case 'go-to-market':
+  //       return <SellingStand />
+  //     case 'lets-play':
+  //       return <div className="Garden">
+  //         {this.state.watered}
+  //         <Garden />
+  //       </div>
+  //     default:
+  //       return null
+  //   }
+  // }
+
   // buttons in control center
   showCCComponent(id) {
     switch (id) {
       case 'garden':
         return <div className="CCGarden">
-          <CCGarden onClick={this.tendGarden} />
+          <CCGarden
+            // onClick={this.tendGarden}
+            playWithProduce={this.playWithProduce}
+            pickProduce={this.pickProduce}
+            producePicked={this.state.producePicked}
+            weeded={this.state.weeded}
+            harvested={this.state.harvested}
+            watered={this.state.watered} />
         </div>
       case 'supply' || window.location.pathname.includes('/store'):
         return <CCStore />
@@ -99,10 +154,10 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">
-          <img src={Rooster} 
-          alt="rooster logo" 
-          width="70px" 
-          className="rooster" />CFK Market Stand</h1>
+            <img src={Rooster}
+              alt="rooster logo"
+              width="70px"
+              className="rooster" />CFK Market Stand</h1>
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
@@ -172,7 +227,7 @@ class App extends React.Component {
                 {/* {this.showComponent} */}
                 <BrowserRouter basename={process.env.PUBLIC_URL}>
                   <Switch>
-                  <Route path="/" exact render={(props) => <LogIn {...props}
+                    <Route path="/" exact render={(props) => <LogIn {...props}
                       playWithProduce={this.playWithProduce}
                       pickProduce={this.pickProduce}
                     />} />
@@ -187,7 +242,7 @@ class App extends React.Component {
                     />} />
                     <Route path='/store' exact component={SupplyStore} />
                     <Route path="/kitchen" exact render={(props) => <Kitchen {...props}
-                      selectedProduce={this.state.producePicked}
+                      producePicked={this.state.producePicked}
                     // playWithProduce={this.playWithProduce}
                     // pickProduce={this.pickProduce}
                     />} />
@@ -207,4 +262,13 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return{
+    producePicked: state.producePicked
+  }
+}
+
+export default connect(mapStateToProps)(App)
+
+
+// export default App

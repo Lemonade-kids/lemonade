@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
-import '../App.css';
-import Sugar from '../images/sugar.png';
-import Flour from '../images/flour.png';
-import Milk from '../images/milk.png';
-import Eggs from '../images/eggs.png';
+import React, { Component } from 'react'
+import '../App.css'
+import Sugar from '../images/sugar.png'
+import Flour from '../images/flour.png'
+import Milk from '../images/milk.png'
+import Eggs from '../images/eggs.png'
 
 
 
 class StoreGrid extends Component {
-  constructor(props) {
-    super(props);
-    
-}
-  
   render() {
     return (
       <div className="StoreGrid">
@@ -41,8 +36,8 @@ class StoreGrid extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 
-export default StoreGrid;
+export default StoreGrid
