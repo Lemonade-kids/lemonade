@@ -163,6 +163,13 @@ a {
 }
 
 /* Garden and Supply Store */
+.hideBtn {
+  display: none;
+}
+
+.showBtn {
+  display: inline;
+}
 
 .weeds {
   width: 25%;

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import '../App.css';
-import People from './People';
-import stand from '../images/sellingstand.png';
-import cloud from '../images/cloud.png';
+import React, { Component } from 'react'
+import '../App.css'
+import People from './People'
+import stand from '../images/sellingstand.png'
+import cloud from '../images/cloud.png'
 
 class SellingStand extends Component {
   render() {
@@ -13,8 +13,8 @@ class SellingStand extends Component {
         <img src={stand} alt="stand" className="stand" />
         <People />
       </div>
-    );
+    )
   }
 }
 
-export default SellingStand;
+export default SellingStand

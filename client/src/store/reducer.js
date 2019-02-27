@@ -15,7 +15,7 @@ const initialState = {
     harvested:false,
     cooked: false,
     weeded: false,
-    producePicked: 'lemon'
+    producePicked: ''
 
 }
 
