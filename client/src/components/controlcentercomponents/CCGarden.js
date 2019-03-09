@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../App.css'
+import PropTypes from 'prop-types'
 
 
 class CCGarden extends React.Component {
@@ -23,6 +24,12 @@ class CCGarden extends React.Component {
       </div>
     )
   }
+}
+
+CCGarden.propTypes = {
+  watered: PropTypes.bool,
+  weeded: PropTypes.bool,
+  onClick: PropTypes.func
 }
 
 export default CCGarden
