@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-import '../App.css'
-import Sprout from '../images/sprout.png'
-import BlueberryBush from '../images/blueberrybush.png'
-import LemonTree from '../images/lemontree.png'
-import SquashPlant from '../images/squash.png'
+import '../../../App.css'
+import Sprout from '../../../images/sprout.png'
+import BlueberryBush from '../../../images/blueberrybush.png'
+import LemonTree from '../../../images/lemontree.png'
+import SquashPlant from '../../../images/squash.png'
+import PropTypes from 'prop-types'
 
 class Produce extends Component {
   state = {
-    crop: Sprout, className: 'produce-small'
+    crop: Sprout, 
+    className: 'produce-small'
   }
   constructor(props) {
     super(props)
@@ -50,6 +52,11 @@ class Produce extends Component {
       </div>
     )
   }
+}
+
+Produce.propTypes = {
+  producePicked: PropTypes.string,
+  harvested: PropTypes.bool
 }
 
 export default Produce

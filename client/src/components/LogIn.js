@@ -1,11 +1,12 @@
 import React from 'react'
 import '../App.css'
 import StartScreen from './StartScreen'
-
+import PropTypes from 'prop-types'
 import Blueberries from '../images/blueberries.png'
 import Lemons from '../images/lemons.png'
 import Squashes from '../images/squashes.png'
 import API from '../utils/API'
+import {connect} from 'react-redux'
 
 // import LetsPlayButton from './LetsPlayButton';
 // import axios from 'axios'
@@ -16,7 +17,8 @@ class LogIn extends React.Component {
   state = {
     user: '',
     pwd: '',
-    gender: 'male'
+    gender: 'male',
+    producePicked: ''
   }
 
   update = (event) => {
@@ -56,7 +58,7 @@ class LogIn extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props, this.state.producePicked)
     return (
       <div>
         <div className="LogIn">
@@ -86,28 +88,34 @@ class LogIn extends React.Component {
                   alt="lemons"
                   className="loginLemon loginFruit" />
                 <button
+                  name='producePicked'
                   type="button"
                   className="btn btn-outline-secondary"
                   data-valuename='lemon'
-                  onClick={this.props.pickProduce}>Lemons</button>
+                  value='lemon'
+                  onClick={this.update}>Lemons</button>
 
                 <img src={Blueberries}
                   alt="blueberry"
                   className="loginBlueberry loginFruit" />
                 <button
+                  name='producePicked'
                   type="button"
                   className="btn btn-outline-secondary"
                   data-valuename='blueberry'
-                  onClick={this.props.pickProduce}>Blueberries</button>
+                  value='blueberry'
+                  onClick={this.update}>Blueberries</button>
 
                 <img src={Squashes}
                   alt="squash"
                   className="loginSquash loginFruit" />
                 <button
+                  name='producePicked'
                   type="button"
                   className="btn btn-outline-secondary"
                   data-valuename="squash"
-                  onClick={this.props.pickProduce}>Squash</button>
+                  value='squash'
+                  onClick={this.update}>Squash</button>
               </div>
 
               <button
@@ -123,4 +131,15 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn
+LogIn.propTypes = {
+  pickProduce: PropTypes.func,
+  playWithProduce: PropTypes.func
+}
+
+const mapStateToProps = state => {
+  return{
+    producePicked: state.producePicked
+  }
+}
+
+export default connect(mapStateToProps)(LogIn)

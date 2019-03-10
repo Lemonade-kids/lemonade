@@ -3,11 +3,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
 import {connect} from 'react-redux'
 import Rooster from './images/rooster.png'
-import Garden from './components/Garden'
-import SellingStand from './components/SellingStand'
+import Garden from './components/garden/components/Garden'
+import SellingStand from './components/market/components/SellingStand'
 import SupplyStore from './components/SupplyStore'
-import Kitchen from './components/Kitchen'
-import ControlCenter from './components/ControlCenter'
+import Kitchen from './components/kitchen/components/Kitchen'
+import ControlCenter from './components/controlCenter/ControlCenter'
 import StartScreen from './components/StartScreen'
 import LogIn from './components/LogIn'
 import Help from './components/Help'
@@ -21,7 +21,7 @@ import water from './images/water.png'
 class App extends React.Component {
   state = {
     whichComponent: '',
-    producePicked: 'squash',
+    producePicked: '',
     watered: false,
     weeded: false,
     harvested: false
@@ -31,7 +31,8 @@ class App extends React.Component {
    */
   pickProduce = (event) => {
     this.setState({
-      producePicked: event.target.dataset.valuename
+      // producePicked: event.target.dataset.valuename
+      producePicked: event.target.value
     })
     console.log(this.state.producePicked)
   }
@@ -229,13 +230,13 @@ class App extends React.Component {
                   <Switch>
                     <Route path="/" exact render={(props) => <LogIn {...props}
                       playWithProduce={this.playWithProduce}
-                      pickProduce={this.pickProduce}
+                      pickProduce={ () => this.props.chooseProduce()}
                     />} />
                     <Route path="/start-over" exact component={StartScreen} />
                     <Route path="/garden" exact render={(props) => <Garden {...props}
                       playWithProduce={this.playWithProduce}
                       pickProduce={this.pickProduce}
-                      producePicked={this.state.producePicked}
+                      producePicked={this.props.producePicked}
                       weeded={this.state.weeded}
                       harvested={this.state.harvested}
                       watered={this.state.watered}
@@ -262,13 +263,24 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return{
     producePicked: state.producePicked
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    chooseProduce: (seed) => {
+      dispatch({
+        type: 'SAVECHOICE',
+        payload: seed
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
 // export default App

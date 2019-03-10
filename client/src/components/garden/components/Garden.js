@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../App.css'
+import '../../../App.css'
 import GardenGrid from './GardenGrid'
 
 
 class Garden extends Component {
   render() {
+    console.log(this.props.producePicked)
     return (
       <div className="grid-container garden-grid">
         <div className="grid-item grid-item-garden">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import '../App.css'
+import '../../../App.css'
+import PropTypes from 'prop-types'
 
 class KitchenButton extends Component {
   render() {
@@ -9,6 +10,10 @@ class KitchenButton extends Component {
       </div>
     )
   }
+}
+
+KitchenButton.propTypes = {
+  onClick: PropTypes.func
 }
 
 export default KitchenButton

@@ -26,6 +26,7 @@
     ],
     "rules": {
         "semi": ["error", "never"],
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "no-console": 0
     }
 }

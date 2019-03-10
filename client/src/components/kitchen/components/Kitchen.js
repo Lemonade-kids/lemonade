@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import '../App.css'
+import '../../../App.css'
 import Oven from './Oven'
 import Counter from './Counter'
 import KitchenButton from './KitchenButton'
+import PropTypes from 'prop-types'
 
 
 class Kitchen extends Component {
@@ -21,6 +22,10 @@ class Kitchen extends Component {
       </div>
     )
   }
+}
+
+Kitchen.propTypes = {
+  producePicked: PropTypes.string
 }
 
 export default Kitchen

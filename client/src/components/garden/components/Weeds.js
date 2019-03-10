@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import '../App.css'
-import Dirt from '../images/dirt.png'
-import Weed from '../images/weed.png'
-import Grass from '../images/grass.png'
+import '../../../App.css'
+import Dirt from '../../../images/dirt.png'
+import Weed from '../../../images/weed.png'
+import Grass from '../../../images/grass.png'
 
 const weeds = [Grass, Weed, Dirt]
 

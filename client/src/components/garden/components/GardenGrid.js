@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import '../App.css'
+import '../../../App.css'
 import Produce from './Produce'
 import Weeds from './Weeds'
+import PropTypes from 'prop-types'
+
 
 class GardenGrid extends Component {
     render() {
@@ -50,6 +52,12 @@ class GardenGrid extends Component {
             </div>
         )
     }
+}
+
+GardenGrid.propTypes = {
+    weeded: PropTypes.bool,
+    harvested: PropTypes.bool,
+    producePicked: PropTypes.string
 }
 
 export default GardenGrid
