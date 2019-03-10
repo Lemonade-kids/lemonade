@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../App.css'
+import '../../../App.css'
 // import StoreGrid from '../StoreGrid';
 
 class CCStore extends Component {

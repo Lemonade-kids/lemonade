@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../App.css'
+import '../../../App.css'
 import { connect } from 'react-redux'
 
 
@@ -93,6 +93,6 @@ const mapDispatchToProps = dispatch => {
 
     }
   }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CCMarket)
