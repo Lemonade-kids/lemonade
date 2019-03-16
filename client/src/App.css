@@ -290,7 +290,10 @@ a {
 }
 
 .workspace {
-  height: 20em;
+  /* height: 20em; */
+  position: absolute;
+  top: 40%;
+  right: 20%;
 }
 
 #make { 
@@ -354,7 +357,9 @@ a {
 .KitchenButton {
   opacity: 0;
   position: absolute;
-  margin: -40% -50% 10% 0;
+  /* margin: -40% -50% 10% 0; */
+  top: 30%;
+  right: 40%;
   animation: kitchen-button 2s;
   -webkit-animation: kitchen-button 2s;
   -webkit-animation-delay: 7s;
@@ -372,7 +377,7 @@ a {
 
 .oven {
   width: 90%;
-  margin-top: 15em;
+  /* margin-top: 2em; */
 }
 
 .counter {

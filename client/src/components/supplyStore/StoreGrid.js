@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import '../App.css'
-import Sugar from '../images/sugar.png'
-import Flour from '../images/flour.png'
-import Milk from '../images/milk.png'
-import Eggs from '../images/eggs.png'
+import '../../App.css'
+import Sugar from '../../images/sugar.png'
+import Flour from '../../images/flour.png'
+import Milk from '../../images/milk.png'
+import Eggs from '../../images/eggs.png'
 
 
 

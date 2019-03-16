@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import Rooster from './images/rooster.png'
 import Garden from './components/garden/components/Garden'
 import SellingStand from './components/market/components/SellingStand'
-import SupplyStore from './components/SupplyStore'
+import SupplyStore from './components/supplyStore/SupplyStore'
 import Kitchen from './components/kitchen/components/Kitchen'
 import ControlCenter from './components/controlCenter/ControlCenter'
 import StartScreen from './components/StartScreen'
@@ -24,7 +24,8 @@ class App extends React.Component {
     producePicked: '',
     watered: false,
     weeded: false,
-    harvested: false
+    harvested: false,
+    bakeBtn: false
   }
   /** pick produce, set state with picked, pass on to props with which one picked
    * grows in garden, gets made in kitchen, sells-- need to figure out how flow happens, could use react router & window.loc.replace
@@ -61,6 +62,13 @@ class App extends React.Component {
         harvested: true
       })
     }
+  }
+
+  showBar = () => {
+    this.setState({
+      bakeBtn: true
+    })
+    console.log('button clicked!')
   }
 
   handleClick = (event) => { // this is what happens when the click is clicked
@@ -138,7 +146,7 @@ class App extends React.Component {
       case 'stand' || window.location.pathname.includes('/market'):
         return <CCMarket />
       case 'kitchen' || window.location.pathname.includes('/kitchen'):
-        return <CCKitchen />
+        return <CCKitchen showBar={this.showBar} />
       case 'go-to-market' || window.location.pathname.includes('/market'):
         return <CCMarket />
       case 'nevermind':
@@ -215,6 +223,7 @@ class App extends React.Component {
                   <Route path='/store' exact component={CCStore} />
                   <Route path="/kitchen" exact render={(props) => <CCKitchen {...props}
                     selectedProduce={this.state.producePicked}
+                    showBar={this.showBar}
                   // playWithProduce={this.playWithProduce}
                   // pickProduce={this.pickProduce}
                   />} />
@@ -243,7 +252,8 @@ class App extends React.Component {
                     />} />
                     <Route path='/store' exact component={SupplyStore} />
                     <Route path="/kitchen" exact render={(props) => <Kitchen {...props}
-                      producePicked={this.state.producePicked}
+                      producePicked={this.props.producePicked}
+                      bakeBtn={this.state.bakeBtn}
                     // playWithProduce={this.playWithProduce}
                     // pickProduce={this.pickProduce}
                     />} />
@@ -256,7 +266,7 @@ class App extends React.Component {
           </div>
         </div>
         <footer>
-          <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
+          <p>{new Date().getFullYear()} Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
         </footer>
       </div>
     )

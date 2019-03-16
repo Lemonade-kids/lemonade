@@ -3,21 +3,19 @@ import '../../../App.css'
 import Oven from './Oven'
 import Counter from './Counter'
 import KitchenButton from './KitchenButton'
+import LoadingBar from './loadingBar'
 import PropTypes from 'prop-types'
 
 
 class Kitchen extends Component {
   render() {
-    console.log(this.props.producePicked)
+    console.log(this.props.bakeBtn)
     return (
       <div className='Kitchen'>
-        <ul id="make">
-          <li>
-            <span className="bar kitchen-bar"></span><h3>Preparing your Product!</h3></li>
-        </ul>
+        {this.props.bakeBtn ? <LoadingBar /> : null }
+        {this.props.bakeBtn ? <KitchenButton /> : null }
         <div className="workspace">
           {this.props.producePicked === 'lemon' ? <Counter /> : <Oven />}
-          <KitchenButton />
         </div>
       </div>
     )
@@ -25,6 +23,7 @@ class Kitchen extends Component {
 }
 
 Kitchen.propTypes = {
+  bakeBtn: PropTypes.bool,
   producePicked: PropTypes.string
 }
 

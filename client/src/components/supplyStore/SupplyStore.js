@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import '../App.css';
-import StoreGrid from './StoreGrid';
+import React, { Component } from 'react'
+import '../../App.css'
+import StoreGrid from './StoreGrid'
 
 class SupplyStore extends Component {
   render() {
@@ -9,8 +9,8 @@ class SupplyStore extends Component {
         
             <StoreGrid />
       </div>
-    );
+    )
   }
 }
 
-export default SupplyStore;
+export default SupplyStore
