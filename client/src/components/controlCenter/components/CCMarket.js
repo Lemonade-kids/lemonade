@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import '../../../App.css'
 import { connect } from 'react-redux'
-
-
-
+import PropTypes from 'prop-types'
 
 
 class CCMarket extends Component {
@@ -18,6 +16,7 @@ class CCMarket extends Component {
     let unitPrice = this.refs.price.value
     console.log(this.props.prod)
     if (productForsale > (this.props.prod)) {
+      // these should be modals and not alerts!
       return alert('You don\'t have the inventory. You can only sell the amount of products you have')
     } if (marketing > this.props.cash) {
       return alert('You dont have enough money. You can\'t afford to spend that much on marketing')
@@ -93,6 +92,14 @@ const mapDispatchToProps = dispatch => {
 
     }
   }
+}
+
+CCMarket.propTypes = {
+  lem: PropTypes.number,
+  sug: PropTypes.number,
+  prod: PropTypes.number,
+  cash: PropTypes.number,
+  producePicked: PropTypes.string
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CCMarket)

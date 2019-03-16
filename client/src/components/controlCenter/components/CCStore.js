@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../../../App.css'
+import PropTypes from 'prop-types'
 // import StoreGrid from '../StoreGrid';
 
 class CCStore extends Component {
@@ -14,6 +15,9 @@ runningTotal() {
       </div>
     )
   }
+}
+CCStore.propTypes = {
+  grabTotal: PropTypes.func
 }
 
 export default CCStore
