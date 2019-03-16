@@ -1,11 +1,12 @@
 import React from 'react'
 import '../App.css'
 import StartScreen from './StartScreen'
-
+import PropTypes from 'prop-types'
 import Blueberries from '../images/blueberries.png'
 import Lemons from '../images/lemons.png'
 import Squashes from '../images/squashes.png'
 import API from '../utils/API'
+import {connect} from 'react-redux'
 
 // import LetsPlayButton from './LetsPlayButton';
 // import axios from 'axios'
@@ -13,65 +14,56 @@ import API from '../utils/API'
 
 
 class LogIn extends React.Component {
-    state = {
-      user: '',
-      pwd: '',
-      gender: 'male'
-    }
+  state = {
+    user: '',
+    pwd: '',
+    gender: 'male',
+    producePicked: ''
+  }
 
   update = (event) => {
-    const {name, value} = event.target
+    const { name, value } = event.target
     this.setState({
       [name]: value
     })
   }
 
   handleLoginClick = (event) => {
-    event.preventDefault() 
+    event.preventDefault()
     API.login(this.state).then(() => {
       console.log('this is wrking')
       //axios.post("login", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if login worked
     this.setState({
-      letsPlay: <StartScreen/>, 
+      letsPlay: <StartScreen />,
       gender: 'female'
     })
   }
 
   handleNewUserClick = (event) => {
-    event.preventDefault() 
+    event.preventDefault()
     API.newUser(this.state).then(() => {
       console.log('hit thi nw')
-     //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
+      //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
     })
     // todo: check to see if user exists, etc.
-    this.setState({
-      letsPlay: <StartScreen/>,
-      user: document.getElementById('user').value,
-      pwd: document.getElementById('pwd').value,
-      gender: 'female'
-    })
+    //   this.setState({
+    //     letsPlay: <StartScreen/>,
+    //     user: document.getElementById('user').value,
+    //     pwd: document.getElementById('pwd').value,
+    //     gender: 'female'
+    //   })
 
   }
 
   render() {
-    var FirstDiv = ''
-    var SecondDiv = ''
-    if(this.state.gender === 'male'){
-        SecondDiv = 'none'
-        FirstDiv = 'block'
-    }
-    else{
-        FirstDiv = 'none'
-        SecondDiv = 'block'
-    } 
-
+    console.log(this.props, this.state.producePicked)
     return (
-      <div gender="male" className={FirstDiv}>
+      <div>
         <div className="LogIn">
-          <form>
-            <div style={{display:FirstDiv}} className="form-group row">
+          {/* <form> */}
+            {/* <div style={{display:FirstDiv}} className="form-group row">
               <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
@@ -87,29 +79,67 @@ class LogIn extends React.Component {
               </div>
               <button className="btn btn-outline-primary" onClick={this.handleNewUserClick.bind(this)}>Sign Up</button>
               <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
+            </div> */}
+
+            {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
+            <div>
+              <div className="loginChoice">
+                <img src={Lemons}
+                  alt="lemons"
+                  className="loginLemon loginFruit" />
+                <button
+                  name='producePicked'
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename='lemon'
+                  value='lemon'
+                  onClick={this.update}>Lemons</button>
+
+                <img src={Blueberries}
+                  alt="blueberry"
+                  className="loginBlueberry loginFruit" />
+                <button
+                  name='producePicked'
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename='blueberry'
+                  value='blueberry'
+                  onClick={this.update}>Blueberries</button>
+
+                <img src={Squashes}
+                  alt="squash"
+                  className="loginSquash loginFruit" />
+                <button
+                  name='producePicked'
+                  type="button"
+                  className="btn btn-outline-secondary"
+                  data-valuename="squash"
+                  value='squash'
+                  onClick={this.update}>Squash</button>
+              </div>
+
+              <button
+                className="btn btn-outline-primary"
+                onClick={this.props.playWithProduce}>Let's play!</button>
+
             </div>
-           
-          <div style={{display:SecondDiv}} gender="female" className={SecondDiv}>
-            <div className="loginChoice">
-              <img src={Lemons} alt="lemons" className="loginLemon loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Lemons</button>
+          {/* </form> */}
 
-              <img src={Blueberries} alt="blueberry" className="loginBlueberry loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Blueberries</button>
-
-              <img src={Squashes} alt="squash" className="loginSquash loginFruit" />
-              <button type="button" className="btn btn-outline-secondary">Squash</button>
-            </div>
-
-            <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}><p>Let's play!</p></button>
-
-            </div>
-            </form>
-          
         </div>
       </div>
     )
   }
 }
 
-export default LogIn
+LogIn.propTypes = {
+  pickProduce: PropTypes.func,
+  playWithProduce: PropTypes.func
+}
+
+const mapStateToProps = state => {
+  return{
+    producePicked: state.producePicked
+  }
+}
+
+export default connect(mapStateToProps)(LogIn)

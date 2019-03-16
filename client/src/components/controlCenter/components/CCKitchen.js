@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import '../../App.css';
+import React, { Component } from 'react'
+import '../../../App.css'
 
 class CCKitchen extends Component {
   render() {
@@ -7,8 +7,8 @@ class CCKitchen extends Component {
       <div className="CCKitchen">
         <button className="btn">Bake</button>
       </div>
-    );
+    )
   }
 }
 
-export default CCKitchen;
+export default CCKitchen

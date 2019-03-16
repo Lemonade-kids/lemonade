@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import '../App.css';
-import Closed from '../images/closedsign.png';
+import React, { Component } from 'react'
+import '../App.css'
+import Closed from '../images/closedsign.png'
 
 class Help extends Component {
   render() {
@@ -8,8 +8,8 @@ class Help extends Component {
       <div className="Help">
         <img src={ Closed } alt="closed" className="closed-sign"/>
       </div>
-    );
+    )
   }
 }
 
-export default Help;
+export default Help

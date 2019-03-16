@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import '../App.css';
-import CounterPic from '../images/counter.png';
+import React, { Component } from 'react'
+import '../../../App.css'
+import CounterPic from '../../../images/counter.png'
 
 class Counter extends Component {
   render() {
@@ -10,8 +10,8 @@ class Counter extends Component {
         <img src={ CounterPic } alt="counter" className="counter" />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Counter;
+export default Counter
