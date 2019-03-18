@@ -38,7 +38,7 @@ class CCMarket extends Component {
       //  newBank = (this.props.cash);
       //  console.log(newBank);
       this.props.saveBank(newBank)
-      console.log(glassesSold + ' Glasses SOld')
+      console.log(glassesSold + ' Glasses Sold')
       console.log('marketing effect =  ' + marketingEffect)
       console.log(newBank + ' Ultimate Baller Kids')
 
@@ -56,7 +56,10 @@ class CCMarket extends Component {
           <p>Enter goods price</p>
           <input type="number" ref="marketing" />
           <p>Enter marketing dollars here.</p>
-          <button type="submit" onClick={this.props.GAME} className="btn" >Begin!</button>
+          <button type="submit" 
+          // onClick={this.props.GAME}
+          onClick={this.props.startSelling} 
+          className="btn" >Begin!</button>
         </form>
       </div>
     )
