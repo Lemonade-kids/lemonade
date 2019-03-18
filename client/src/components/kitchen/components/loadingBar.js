@@ -5,7 +5,7 @@ import '../../../App.css'
 class LoadingBar extends Component {
     render() {
         return (
-            <div className='Kitchen'>
+            <div>
                 <ul id="make">
                     <li>
                         <span

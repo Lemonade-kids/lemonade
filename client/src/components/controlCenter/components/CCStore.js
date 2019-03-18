@@ -4,14 +4,17 @@ import PropTypes from 'prop-types'
 // import StoreGrid from '../StoreGrid';
 
 class CCStore extends Component {
-runningTotal() {
-      this.props.grabTotal(this.state.purchase)
-    }
+  runningTotal() {
+    this.props.grabTotal(this.state.purchase)
+  }
   render() {
     return (
       <div className="CCStore">
-      {/* <p>Shopping Cart: { runningTotal }</p> */}
-        <button className="btn">Buy!</button>
+        <p>Shopping Cart: {this.props.runningTotal}</p>
+        <button
+          className="btn"
+          onClick={this.props.makePurchase}>Buy!
+        </button>
       </div>
     )
   }

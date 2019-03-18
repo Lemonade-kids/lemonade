@@ -13,7 +13,7 @@ class Kitchen extends Component {
     return (
       <div className='Kitchen'>
         {this.props.bakeBtn ? <LoadingBar /> : null }
-        {this.props.bakeBtn ? <KitchenButton /> : null }
+        {this.props.bakeBtn ? <KitchenButton goToMarket={this.props.goToMarket} /> : null }
         <div className="workspace">
           {this.props.producePicked === 'lemon' ? <Counter /> : <Oven />}
         </div>
