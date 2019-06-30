@@ -18,7 +18,7 @@ class CCGarden extends React.Component {
           data-valuename="weedBtn"
           onClick={this.props.onClick}>Weed</button>
 
-        <button className={this.state.buttonReady ? 'showBtn btn' : 'hideBtn'}
+        <button className={ this.state.buttonReady ? 'showBtn btn' : 'hideBtn' }
           data-valuename="harvestBtn"
           onClick={this.props.onClick}>Harvest</button>
       </div>

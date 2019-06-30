@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import Rooster from './images/rooster.png'
 import Garden from './components/garden/components/Garden'
 import SellingStand from './components/market/components/SellingStand'
-import SupplyStore from './components/SupplyStore'
+import SupplyStore from './components/supplyStore/components/SupplyStore'
 import Kitchen from './components/kitchen/components/Kitchen'
 import ControlCenter from './components/controlCenter/ControlCenter'
 import StartScreen from './components/StartScreen'
@@ -24,7 +24,18 @@ class App extends React.Component {
     producePicked: '',
     watered: false,
     weeded: false,
-    harvested: false
+    harvested: false,
+    bakeBtn: false,
+    buySugar: '',
+    buyFlour: '',
+    buyMilk: '',
+    buyEggs: '',
+    sugarTotal: 0,
+    flourTotal: 0,
+    milkTotal: 0,
+    eggTotal: 0,
+    runningTotal: 0,
+    readyToSell: false
   }
   /** pick produce, set state with picked, pass on to props with which one picked
    * grows in garden, gets made in kitchen, sells-- need to figure out how flow happens, could use react router & window.loc.replace
@@ -63,12 +74,88 @@ class App extends React.Component {
     }
   }
 
-  handleClick = (event) => { // this is what happens when the click is clicked
+  showBar = () => {
+    this.setState({
+      bakeBtn: true
+    })
+  }
+
+  goToMarket = () => {
+    window.location.replace('/market')
+  }
+
+  calculateTotal = () => {
+    let eggTotal
+    let milkTotal
+    let flourTotal
+    let sugarTotal
+    this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
+    this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
+    this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
+    this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
+    let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
+    this.setState({
+      eggTotal,
+      milkTotal,
+      flourTotal,
+      sugarTotal
+      // runningTotal
+    })
+    return runningTotal
+  }
+
+  addToCart = (e) => {
+    let eggTotal
+    let milkTotal
+    let flourTotal
+    let sugarTotal
+    this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
+    this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
+    this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
+    this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
+    console.log('add to cart!')
+    let value = parseInt(e.target.value)
+    value ? value : value = 0
+    this.setState({
+      [e.target.name]: value,
+      runningTotal: eggTotal + milkTotal + flourTotal + sugarTotal
+    })
+    // let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
+    // this.calculateTotal()
+    // let eggTotal
+    // let milkTotal
+    // let flourTotal
+    // let sugarTotal
+    // this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
+    // this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
+    // this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
+    // this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
+    // let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
+    // this.setState({
+    //   eggTotal,
+    //   milkTotal,
+    //   flourTotal,
+    //   sugarTotal,
+    //   runningTotal
+    // })
+    
+  }
+
+  startSelling = () => {
+    this.setState({
+      readyToSell: true
+    })
+  }
+
+  makePurchase = () => {
+    console.log(this.state.runningTotal)
+  }
+
+  handleClick = (event) => {
     let id = event.target.id
     this.setState({
-      whichComponent: this.showComponent(id), // look! can call TWO functions with one onclick!
+      whichComponent: this.showComponent(id),
       whichCCComponent: this.showCCComponent(id)
-
     })
   }
 
@@ -134,11 +221,11 @@ class App extends React.Component {
             watered={this.state.watered} />
         </div>
       case 'supply' || window.location.pathname.includes('/store'):
-        return <CCStore />
+        return <CCStore runningTotal={this.state.runningTotal} />
       case 'stand' || window.location.pathname.includes('/market'):
         return <CCMarket />
       case 'kitchen' || window.location.pathname.includes('/kitchen'):
-        return <CCKitchen />
+        return <CCKitchen showBar={this.showBar} />
       case 'go-to-market' || window.location.pathname.includes('/market'):
         return <CCMarket />
       case 'nevermind':
@@ -146,11 +233,30 @@ class App extends React.Component {
           <CCGarden onClick={this.tendGarden} />
         </div>
       default:
-        return null
+        if (window.location.pathname.includes('/market')) {
+          return <CCMarket />
+        }
+        if (window.location.pathname.includes('/store')) {
+          return <CCStore />
+        }
+        if (window.location.pathname.includes('/kitchen')) {
+          return <CCKitchen showBar={this.showBar} />
+        }
     }
   }
 
   render() {
+    const { buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
+      milkTotal,
+      flourTotal,
+      sugarTotal,
+      runningTotal } = this.state
+    console.log(buyEggs, buySugar, buyFlour, buyMilk)
+    console.log('eggTotal', typeof eggTotal)
+    console.log('milkTotal', milkTotal)
+    console.log('flourTotal', typeof flourTotal)
+    console.log('sugarTotal', sugarTotal)
+    console.log('runningTotal', runningTotal)
     return (
       <div className="App">
         <header className="App-header">
@@ -212,13 +318,20 @@ class App extends React.Component {
                     pickProduce={this.pickProduce}
                     onClick={this.tendGarden}
                   />} />
-                  <Route path='/store' exact component={CCStore} />
+                  <Route path='/store' exact render={(props) => <CCStore {...props}
+                    runningTotal={this.state.runningTotal}
+                    makePurchase={this.makePurchase}
+                  />} />
                   <Route path="/kitchen" exact render={(props) => <CCKitchen {...props}
                     selectedProduce={this.state.producePicked}
+                    showBar={this.showBar}
                   // playWithProduce={this.playWithProduce}
                   // pickProduce={this.pickProduce}
                   />} />
-                  <Route path='/market' exact component={CCMarket} />
+                  <Route path='/market' exact render={(props) => <CCMarket {...props}
+                  readyToSell={this.state.readyToSell}
+                  startSelling={this.startSelling} 
+                  />} />
                   {/* <Route path='/help' exact component={Help} /> */}
                 </Switch>
               </BrowserRouter>
@@ -230,7 +343,7 @@ class App extends React.Component {
                   <Switch>
                     <Route path="/" exact render={(props) => <LogIn {...props}
                       playWithProduce={this.playWithProduce}
-                      pickProduce={ () => this.props.chooseProduce()}
+                      pickProduce={() => this.props.chooseProduce()}
                     />} />
                     <Route path="/start-over" exact component={StartScreen} />
                     <Route path="/garden" exact render={(props) => <Garden {...props}
@@ -241,11 +354,17 @@ class App extends React.Component {
                       harvested={this.state.harvested}
                       watered={this.state.watered}
                     />} />
-                    <Route path='/store' exact component={SupplyStore} />
+                    <Route path='/store' exact render={(props) => <SupplyStore {...props}
+                      buySugar={this.state.buySugar}
+                      buyFlour={this.state.buyFlour}
+                      buyMilk={this.state.buyMilk}
+                      buyEggs={this.state.buyEggs}
+                      addToCart={this.addToCart}
+                    />} />
                     <Route path="/kitchen" exact render={(props) => <Kitchen {...props}
-                      producePicked={this.state.producePicked}
-                    // playWithProduce={this.playWithProduce}
-                    // pickProduce={this.pickProduce}
+                      producePicked={this.props.producePicked}
+                      bakeBtn={this.state.bakeBtn}
+                      goToMarket={this.goToMarket}
                     />} />
                     <Route path='/market' exact component={SellingStand} />
                     <Route path='/help' exact component={Help} />
@@ -256,7 +375,7 @@ class App extends React.Component {
           </div>
         </div>
         <footer>
-          <p >Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
+          <p>{new Date().getFullYear()} Developed by the <a className="footer" href="https://github.com/Lemonade-kids/lemonade">Lemonade Kids</a> for <a className="footer" href="https://customfitkids.us">Custom Fit Kids</a>.</p>
         </footer>
       </div>
     )
@@ -264,13 +383,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return{
+  return {
     producePicked: state.producePicked
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return{
+  return {
     chooseProduce: (seed) => {
       dispatch({
         type: 'SAVECHOICE',

@@ -8,11 +8,6 @@ import Squashes from '../images/squashes.png'
 import API from '../utils/API'
 import {connect} from 'react-redux'
 
-// import LetsPlayButton from './LetsPlayButton';
-// import axios from 'axios'
-
-
-
 class LogIn extends React.Component {
   state = {
     user: '',
