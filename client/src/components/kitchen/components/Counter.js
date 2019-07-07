@@ -7,7 +7,7 @@ class Counter extends Component {
     return (
       <div className="Counter">
         <div className="counter">
-        <img src={ CounterPic } alt="counter" className="counter" />
+          <img src={ CounterPic } alt="counter" className="counter" />
         </div>
       </div>
     )

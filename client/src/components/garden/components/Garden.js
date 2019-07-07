@@ -78,10 +78,10 @@ class Garden extends Component {
 }
 
 Garden.propTypes = {
-    producePicked: PropTypes.string,
-    harvested: PropTypes.bool,
-    weeded: PropTypes.bool,
-    watered: PropTypes.bool
-  }
+  producePicked: PropTypes.string,
+  harvested: PropTypes.bool,
+  weeded: PropTypes.bool,
+  watered: PropTypes.bool
+}
 
 export default Garden

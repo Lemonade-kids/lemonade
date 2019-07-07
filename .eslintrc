@@ -10,8 +10,8 @@
         "plugin:react/recommended"
     ],
     "globals": {
-        "Atomics": "readable",
-        "SharedArrayBuffer": "readable"
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -27,6 +27,7 @@
     "rules": {
         "semi": ["error", "never"],
         "quotes": ["error", "single"],
-        "no-console": 0
+        "no-console": 0,
+        "indent": ["error", 2]
     }
 }

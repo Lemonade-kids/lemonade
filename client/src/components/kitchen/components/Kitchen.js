@@ -24,7 +24,8 @@ class Kitchen extends Component {
 
 Kitchen.propTypes = {
   bakeBtn: PropTypes.bool,
-  producePicked: PropTypes.string
+  producePicked: PropTypes.string,
+  goToMarket: PropTypes.bool
 }
 
 export default Kitchen

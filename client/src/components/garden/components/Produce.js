@@ -20,18 +20,18 @@ class Produce extends Component {
     let tmp = ''
 
     switch (seed) {
-      case 'blueberry':
-        tmp = BlueberryBush
-        break
-      case 'lemon':
-        tmp = LemonTree
-        break
-      case 'squash':
-        tmp = SquashPlant
-        break
-      default:
-        tmp = Sprout
-        break
+    case 'blueberry':
+      tmp = BlueberryBush
+      break
+    case 'lemon':
+      tmp = LemonTree
+      break
+    case 'squash':
+      tmp = SquashPlant
+      break
+    default:
+      tmp = Sprout
+      break
     }
 
     this.setState({ crop: tmp, className: 'produce-large' })

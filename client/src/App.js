@@ -209,39 +209,39 @@ class App extends React.Component {
   // buttons in control center
   showCCComponent(id) {
     switch (id) {
-      case 'garden':
-        return <div className="CCGarden">
-          <CCGarden
-            // onClick={this.tendGarden}
-            playWithProduce={this.playWithProduce}
-            pickProduce={this.pickProduce}
-            producePicked={this.state.producePicked}
-            weeded={this.state.weeded}
-            harvested={this.state.harvested}
-            watered={this.state.watered} />
-        </div>
-      case 'supply' || window.location.pathname.includes('/store'):
-        return <CCStore runningTotal={this.state.runningTotal} />
-      case 'stand' || window.location.pathname.includes('/market'):
+    case 'garden':
+      return <div className="CCGarden">
+        <CCGarden
+          // onClick={this.tendGarden}
+          playWithProduce={this.playWithProduce}
+          pickProduce={this.pickProduce}
+          producePicked={this.state.producePicked}
+          weeded={this.state.weeded}
+          harvested={this.state.harvested}
+          watered={this.state.watered} />
+      </div>
+    case 'supply' || window.location.pathname.includes('/store'):
+      return <CCStore runningTotal={this.state.runningTotal} />
+    case 'stand' || window.location.pathname.includes('/market'):
+      return <CCMarket />
+    case 'kitchen' || window.location.pathname.includes('/kitchen'):
+      return <CCKitchen showBar={this.showBar} />
+    case 'go-to-market' || window.location.pathname.includes('/market'):
+      return <CCMarket />
+    case 'nevermind':
+      return <div className="CCGarden">
+        <CCGarden onClick={this.tendGarden} />
+      </div>
+    default:
+      if (window.location.pathname.includes('/market')) {
         return <CCMarket />
-      case 'kitchen' || window.location.pathname.includes('/kitchen'):
+      }
+      if (window.location.pathname.includes('/store')) {
+        return <CCStore />
+      }
+      if (window.location.pathname.includes('/kitchen')) {
         return <CCKitchen showBar={this.showBar} />
-      case 'go-to-market' || window.location.pathname.includes('/market'):
-        return <CCMarket />
-      case 'nevermind':
-        return <div className="CCGarden">
-          <CCGarden onClick={this.tendGarden} />
-        </div>
-      default:
-        if (window.location.pathname.includes('/market')) {
-          return <CCMarket />
-        }
-        if (window.location.pathname.includes('/store')) {
-          return <CCStore />
-        }
-        if (window.location.pathname.includes('/kitchen')) {
-          return <CCKitchen showBar={this.showBar} />
-        }
+      }
     }
   }
 
@@ -329,8 +329,8 @@ class App extends React.Component {
                   // pickProduce={this.pickProduce}
                   />} />
                   <Route path='/market' exact render={(props) => <CCMarket {...props}
-                  readyToSell={this.state.readyToSell}
-                  startSelling={this.startSelling} 
+                    readyToSell={this.state.readyToSell}
+                    startSelling={this.startSelling} 
                   />} />
                   {/* <Route path='/help' exact component={Help} /> */}
                 </Switch>

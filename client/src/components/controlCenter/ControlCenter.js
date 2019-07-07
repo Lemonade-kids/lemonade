@@ -7,12 +7,12 @@ import PropTypes from 'prop-types'
 class ControlCenter extends Component {
   state = {
     user: [
-            { login: '' , password : '' },
-            { Bank: 123.00, Lemons: 0 },
-            { squash:10, blueberries : 0 },
-            { products: 100 , gardenGrowth: 0 },
-            { flour: 10, sugar: 0 },
-            { producePicked: '' }
+      { login: '' , password : '' },
+      { Bank: 123.00, Lemons: 0 },
+      { squash:10, blueberries : 0 },
+      { products: 100 , gardenGrowth: 0 },
+      { flour: 10, sugar: 0 },
+      { producePicked: '' }
     ]
   }
   render() {
