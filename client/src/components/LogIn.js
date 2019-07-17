@@ -58,7 +58,7 @@ class LogIn extends React.Component {
       <div>
         <div className="LogIn">
           {/* <form> */}
-            {/* <div style={{display:FirstDiv}} className="form-group row">
+          {/* <div style={{display:FirstDiv}} className="form-group row">
               <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
@@ -76,48 +76,48 @@ class LogIn extends React.Component {
               <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
             </div> */}
 
-            {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
-            <div>
-              <div className="loginChoice">
-                <img src={Lemons}
-                  alt="lemons"
-                  className="loginLemon loginFruit" />
-                <button
-                  name='producePicked'
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  data-valuename='lemon'
-                  value='lemon'
-                  onClick={this.update}>Lemons</button>
-
-                <img src={Blueberries}
-                  alt="blueberry"
-                  className="loginBlueberry loginFruit" />
-                <button
-                  name='producePicked'
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  data-valuename='blueberry'
-                  value='blueberry'
-                  onClick={this.update}>Blueberries</button>
-
-                <img src={Squashes}
-                  alt="squash"
-                  className="loginSquash loginFruit" />
-                <button
-                  name='producePicked'
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  data-valuename="squash"
-                  value='squash'
-                  onClick={this.update}>Squash</button>
-              </div>
-
+          {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
+          <div>
+            <div className="loginChoice">
+              <img src={Lemons}
+                alt="lemons"
+                className="loginLemon loginFruit" />
               <button
-                className="btn btn-outline-primary"
-                onClick={this.props.playWithProduce}>Let's play!</button>
+                name='producePicked'
+                type="button"
+                className="btn btn-outline-secondary"
+                data-valuename='lemon'
+                value='lemon'
+                onClick={this.update}>Lemons</button>
 
+              <img src={Blueberries}
+                alt="blueberry"
+                className="loginBlueberry loginFruit" />
+              <button
+                name='producePicked'
+                type="button"
+                className="btn btn-outline-secondary"
+                data-valuename='blueberry'
+                value='blueberry'
+                onClick={this.update}>Blueberries</button>
+
+              <img src={Squashes}
+                alt="squash"
+                className="loginSquash loginFruit" />
+              <button
+                name='producePicked'
+                type="button"
+                className="btn btn-outline-secondary"
+                data-valuename="squash"
+                value='squash'
+                onClick={this.update}>Squash</button>
             </div>
+
+            <button
+              className="btn btn-outline-primary"
+              onClick={this.props.playWithProduce}>Let's play!</button>
+
+          </div>
           {/* </form> */}
 
         </div>

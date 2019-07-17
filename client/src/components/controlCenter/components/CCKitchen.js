@@ -7,8 +7,8 @@ class CCKitchen extends Component {
     return (
       <div className="CCKitchen">
         <button 
-        className="btn"
-        onClick={this.props.showBar}>Bake</button>
+          className="btn"
+          onClick={this.props.showBar}>Bake</button>
       </div>
     )
   }

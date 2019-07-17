@@ -20,7 +20,9 @@ class CCStore extends Component {
   }
 }
 CCStore.propTypes = {
-  grabTotal: PropTypes.func
+  grabTotal: PropTypes.func,
+  makePurchase: PropTypes.func,
+  runningTotal: PropTypes.number
 }
 
 export default CCStore

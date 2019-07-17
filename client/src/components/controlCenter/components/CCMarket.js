@@ -58,8 +58,8 @@ class CCMarket extends Component {
           <p>Enter marketing dollars here.</p>
           <button type="submit" 
           // onClick={this.props.GAME}
-          onClick={this.props.startSelling} 
-          className="btn" >Begin!</button>
+            onClick={this.props.startSelling} 
+            className="btn" >Begin!</button>
         </form>
       </div>
     )
