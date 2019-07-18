@@ -40,12 +40,16 @@ class App extends React.Component {
   /** pick produce, set state with picked, pass on to props with which one picked
    * grows in garden, gets made in kitchen, sells-- need to figure out how flow happens, could use react router & window.loc.replace
    */
-  pickProduce = (event) => {
-    this.setState({
-      // producePicked: event.target.dataset.valuename
-      producePicked: event.target.value
-    })
-    console.log(this.state.producePicked)
+  // pickProduce = (event) => {
+  //   this.setState({
+  //     // producePicked: event.target.dataset.valuename
+  //     producePicked: event.target.value
+  //   })
+  //   console.log(this.state.producePicked)
+  // }
+
+  pickProduce = (crop) => {
+    this.setState({producePicked: crop})
   }
 
   playWithProduce = (event) => {
@@ -316,6 +320,7 @@ class App extends React.Component {
                   <Route path="/garden" exact render={(props) => <CCGarden {...props}
                     playWithProduce={this.playWithProduce}
                     pickProduce={this.pickProduce}
+                    producePicked={this.state.producePicked}
                     onClick={this.tendGarden}
                   />} />
                   <Route path='/store' exact render={(props) => <CCStore {...props}
@@ -343,13 +348,13 @@ class App extends React.Component {
                   <Switch>
                     <Route path="/" exact render={(props) => <LogIn {...props}
                       playWithProduce={this.playWithProduce}
-                      pickProduce={() => this.props.chooseProduce()}
+                      pickProduce={this.pickProduce}
                     />} />
                     <Route path="/start-over" exact component={StartScreen} />
                     <Route path="/garden" exact render={(props) => <Garden {...props}
                       playWithProduce={this.playWithProduce}
                       pickProduce={this.pickProduce}
-                      producePicked={this.props.producePicked}
+                      producePicked={this.state.producePicked}
                       weeded={this.state.weeded}
                       harvested={this.state.harvested}
                       watered={this.state.watered}

@@ -16,6 +16,13 @@ class LogIn extends React.Component {
     producePicked: ''
   }
 
+  // function that wraps another function passed down in props
+  // they have the same name because they're working together for the same thing
+  pickProduce = () => {
+    const crop = this.state.producePicked
+    this.props.pickProduce(crop)
+  }
+
   update = (event) => {
     const { name, value } = event.target
     this.setState({
@@ -53,7 +60,7 @@ class LogIn extends React.Component {
   }
 
   render() {
-    console.log(this.props, this.state.producePicked)
+    console.log('produce in start---', this.state.producePicked)
     return (
       <div>
         <div className="LogIn">
@@ -115,7 +122,7 @@ class LogIn extends React.Component {
 
             <button
               className="btn btn-outline-primary"
-              onClick={this.props.playWithProduce}>Let's play!</button>
+              onClick={this.pickProduce}>{'Let\'s play!'}</button>
 
           </div>
           {/* </form> */}
