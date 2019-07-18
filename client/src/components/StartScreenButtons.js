@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import '../App.css'
+import { NavLink } from 'react-router-dom'
 
 class StartScreenButtons extends Component {
+  goBack = () => {
+    window.location.goBack()
+  }
   render() {
     return (
       <div className="StartScreenButtons">
-        <button className='btn' id="start-over" onClick={this.props.onClick}>Yes, I'm sure!</button>
-        <button className='btn' id="nevermind" onClick={this.props.onClick}>Nevermind.</button>
+        <NavLink to='/'>
+          <button 
+            className='btn' 
+            id="start-over" 
+            // onClick={this.props.onClick}
+          >
+            {'Yes, I\'m sure!'}
+          </button>
+        </NavLink>
+        <button className='btn' id="nevermind" onClick={this.goBack}>Nevermind.</button>
       </div>
     )
   }

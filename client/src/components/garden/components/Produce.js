@@ -17,24 +17,24 @@ class Produce extends Component {
   }
 
   whichCrop(seed) {
-    let tmp = ''
+    let crop = ''
 
     switch (seed) {
     case 'blueberry':
-      tmp = BlueberryBush
+      crop = BlueberryBush
       break
     case 'lemon':
-      tmp = LemonTree
+      crop = LemonTree
       break
     case 'squash':
-      tmp = SquashPlant
+      crop = SquashPlant
       break
     default:
-      tmp = Sprout
+      crop = Sprout
       break
     }
 
-    this.setState({ crop: tmp, className: 'produce-large' })
+    this.setState({ crop: crop, className: 'produce-large' })
   }
 
   grow(seed) {
@@ -44,11 +44,13 @@ class Produce extends Component {
   }
 
   render() {
+    console.log('from produce.js---', this.props.producePicked)
+    const { className, crop } = this.state
     return (
       <div className="Produce">
-        <img src={this.props.harvested ? null : this.state.crop}
-          className={this.state.className}
-          alt={this.tmp} />
+        <img src={this.props.harvested ? null : crop}
+          className={className}
+          alt={crop} />
       </div>
     )
   }
