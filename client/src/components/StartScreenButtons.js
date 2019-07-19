@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 class StartScreenButtons extends Component {
   goBack = () => {
-    window.location.goBack()
+    window.history.back()
   }
   render() {
     return (
@@ -16,10 +16,7 @@ class StartScreenButtons extends Component {
           }
         }}>
           <button 
-            className='btn' 
-            id="start-over" 
-            // onClick={this.props.onClick}
-          >
+            className='btn'>
             {'Yes, I\'m sure!'}
           </button>
         </NavLink>

@@ -38,6 +38,7 @@ class Produce extends Component {
   }
 
   grow(seed) {
+    // make timer starting dependent on watering and weeding?
     setTimeout(() => {
       this.whichCrop(seed)
     }, 7000)
