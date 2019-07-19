@@ -1,6 +1,6 @@
 import React from 'react'
 // import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, NavLink, Switch } from 'react-router-dom'
 import './App.css'
 import { connect } from 'react-redux'
 import Rooster from './images/rooster.png'
@@ -157,11 +157,11 @@ class App extends React.Component {
   }
 
   handleClick = (event) => {
-    let id = event.target.id
-    this.setState({
-      // whichComponent: this.showComponent(id),
-      whichCCComponent: this.showCCComponent(id)
-    })
+    // let id = event.target.id
+    // this.setState({
+    //   // whichComponent: this.showComponent(id),
+    //   whichCCComponent: this.showCCComponent(id)
+    // })
   }
 
   // case switch for rendering the right component on the gameboard
@@ -273,82 +273,70 @@ class App extends React.Component {
         </header>
         <ul className="nav justify-content-center">
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/start-over',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="startover"
-              // onClick={this.handleClick}
             >Start Over
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/garden',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="garden"
-              // onClick={this.handleClick}
             >Garden
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/store',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="supply"
-              // onClick={this.handleClick}
             >Supply Store
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/kitchen',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="kitchen"
-              // onClick={this.handleClick}
             >Kitchen
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/market',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="stand"
-              // onClick={this.handleClick}
             >Market
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <Link className="nav-link"
+            <NavLink className="nav-link"
               to={{
                 pathname: '/help',
                 produceProps:{
                   producePicked: this.state.producePicked
                 }
               }}
-              id="help"
-              // onClick={this.handleClick}
             >Help
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <div className="container">
@@ -357,22 +345,22 @@ class App extends React.Component {
               <ControlCenter />
               {/* {this.state.whichCCComponent} */}
               <Router basename={process.env.PUBLIC_URL}>
-                {/* <Switch> */}
-                {/* <Route path="/" exact component={LogIn} /> */}
-                {/* <Route path="/start-over" exact component={StartScreen} /> */}
-                <div>
+                <Switch>
+                  {/* <Route exact path="/" component={LogIn} /> */}
+                  {/* <Route path="/start-over" exact component={StartScreen} /> */}
+                  {/* <div> */}
                   {/* <Route path="/garden" exact render={(props) => <CCGarden {...props}
                     playWithProduce={this.playWithProduce}
                     pickProduce={this.pickProduce}
                     producePicked={this.state.producePicked}
                     onClick={this.tendGarden}
                   />} /> */}
-                  <Route path="/garden" exact component={CCGarden} />
+                  <Route path="/garden" component={CCGarden} />
                   {/* <Route path='/store' exact render={(props) => <CCStore {...props}
                     runningTotal={this.state.runningTotal}
                     makePurchase={this.makePurchase}
                   />} /> */}
-                  <Route path='/store' exact component={CCStore} />
+                  <Route path='/store' component={CCStore} />
 
                   {/* <Route path="/kitchen" exact render={(props) => <CCKitchen {...props}
                     selectedProduce={this.state.producePicked}
@@ -380,31 +368,31 @@ class App extends React.Component {
                   // playWithProduce={this.playWithProduce}
                   // pickProduce={this.pickProduce}
                   />} /> */}
-                  <Route path='/kitchen' exact component={CCKitchen} />
+                  <Route path='/kitchen' component={CCKitchen} />
 
                   {/* <Route path='/market' exact render={(props) => <CCMarket {...props}
                     readyToSell={this.state.readyToSell}
                     startSelling={this.startSelling} 
                   />} /> */}
-                  <Route path='/market' exact component={CCMarket} />
+                  <Route path='/market' component={CCMarket} />
 
                   {/* <Route path='/help' exact component={Help} /> */}
-                  {/* </Switch> */}
-                </div>
+                </Switch>
+                {/* </div> */}
               </Router>
             </div>
             <div className="col-sm-9">
               <div className="Gameboard">
                 {/* {this.showComponent} */}
                 <Router basename={process.env.PUBLIC_URL}>
-                  <div>
-                    {/* <Switch> */}
+                  {/* <div> */}
+                  <Switch>
                     {/* <Route path="/" exact render={(props) => <LogIn {...props}
                     playWithProduce={this.playWithProduce}
                     pickProduce={this.pickProduce}
                   />} /> */}
-                    <Route path='/' exact component={LogIn} />
-                    <Route path="/start-over" exact component={StartScreen} />
+                    <Route exact path='/' component={LogIn} />
+                    <Route path="/start-over" component={StartScreen} />
                     {/* <Route path="/garden" exact render={(props) => <Garden {...props}
                     playWithProduce={this.playWithProduce}
                     pickProduce={this.pickProduce}
@@ -413,7 +401,7 @@ class App extends React.Component {
                     harvested={this.state.harvested}
                     watered={this.state.watered}
                   />} /> */}
-                    <Route path="/garden" exact component={Garden} />
+                    <Route path="/garden" component={Garden} />
                     {/* <Route path='/store' exact render={(props) => <SupplyStore {...props}
                     buySugar={this.state.buySugar}
                     buyFlour={this.state.buyFlour}
@@ -421,17 +409,17 @@ class App extends React.Component {
                     buyEggs={this.state.buyEggs}
                     addToCart={this.addToCart}
                   />} /> */}
-                    <Route path='/store' exact component={SupplyStore} />
+                    <Route path='/store' component={SupplyStore} />
                     {/* <Route path="/kitchen" exact render={(props) => <Kitchen {...props}
                     producePicked={this.props.producePicked}
                     bakeBtn={this.state.bakeBtn}
                     goToMarket={this.goToMarket}
                   />} /> */}
-                    <Route path='/kitchen' exact component={Kitchen} />
-                    <Route path='/market' exact component={SellingStand} />
-                    <Route path='/help' exact component={Help} />
-                    {/* </Switch> */}
-                  </div>
+                    <Route path='/kitchen' component={Kitchen} />
+                    <Route path='/market' component={SellingStand} />
+                    <Route path='/help' component={Help} />
+                  </Switch>
+                  {/* </div> */}
                 </Router>
               </div>
             </div>

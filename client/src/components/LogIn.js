@@ -7,6 +7,8 @@ import Lemons from '../images/lemons.png'
 import Squashes from '../images/squashes.png'
 import API from '../utils/API'
 import {connect} from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class LogIn extends React.Component {
   state = {
@@ -61,6 +63,7 @@ class LogIn extends React.Component {
 
   render() {
     console.log('produce in start---', this.state.producePicked)
+    console.log('props???', this.props)
     return (
       <div>
         <div className="LogIn">
@@ -119,11 +122,17 @@ class LogIn extends React.Component {
                 value='squash'
                 onClick={this.update}>Squash</button>
             </div>
-
-            <button
-              className="btn btn-outline-primary"
-              onClick={this.pickProduce}>{'Let\'s play!'}</button>
-
+            <NavLink to={{
+              pathname: '/garden',
+              produceProps:{
+                producePicked: this.state.producePicked
+              }
+            }}>
+              <button
+                className="btn btn-outline-primary"
+                // onClick={this.pickProduce}
+              >{'Let\'s play!'}</button>
+            </NavLink>
           </div>
           {/* </form> */}
 
@@ -144,4 +153,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(LogIn)
+export default withRouter(connect(mapStateToProps)(LogIn))

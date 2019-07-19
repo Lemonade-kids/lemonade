@@ -9,7 +9,12 @@ class StartScreenButtons extends Component {
   render() {
     return (
       <div className="StartScreenButtons">
-        <NavLink to='/'>
+        <NavLink to={{
+          pathname: '/',
+          produceProps:{
+            omg: 'ommmggggg'
+          }
+        }}>
           <button 
             className='btn' 
             id="start-over" 
