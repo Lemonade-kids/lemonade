@@ -6,10 +6,11 @@ import './index.css'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import reducer from './store/reducer'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const store = createStore(reducer)
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, 
+ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, 
   document.getElementById('root'))
 registerServiceWorker()
 
