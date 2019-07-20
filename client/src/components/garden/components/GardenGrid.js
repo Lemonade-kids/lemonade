@@ -4,7 +4,6 @@ import Produce from './Produce'
 import Weeds from './Weeds'
 import PropTypes from 'prop-types'
 
-
 class GardenGrid extends Component {
   render() {
     return (
@@ -26,11 +25,12 @@ class GardenGrid extends Component {
             data-valuename='weed'>
             <Weeds />
           </div>
-          <div className="grid-item-garden"
+          <div className={this.props.harvested ? 'weeded' : 'grid-item-garden'}
             data-valuename='produce'>
             <Produce
               producePicked={this.props.producePicked}
-              harvested={this.props.harvested} />
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
           </div>
           <div className={this.props.weeded ? 'weeded' : 'grid-item-small'}
             data-valuename='weed'>
@@ -57,6 +57,7 @@ class GardenGrid extends Component {
 GardenGrid.propTypes = {
   weeded: PropTypes.bool,
   harvested: PropTypes.bool,
+  watered: PropTypes.bool,
   producePicked: PropTypes.string
 }
 

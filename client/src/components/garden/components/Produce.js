@@ -33,11 +33,10 @@ class Produce extends Component {
       crop = Sprout
       break
     }
-
     this.setState({ crop: crop, className: 'produce-large' })
   }
 
-  grow(seed) {
+  grow = (seed) => {
     // make timer starting dependent on watering and weeding?
     setTimeout(() => {
       this.whichCrop(seed)
@@ -45,7 +44,6 @@ class Produce extends Component {
   }
 
   render() {
-    console.log('from produce.js---', this.props.producePicked)
     const { className, crop } = this.state
     return (
       <div className="Produce">
@@ -59,7 +57,8 @@ class Produce extends Component {
 
 Produce.propTypes = {
   producePicked: PropTypes.string,
-  harvested: PropTypes.bool
+  harvested: PropTypes.bool,
+  watered: PropTypes.bool
 }
 
 export default Produce

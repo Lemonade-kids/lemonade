@@ -30,11 +30,16 @@ class App extends React.Component {
     eggTotal: 0,
     runningTotal: 0,
     readyToSell: false,
-    show: true
+    marketBtn: false
   }
 
   pickProduce = (crop) => {
-    this.setState({producePicked: crop})
+    this.setState({
+      producePicked: crop,
+      watered: false,
+      weeded: false,
+      harvested: false,
+    })
   }
 
   tendGarden = (event) => {
@@ -53,19 +58,21 @@ class App extends React.Component {
     }
     if (id === 'harvestBtn') {
       this.setState({
-        harvested: true
+        harvested: true,
+        watered: false
       })
     }
   }
 
   showBar = () => {
+    console.log('show da bar!')
     this.setState({
       bakeBtn: true
     })
   }
 
-  goToMarket = () => {
-    window.location.replace('/market')
+  showGoToMarketBtn = () => {
+    this.setState({marketBtn: true})
   }
 
   grabCrop = (crop) => {
@@ -129,13 +136,7 @@ class App extends React.Component {
       // sugarTotal,
       // runningTotal,
       producePicked } = this.state
-    // console.log(buyEggs, buySugar, buyFlour, buyMilk)
-    // console.log('eggTotal', typeof eggTotal)
-    // console.log('milkTotal', milkTotal)
-    // console.log('flourTotal', typeof flourTotal)
-    // console.log('sugarTotal', sugarTotal)
-    // console.log('runningTotal', runningTotal)
-    console.log('vkhgvkgvk', producePicked, this.props)
+    // console.log('vkhgvkgvk', producePicked, this.props)
     return (
       <div className="App">
         <Header producePicked={producePicked} />
@@ -151,8 +152,23 @@ class App extends React.Component {
                   weeded={this.state.weeded}
                   harvested={this.state.harvested}
                 />} />
-                <Route path='/store' component={CCStore} />
-                <Route path='/kitchen' component={CCKitchen} />
+                <Route path='/store' exact render={(props) => <CCStore {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                />} />
+                {/* <Route path='/store' component={CCStore} /> */}
+                <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                  showBar={this.showBar}
+                />} />
+                {/* <Route path='/kitchen' component={CCKitchen} /> */}
                 <Route path='/market' component={CCMarket} />
               </Switch>
             </div>
@@ -161,7 +177,8 @@ class App extends React.Component {
                 grabCrop={this.grabCrop} 
                 watered={this.state.watered}
                 weeded={this.state.weeded}
-                harvested={this.state.harvested} />
+                harvested={this.state.harvested}
+                bakeBtn={this.state.bakeBtn} />
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Counter from './Counter'
 import KitchenButton from './KitchenButton'
 import LoadingBar from './loadingBar'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 
 class Kitchen extends Component {
@@ -19,12 +20,18 @@ class Kitchen extends Component {
     }
   }
   render() {
-    // console.log(this.props.bakeBtn)
-    // console.log(this.props)
     return (
       <div className='Kitchen'>
         {this.props.bakeBtn ? <LoadingBar /> : null }
-        {this.props.bakeBtn ? <KitchenButton goToMarket={this.props.goToMarket} /> : null }
+        {this.props.bakeBtn ? 
+          <NavLink to={{
+            pathname: '/market',
+            produceProps:{
+              producePicked: this.props.producePicked
+            }
+          }}>
+            <KitchenButton />
+          </NavLink> : null }
         <div className="workspace">
           {this.state.producePicked === 'lemon' ? <Counter /> : <Oven />}
         </div>

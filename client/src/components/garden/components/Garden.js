@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../../../App.css'
 import GardenGrid from './GardenGrid'
-
+import Water from '../../../images/water.png'
 
 class Garden extends Component {
   state = {
@@ -16,11 +16,12 @@ class Garden extends Component {
     }
   }
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     const crop = this.props.location.produceProps ? this.props.location.produceProps.producePicked : null
     return (
       crop !== null ?
         <div className="grid-container garden-grid">
+          {this.props.watered ? <img src={Water} className={'water'} /> : null}
           <div className="grid-item grid-item-garden">
             <GardenGrid
               producePicked={crop}
