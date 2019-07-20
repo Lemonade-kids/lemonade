@@ -129,11 +129,11 @@ class App extends React.Component {
 
   render() {
     const { 
-      // buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
-      // milkTotal,
-      // flourTotal,
-      // sugarTotal,
-      // runningTotal,
+      buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
+      milkTotal,
+      flourTotal,
+      sugarTotal,
+      runningTotal,
       producePicked } = this.state
     return (
       <div className="App">
@@ -156,6 +156,15 @@ class App extends React.Component {
                   watered={this.state.watered}
                   weeded={this.state.weeded}
                   harvested={this.state.harvested}
+                  buySugar={this.state.buySugar}
+                  buyFlour={this.state.buyFlour}
+                  buyMilk={this.state.buyMilk}
+                  buyEggs={this.state.buyEggs}
+                  sugarTotal={this.state.sugarTotal}
+                  flourTotal={this.state.flourTotal}
+                  milkTotal={this.state.milkTotal}
+                  eggTotal={this.state.eggTotal}
+                  runningTotal={this.state.runningTotal}
                 />} />
                 <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
                   producePicked={producePicked}
@@ -184,7 +193,12 @@ class App extends React.Component {
                 weeded={this.state.weeded}
                 harvested={this.state.harvested}
                 bakeBtn={this.state.bakeBtn}
-                readyToSell={this.state.readyToSell} />
+                readyToSell={this.state.readyToSell}
+                buySugar={this.state.buySugar}
+                buyFlour={this.state.buyFlour}
+                buyMilk={this.state.buyMilk}
+                buyEggs={this.state.buyEggs}
+                addToCart={this.addToCart} />
             </div>
           </div>
         </div>

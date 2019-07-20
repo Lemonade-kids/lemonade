@@ -12,9 +12,9 @@ import { NavLink } from 'react-router-dom'
 
 class LogIn extends React.Component {
   state = {
-    user: '',
-    pwd: '',
-    gender: 'male',
+    // user: '',
+    // pwd: '',
+    // gender: 'male',
     producePicked: ''
   }
 
@@ -104,13 +104,13 @@ class LogIn extends React.Component {
                 onClick={this.handleChoice}>Squash</button>
             </div>
             <NavLink to={{
-              pathname: '/garden',
+              pathname: producePicked ? '/garden' : '/',
               produceProps:{
                 producePicked: this.state.producePicked
               }
             }}>
               <button
-                className="btn btn-outline-primary"
+                className={producePicked ? 'btn btn-start' : 'btn-disabled'}
                 // onClick={this.pickProduce}
               >{'Let\'s play!'}</button>
             </NavLink>

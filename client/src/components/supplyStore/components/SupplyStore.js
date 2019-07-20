@@ -33,10 +33,10 @@ SupplyStore.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
   grabCrop: PropTypes.func,
-  buyEggs: PropTypes.func,
-  buyFlour: PropTypes.func,
-  buyMilk: PropTypes.func,
-  buySugar: PropTypes.func,
+  buyEggs: PropTypes.number || PropTypes.string,
+  buyFlour: PropTypes.number || PropTypes.string,
+  buyMilk: PropTypes.number || PropTypes.string,
+  buySugar: PropTypes.number || PropTypes.string,
   addToCart: PropTypes.func
 }
 

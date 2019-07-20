@@ -101,6 +101,28 @@ a {
   background-color: #69bae0;
 }
 
+.btn-start {
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin: .1em;
+  color: #69bae0;
+  font-weight: bold;
+  border-radius: 5px;
+  border: #69bae0 1px solid;
+  background-color: aliceblue;
+  padding: .6em;
+}
+
+.btn-disabled {
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin: .1em;
+  color: gray;
+  border-radius: 5px;
+  border: gray 1px solid;
+  background-color: aliceblue;
+  opacity: .5;
+  padding: .6em;
+}
+
 .Gameboard {
   border: 6px solid black;
   border-radius: 30px;
