@@ -8,6 +8,7 @@ import Kitchen from './kitchen/components/Kitchen'
 import StartScreen from './StartScreen'
 import LogIn from './LogIn'
 import Help from './Help'
+import PropTypes from 'prop-types'
 
 class GameBoard extends Component {
   goBack = () => {
@@ -20,6 +21,7 @@ class GameBoard extends Component {
           <Route exact path='/' component={LogIn} />
           <Route path='/garden' exact render={(props) => <Garden {...props}
             grabCrop={this.props.grabCrop}
+            // tendGarden={this.props.tendGarden}
           />} />
           <Route path="/start-over" component={StartScreen} />
           {/* <Route path="/garden" component={Garden} /> */}
@@ -40,6 +42,10 @@ class GameBoard extends Component {
       </div>
     )
   }
+}
+
+GameBoard.propTypes = {
+  grabCrop: PropTypes.func
 }
 
 export default GameBoard

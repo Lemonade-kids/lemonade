@@ -94,7 +94,8 @@ Garden.propTypes = {
   harvested: PropTypes.bool,
   weeded: PropTypes.bool,
   watered: PropTypes.bool,
-  location: PropTypes.object
+  location: PropTypes.object,
+  grabCrop: PropTypes.func
 }
 
 export default Garden

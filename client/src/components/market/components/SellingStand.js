@@ -3,6 +3,7 @@ import '../../../App.css'
 import People from './People'
 import stand from '../../../images/sellingstand.png'
 import cloud from '../../../images/cloud.png'
+import PropTypes from 'prop-types'
 
 class SellingStand extends Component {
   state = {
@@ -25,6 +26,12 @@ class SellingStand extends Component {
       </div>
     )
   }
+}
+
+SellingStand.propTypes = {
+  producePicked: PropTypes.string,
+  location: PropTypes.object,
+  grabCrop: PropTypes.func
 }
 
 export default SellingStand

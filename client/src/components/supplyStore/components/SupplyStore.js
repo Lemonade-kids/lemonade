@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../../../App.css'
 import StoreGrid from './StoreGrid'
+import PropTypes from 'prop-types'
 
 class SupplyStore extends Component {
   state = {
@@ -26,6 +27,17 @@ class SupplyStore extends Component {
       </div>
     )
   }
+}
+
+SupplyStore.propTypes = {
+  producePicked: PropTypes.string,
+  location: PropTypes.object,
+  grabCrop: PropTypes.func,
+  buyEggs: PropTypes.func,
+  buyFlour: PropTypes.func,
+  buyMilk: PropTypes.func,
+  buySugar: PropTypes.func,
+  addToCart: PropTypes.func
 }
 
 export default SupplyStore

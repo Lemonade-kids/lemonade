@@ -36,7 +36,9 @@ class Kitchen extends Component {
 Kitchen.propTypes = {
   bakeBtn: PropTypes.bool,
   producePicked: PropTypes.string,
-  goToMarket: PropTypes.bool
+  goToMarket: PropTypes.bool,
+  location: PropTypes.object,
+  grabCrop: PropTypes.func
 }
 
 export default Kitchen

@@ -144,10 +144,12 @@ class App extends React.Component {
             <div className="col-sm-3 Control-Center">
               <ControlCenter producePicked={producePicked} />
               <Switch>
-                {/* <Route path="/garden" component={CCGarden} /> */}
                 <Route path='/garden' exact render={(props) => <CCGarden {...props}
                   producePicked={producePicked}
-                  hi='hi'
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
                 />} />
                 <Route path='/store' component={CCStore} />
                 <Route path='/kitchen' component={CCKitchen} />
@@ -155,7 +157,11 @@ class App extends React.Component {
               </Switch>
             </div>
             <div className="col-sm-9">
-              <GameBoard grabCrop={this.grabCrop} />
+              <GameBoard 
+                grabCrop={this.grabCrop} 
+                watered={this.state.watered}
+                weeded={this.state.weeded}
+                harvested={this.state.harvested} />
             </div>
           </div>
         </div>
