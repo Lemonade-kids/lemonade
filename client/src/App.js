@@ -65,7 +65,6 @@ class App extends React.Component {
   }
 
   showBar = () => {
-    console.log('show da bar!')
     this.setState({
       bakeBtn: true
     })
@@ -136,7 +135,6 @@ class App extends React.Component {
       // sugarTotal,
       // runningTotal,
       producePicked } = this.state
-    // console.log('vkhgvkgvk', producePicked, this.props)
     return (
       <div className="App">
         <Header producePicked={producePicked} />
@@ -159,7 +157,6 @@ class App extends React.Component {
                   weeded={this.state.weeded}
                   harvested={this.state.harvested}
                 />} />
-                {/* <Route path='/store' component={CCStore} /> */}
                 <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
                   producePicked={producePicked}
                   tendGarden={this.tendGarden}
@@ -168,8 +165,16 @@ class App extends React.Component {
                   harvested={this.state.harvested}
                   showBar={this.showBar}
                 />} />
-                {/* <Route path='/kitchen' component={CCKitchen} /> */}
-                <Route path='/market' component={CCMarket} />
+                <Route path='/market' exact render={(props) => <CCMarket {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                  showBar={this.showBar}
+                  startSelling={this.startSelling}
+                  readyToSell={this.state.readyToSell}
+                />} />                
               </Switch>
             </div>
             <div className="col-sm-9">
@@ -178,7 +183,8 @@ class App extends React.Component {
                 watered={this.state.watered}
                 weeded={this.state.weeded}
                 harvested={this.state.harvested}
-                bakeBtn={this.state.bakeBtn} />
+                bakeBtn={this.state.bakeBtn}
+                readyToSell={this.state.readyToSell} />
             </div>
           </div>
         </div>

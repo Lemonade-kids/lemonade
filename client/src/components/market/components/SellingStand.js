@@ -19,11 +19,14 @@ class SellingStand extends Component {
   render() {
     return (
       <div className='SellingStand'>
-        <img src={cloud} alt="cloud" className="cloud" />
-        <img src={cloud} alt="cloud" className="cloud-two" />
-        <img src={stand} alt="stand" className="stand" />
-        <People />
-      </div>
+        {this.props.readyToSell ?
+          <div>
+            <img src={cloud} alt="cloud" className="cloud" />
+            <img src={cloud} alt="cloud" className="cloud-two" />
+            <img src={stand} alt="stand" className="stand" />
+            <People /> 
+          </div> : null}
+      </div> 
     )
   }
 }
@@ -31,7 +34,8 @@ class SellingStand extends Component {
 SellingStand.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
-  grabCrop: PropTypes.func
+  grabCrop: PropTypes.func,
+  readyToSell: PropTypes.bool
 }
 
 export default SellingStand
