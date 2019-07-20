@@ -6,13 +6,18 @@ import Water from '../../../images/water.png'
 
 class Garden extends Component {
   state = {
-    producePicked: ''
+    producePicked: '',
+    bank: 0,
+    cropAmount: 0
   }
   componentDidMount() {
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
-      this.setState({producePicked: crop})
-      this.props.grabCrop(crop)
+      const bank = this.props.location.produceProps.bank
+      const cropAmount = this.props.location.produceProps.cropAmount
+      this.setState({producePicked: crop, bank, cropAmount})
+      this.props.grabData(crop, bank, cropAmount)
+      console.log('from garden', crop, bank, cropAmount)
     }
   }
   render() {
@@ -96,7 +101,7 @@ Garden.propTypes = {
   weeded: PropTypes.bool,
   watered: PropTypes.bool,
   location: PropTypes.object,
-  grabCrop: PropTypes.func
+  grabData: PropTypes.func
 }
 
 export default Garden

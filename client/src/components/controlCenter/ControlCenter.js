@@ -5,31 +5,27 @@ import PropTypes from 'prop-types'
 
 
 class ControlCenter extends Component {
-  state = {
-    // user: [
-    //   { login: '' , password : '' },
-    //   { Bank: 123.00, Lemons: 0 },
-    //   { squash:10, blueberries : 0 },
-    //   { products: 100 , gardenGrowth: 0 },
-    //   { flour: 10, sugar: 0 },
-    //   { producePicked: '' }
-    // ]
-  }
   render() {
-    const { producePicked } = this.props
+    const { producePicked, bank, cropAmount } = this.props
+    console.log('does this match garden?', producePicked, bank, cropAmount)
     return (
       <div className="ControlCenter">
 
-        <p className="ctrl-title">Inventory: </p>
-        {producePicked ? <p>Chosen Produce: {producePicked}</p>
+        <p className="ctrl-title">Inventory</p>
+        {producePicked ? 
+          <p>Chosen Produce: {producePicked}</p>
           :null}
+        {producePicked ? 
+          <p>{producePicked}: {cropAmount ? cropAmount : 0}</p>
+          : null}
         {/* <p>Lemons: {this.props.lem}</p>
         <p>Sugar: {this.props.sug } cups</p>
         <p>Product: {this.props.prod} </p> */}
 
         <div className="dropdown-divider"></div>
 
-        <p className="ctrl-title">Bank :${this.props.cash}</p>
+        <p className="ctrl-title">Bank: {bank ? 
+          `$${bank}` : '$0'}</p>
 
       </div>
     )
@@ -37,10 +33,13 @@ class ControlCenter extends Component {
 }
 
 ControlCenter.propTypes = {
-  lem: PropTypes.number,
-  sug: PropTypes.number,
-  prod: PropTypes.number,
-  cash: PropTypes.number,
+  sugarTotal: PropTypes.number,
+  milkTotal: PropTypes.number,
+  flourTotal: PropTypes.number,
+  eggTotal: PropTypes.number,
+  products: PropTypes.number,
+  cropAmount: PropTypes.number,
+  bank: PropTypes.number,
   producePicked: PropTypes.string
 }
 

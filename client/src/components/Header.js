@@ -9,7 +9,7 @@ class Header extends Component {
 //     window.history.back()
 //   }
   render() {
-    const { producePicked } = this.props
+    const { producePicked, bank, cropAmount } = this.props
     console.log(this.props)
     return (
       <div>
@@ -20,14 +20,19 @@ class Header extends Component {
               width="70px"
               className="rooster" />CFK Market Stand</h1>
         </header>
-        <NavBar producePicked={producePicked} />
+        <NavBar 
+          producePicked={producePicked}
+          bank={bank}
+          cropAmount={cropAmount} />
       </div>
     )
   }
 }
 
 Header.propTypes = {
-  producePicked: PropTypes.string
+  producePicked: PropTypes.string,
+  bank: PropTypes.number,
+  cropAmount: PropTypes.number
 }
 
 export default Header

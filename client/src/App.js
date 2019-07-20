@@ -30,7 +30,10 @@ class App extends React.Component {
     eggTotal: 0,
     runningTotal: 0,
     readyToSell: false,
-    marketBtn: false
+    marketBtn: false,
+    bank: 50,
+    products: 0,
+    cropAmount: 0
   }
 
   pickProduce = (crop) => {
@@ -59,7 +62,8 @@ class App extends React.Component {
     if (id === 'harvestBtn') {
       this.setState({
         harvested: true,
-        watered: false
+        watered: false,
+        cropAmount: 18
       })
     }
   }
@@ -74,8 +78,11 @@ class App extends React.Component {
     this.setState({marketBtn: true})
   }
 
-  grabCrop = (crop) => {
-    this.setState({producePicked: crop})
+  /* function that gets passed to child components that
+  checks on these values in there and returns them back here (putting them in state),
+  so any changes get passed throughout other parts of the app */
+  grabData = (crop, bank, cropAmount) => {
+    this.setState({producePicked: crop, bank, cropAmount})
   }
 
   calculateTotal = () => {
@@ -129,76 +136,102 @@ class App extends React.Component {
 
   render() {
     const { 
-      buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
+      buyEggs, 
+      buySugar, 
+      buyFlour, 
+      buyMilk, 
+      eggTotal,
       milkTotal,
       flourTotal,
       sugarTotal,
       runningTotal,
-      producePicked } = this.state
+      producePicked,
+      harvested,
+      watered,
+      weeded,
+      readyToSell,
+      bakeBtn,
+      bank,
+      cropAmount } = this.state
     return (
       <div className="App">
-        <Header producePicked={producePicked} />
+        <Header 
+          producePicked={producePicked}
+          bank={bank}
+          cropAmount={cropAmount} />
         <div className="container">
           <div className="row">
             <div className="col-sm-3 Control-Center">
-              <ControlCenter producePicked={producePicked} />
+              <ControlCenter 
+                producePicked={producePicked} 
+                bank={bank} 
+                cropAmount={cropAmount} />
               <Switch>
                 <Route path='/garden' exact render={(props) => <CCGarden {...props}
                   producePicked={producePicked}
                   tendGarden={this.tendGarden}
-                  watered={this.state.watered}
-                  weeded={this.state.weeded}
-                  harvested={this.state.harvested}
+                  watered={watered}
+                  weeded={weeded}
+                  harvested={harvested}
+                  bank={bank}
+                  cropAmount={cropAmount}
                 />} />
                 <Route path='/store' exact render={(props) => <CCStore {...props}
                   producePicked={producePicked}
                   tendGarden={this.tendGarden}
-                  watered={this.state.watered}
-                  weeded={this.state.weeded}
-                  harvested={this.state.harvested}
-                  buySugar={this.state.buySugar}
-                  buyFlour={this.state.buyFlour}
-                  buyMilk={this.state.buyMilk}
-                  buyEggs={this.state.buyEggs}
-                  sugarTotal={this.state.sugarTotal}
-                  flourTotal={this.state.flourTotal}
-                  milkTotal={this.state.milkTotal}
-                  eggTotal={this.state.eggTotal}
-                  runningTotal={this.state.runningTotal}
+                  watered={watered}
+                  weeded={weeded}
+                  harvested={harvested}
+                  buySugar={buySugar}
+                  buyFlour={buyFlour}
+                  buyMilk={buyMilk}
+                  buyEggs={buyEggs}
+                  sugarTotal={sugarTotal}
+                  flourTotal={flourTotal}
+                  milkTotal={milkTotal}
+                  eggTotal={eggTotal}
+                  runningTotal={runningTotal}
+                  bank={bank}
+                  cropAmount={cropAmount}
                 />} />
                 <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
                   producePicked={producePicked}
                   tendGarden={this.tendGarden}
-                  watered={this.state.watered}
-                  weeded={this.state.weeded}
-                  harvested={this.state.harvested}
+                  watered={watered}
+                  weeded={weeded}
+                  harvested={harvested}
                   showBar={this.showBar}
+                  bank={bank}
+                  cropAmount={cropAmount}
                 />} />
                 <Route path='/market' exact render={(props) => <CCMarket {...props}
                   producePicked={producePicked}
                   tendGarden={this.tendGarden}
-                  watered={this.state.watered}
-                  weeded={this.state.weeded}
-                  harvested={this.state.harvested}
+                  watered={watered}
+                  weeded={weeded}
+                  harvested={harvested}
                   showBar={this.showBar}
                   startSelling={this.startSelling}
-                  readyToSell={this.state.readyToSell}
+                  readyToSell={readyToSell}
+                  bank={bank}
+                  cropAmount={cropAmount}
                 />} />                
               </Switch>
             </div>
             <div className="col-sm-9">
               <GameBoard 
-                grabCrop={this.grabCrop} 
-                watered={this.state.watered}
-                weeded={this.state.weeded}
-                harvested={this.state.harvested}
-                bakeBtn={this.state.bakeBtn}
-                readyToSell={this.state.readyToSell}
-                buySugar={this.state.buySugar}
-                buyFlour={this.state.buyFlour}
-                buyMilk={this.state.buyMilk}
-                buyEggs={this.state.buyEggs}
-                addToCart={this.addToCart} />
+                grabData={this.grabData} 
+                watered={watered}
+                weeded={weeded}
+                harvested={harvested}
+                bakeBtn={bakeBtn}
+                readyToSell={readyToSell}
+                buySugar={buySugar}
+                buyFlour={buyFlour}
+                buyMilk={buyMilk}
+                buyEggs={buyEggs}
+                addToCart={this.addToCart}
+                bank={bank} />
             </div>
           </div>
         </div>

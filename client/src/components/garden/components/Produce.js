@@ -20,13 +20,13 @@ class Produce extends Component {
     let crop = ''
 
     switch (seed) {
-    case 'blueberry':
+    case 'Blueberry':
       crop = BlueberryBush
       break
-    case 'lemon':
+    case 'Lemon':
       crop = LemonTree
       break
-    case 'squash':
+    case 'Squash':
       crop = SquashPlant
       break
     default:

@@ -39,7 +39,9 @@ class CCGarden extends React.Component {
         <NavLink to={{
           pathname: '/store',
           produceProps:{
-            producePicked: this.props.producePicked
+            producePicked: this.props.producePicked,
+            bank: this.props.bank,
+            cropAmount: this.props.cropAmount
           }
         }}>
           <button className={ this.props.harvested ? 'btn' : 'hideBtn' }
@@ -55,7 +57,9 @@ CCGarden.propTypes = {
   weeded: PropTypes.bool,
   harvested: PropTypes.bool,
   tendGarden: PropTypes.func,
-  producePicked: PropTypes.string
+  producePicked: PropTypes.string,
+  bank: PropTypes.number,
+  cropAmount: PropTypes.number
 }
 
 export default CCGarden

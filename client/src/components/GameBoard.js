@@ -17,14 +17,14 @@ class GameBoard extends Component {
         <Switch>
           <Route exact path='/' component={LogIn} />
           <Route path='/garden' exact render={(props) => <Garden {...props}
-            grabCrop={this.props.grabCrop}
+            grabData={this.props.grabData}
             watered={this.props.watered}
             weeded={this.props.weeded}
             harvested={this.props.harvested}
           />} />
           <Route path="/start-over" component={StartScreen} />
           <Route path='/store' exact render={(props) => <SupplyStore {...props}
-            grabCrop={this.props.grabCrop}
+            grabData={this.props.grabData}
             buySugar={this.props.buySugar}
             buyFlour={this.props.buyFlour}
             buyMilk={this.props.buyMilk}
@@ -32,11 +32,11 @@ class GameBoard extends Component {
             addToCart={this.props.addToCart}
           />} />
           <Route path='/kitchen' exact render={(props) => <Kitchen {...props}
-            grabCrop={this.props.grabCrop}
+            grabData={this.props.grabData}
             bakeBtn={this.props.bakeBtn}
           />} />
           <Route path='/market' exact render={(props) => <SellingStand {...props}
-            grabCrop={this.props.grabCrop}
+            grabData={this.props.grabData}
             readyToSell={this.props.readyToSell}
           />} />
           <Route path='/help' component={Help} />
@@ -47,7 +47,7 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-  grabCrop: PropTypes.func,
+  grabData: PropTypes.func,
   weeded: PropTypes.bool,
   watered: PropTypes.bool,
   harvested: PropTypes.bool,
