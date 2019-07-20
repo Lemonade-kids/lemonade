@@ -7,7 +7,7 @@ class NavBar extends Component {
   render() {
     // console.log('from navbar---', this.props.producePicked)
     // console.log('from props.loc in navbar---', this.props)
-    const { producePicked } = this.props
+    const { producePicked, bank, cropAmount } = this.props
     return (
       <div className="navBar">
         <ul className="nav justify-content-center">
@@ -16,7 +16,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/start-over',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
             >{'Start Over'}
@@ -27,7 +29,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/garden',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
               className="nav-link"
@@ -39,7 +43,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/store',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
             >Supply Store
@@ -50,7 +56,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/kitchen',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
             >Kitchen
@@ -61,7 +69,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/market',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
             >Market
@@ -72,7 +82,9 @@ class NavBar extends Component {
               to={{
                 pathname: '/help',
                 produceProps:{
-                  producePicked: producePicked
+                  producePicked: producePicked,
+                  bank: bank,
+                  cropAmount: cropAmount
                 }
               }}
             >Help
@@ -86,7 +98,9 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
   producePicked: PropTypes.string,
-  harvested: PropTypes.bool
+  harvested: PropTypes.bool,
+  bank: PropTypes.number,
+  cropAmount: PropTypes.number
 }
 
 export default NavBar

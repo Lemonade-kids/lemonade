@@ -77,7 +77,7 @@ class StoreGrid extends Component {
 StoreGrid.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
-  grabCrop: PropTypes.func,
+  grabData: PropTypes.func,
   buyEggs: PropTypes.number,
   buyFlour: PropTypes.number,
   buyMilk: PropTypes.number,

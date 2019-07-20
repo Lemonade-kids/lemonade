@@ -17,8 +17,6 @@ import Girl8 from '../../../images/girl8.png'
 
 class People extends Component {
 
-  // need an if/else to decide whether to render 
-  // stove or oven depending on chosen ingredient for game
   render() {
     return (
       <div className="People">

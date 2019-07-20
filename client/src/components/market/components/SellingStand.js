@@ -7,13 +7,17 @@ import PropTypes from 'prop-types'
 
 class SellingStand extends Component {
   state = {
-    producePicked: ''
+    producePicked: '',
+    bank: 0,
+    cropAmount: 0
   }
   componentDidMount() {
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
-      this.setState({producePicked: crop})
-      this.props.grabCrop(crop)
+      const bank = this.props.location.produceProps.bank
+      const cropAmount = this.props.location.produceProps.cropAmount
+      this.setState({producePicked: crop, bank, cropAmount})
+      this.props.grabData(crop, bank, cropAmount)
     }
   }
   render() {
@@ -34,7 +38,7 @@ class SellingStand extends Component {
 SellingStand.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
-  grabCrop: PropTypes.func,
+  grabData: PropTypes.func,
   readyToSell: PropTypes.bool
 }
 

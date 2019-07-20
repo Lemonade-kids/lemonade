@@ -10,13 +10,17 @@ import { NavLink } from 'react-router-dom'
 
 class Kitchen extends Component {
   state = {
-    producePicked: ''
+    producePicked: '',
+    bank: 0,
+    cropAmount: 0
   }
   componentDidMount() {
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
-      this.setState({producePicked: crop})
-      this.props.grabCrop(crop)
+      const bank = this.props.location.produceProps.bank
+      const cropAmount = this.props.location.produceProps.cropAmount
+      this.setState({producePicked: crop, bank, cropAmount})
+      this.props.grabData(crop, bank, cropAmount)
     }
   }
   render() {
@@ -27,13 +31,15 @@ class Kitchen extends Component {
           <NavLink to={{
             pathname: '/market',
             produceProps:{
-              producePicked: this.props.producePicked
+              producePicked: this.props.producePicked,
+              bank: this.props.bank,
+              cropAmount: this.props.cropAmount
             }
           }}>
             <KitchenButton />
           </NavLink> : null }
         <div className="workspace">
-          {this.state.producePicked === 'lemon' ? <Counter /> : <Oven />}
+          {this.state.producePicked === 'Lemon' ? <Counter /> : <Oven />}
         </div>
       </div>
     )
@@ -45,7 +51,9 @@ Kitchen.propTypes = {
   producePicked: PropTypes.string,
   goToMarket: PropTypes.bool,
   location: PropTypes.object,
-  grabCrop: PropTypes.func
+  grabData: PropTypes.func,
+  bank: PropTypes.number,
+  cropAmount: PropTypes.number
 }
 
 export default Kitchen

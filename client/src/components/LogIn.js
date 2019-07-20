@@ -15,7 +15,9 @@ class LogIn extends React.Component {
     // user: '',
     // pwd: '',
     // gender: 'male',
-    producePicked: ''
+    producePicked: '',
+    bank: 50,
+    cropAmount: 0
   }
 
   // function that wraps another function passed down in props
@@ -76,9 +78,9 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className={producePicked === 'lemon' ? 'btn-active' : 'btn btn-outline-secondary'}
-                data-valuename='lemon'
-                value='lemon'
+                className={producePicked === 'Lemon' ? 'btn-active' : 'btn btn-outline-secondary'}
+                data-valuename='Lemon'
+                value='Lemon'
                 onClick={this.handleChoice}>Lemons</button>
 
               <img src={Blueberries}
@@ -87,9 +89,9 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className={producePicked === 'blueberry' ? 'btn-active' : 'btn btn-outline-secondary'}
-                data-valuename='blueberry'
-                value='blueberry'
+                className={producePicked === 'Blueberry' ? 'btn-active' : 'btn btn-outline-secondary'}
+                data-valuename='Blueberry'
+                value='Blueberry'
                 onClick={this.handleChoice}>Blueberries</button>
 
               <img src={Squashes}
@@ -98,15 +100,17 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className={producePicked === 'squash' ? 'btn-active' : 'btn btn-outline-secondary'}
+                className={producePicked === 'Squash' ? 'btn-active' : 'btn btn-outline-secondary'}
                 data-valuename="squash"
-                value='squash'
+                value='Squash'
                 onClick={this.handleChoice}>Squash</button>
             </div>
             <NavLink to={{
               pathname: producePicked ? '/garden' : '/',
               produceProps:{
-                producePicked: this.state.producePicked
+                producePicked: this.state.producePicked,
+                bank: this.state.bank,
+                cropAmount: this.state.cropAmount
               }
             }}>
               <button
