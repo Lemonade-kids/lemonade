@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import '../App.css'
 import NavBar from './NavBar'
 import Rooster from '../images/rooster.png'
+import PropTypes from 'prop-types'
 
 class Header extends Component {
-  goBack = () => {
-    window.history.back()
-  }
+//   goBack = () => {
+//     window.history.back()
+//   }
   render() {
     const { producePicked } = this.props
+    console.log(this.props)
     return (
       <div>
         <header className="App-header">
@@ -22,6 +24,10 @@ class Header extends Component {
       </div>
     )
   }
+}
+
+Header.propTypes = {
+  producePicked: PropTypes.string
 }
 
 export default Header

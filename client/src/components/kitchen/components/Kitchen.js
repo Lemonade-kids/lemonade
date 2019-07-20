@@ -8,14 +8,25 @@ import PropTypes from 'prop-types'
 
 
 class Kitchen extends Component {
+  state = {
+    producePicked: ''
+  }
+  componentDidMount() {
+    if (this.props.location && this.props.location.produceProps) {
+      const crop = this.props.location.produceProps.producePicked
+      this.setState({producePicked: crop})
+      this.props.grabCrop(crop)
+    }
+  }
   render() {
-    console.log(this.props.bakeBtn)
+    // console.log(this.props.bakeBtn)
+    // console.log(this.props)
     return (
       <div className='Kitchen'>
         {this.props.bakeBtn ? <LoadingBar /> : null }
         {this.props.bakeBtn ? <KitchenButton goToMarket={this.props.goToMarket} /> : null }
         <div className="workspace">
-          {this.props.producePicked === 'lemon' ? <Counter /> : <Oven />}
+          {this.state.producePicked === 'lemon' ? <Counter /> : <Oven />}
         </div>
       </div>
     )

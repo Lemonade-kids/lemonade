@@ -11,9 +11,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 const store = createStore(reducer)
 
 // may have to switch router back to wrapping only app
-ReactDOM.render(<Router><Provider store={store}><App /></Provider></Router>, 
+ReactDOM.render(<Provider store={store}><Router basename={process.env.PUBLIC_URL}><App /></Router></Provider>, 
   document.getElementById('root'))
 registerServiceWorker()
 
-// ReactDOM.render(<App />, document.getElementById('root'))
+// ReactDOM.render(<Router basename={process.env.PUBLIC_URL}><App /></Router>, document.getElementById('root'))
 // registerServiceWorker()

@@ -25,7 +25,7 @@ class LogIn extends React.Component {
     this.props.pickProduce(crop)
   }
 
-  update = (event) => {
+  handleChoice = (event) => {
     const { name, value } = event.target
     this.setState({
       [name]: value
@@ -62,31 +62,12 @@ class LogIn extends React.Component {
   }
 
   render() {
-    console.log('produce in start---', this.state.producePicked)
-    console.log('props???', this.props)
+    // console.log('produce in start---', this.state.producePicked)
+    // console.log('props???', this.props)
+    const { producePicked } = this.state
     return (
       <div>
         <div className="LogIn">
-          {/* <form> */}
-          {/* <div style={{display:FirstDiv}} className="form-group row">
-              <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
-              <div className="input-group mb-2 mr-sm-2">
-                <div className="input-group-prepend">
-                </div>
-                <input type="text" className="form-control col-sm-5" id="user" name="user" onChange={this.update} placeholder="Username"></input>
-              </div>
-              <div className="form-group row">
-                <label htmlFor="inputPassword" className="col-sm-2 col-form-label"></label>
-                <div className="col-sm-1" />
-                <div className="col-sm-9 password-box">
-                  <input type="password" className="form-control" id="pwd" name="pwd" onChange={this.update} placeholder="Password"></input>
-                </div>
-              </div>
-              <button className="btn btn-outline-primary" onClick={this.handleNewUserClick.bind(this)}>Sign Up</button>
-              <button className="btn btn-outline-primary" onClick={this.handleLoginClick.bind(this)}>Login</button>
-            </div> */}
-
-          {/* <div style={{display:SecondDiv}} gender="female" className={SecondDiv}> */}
           <div>
             <div className="loginChoice">
               <img src={Lemons}
@@ -95,10 +76,10 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className="btn btn-outline-secondary"
+                className={producePicked === 'lemon' ? 'btn-active' : 'btn btn-outline-secondary'}
                 data-valuename='lemon'
                 value='lemon'
-                onClick={this.update}>Lemons</button>
+                onClick={this.handleChoice}>Lemons</button>
 
               <img src={Blueberries}
                 alt="blueberry"
@@ -106,10 +87,10 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className="btn btn-outline-secondary"
+                className={producePicked === 'blueberry' ? 'btn-active' : 'btn btn-outline-secondary'}
                 data-valuename='blueberry'
                 value='blueberry'
-                onClick={this.update}>Blueberries</button>
+                onClick={this.handleChoice}>Blueberries</button>
 
               <img src={Squashes}
                 alt="squash"
@@ -117,10 +98,10 @@ class LogIn extends React.Component {
               <button
                 name='producePicked'
                 type="button"
-                className="btn btn-outline-secondary"
+                className={producePicked === 'squash' ? 'btn-active' : 'btn btn-outline-secondary'}
                 data-valuename="squash"
                 value='squash'
-                onClick={this.update}>Squash</button>
+                onClick={this.handleChoice}>Squash</button>
             </div>
             <NavLink to={{
               pathname: '/garden',

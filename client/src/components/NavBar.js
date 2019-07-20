@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom'
 
 class NavBar extends Component {
   render() {
-    console.log('from navbar---', this.props.producePicked)
+    // console.log('from navbar---', this.props.producePicked)
+    // console.log('from props.loc in navbar---', this.props)
     const { producePicked } = this.props
     return (
       <div className="navBar">

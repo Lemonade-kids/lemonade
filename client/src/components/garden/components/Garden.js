@@ -5,8 +5,18 @@ import GardenGrid from './GardenGrid'
 
 
 class Garden extends Component {
+  state = {
+    producePicked: ''
+  }
+  componentDidMount() {
+    if (this.props.location && this.props.location.produceProps) {
+      const crop = this.props.location.produceProps.producePicked
+      this.setState({producePicked: crop})
+      this.props.grabCrop(crop)
+    }
+  }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const crop = this.props.location.produceProps ? this.props.location.produceProps.producePicked : null
     return (
       crop !== null ?
