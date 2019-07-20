@@ -6,50 +6,51 @@ import PropTypes from 'prop-types'
 
 class CCMarket extends Component {
 
-  onSubmit = (event) => {
-    event.preventDefault()
-    let maxTemp = 110
-    let minTemp = 32
-    let glassesSold = 0
-    let productForsale = this.refs.amount.value
-    let marketing = this.refs.marketing.value
-    let unitPrice = this.refs.price.value
-    console.log(this.props.prod)
-    if (productForsale > (this.props.prod)) {
-      // these should be modals and not alerts!
-      return alert('You don\'t have the inventory. You can only sell the amount of products you have')
-    } if (marketing > this.props.cash) {
-      return alert('You dont have enough money. You can\'t afford to spend that much on marketing')
-    } else {
+  // commenting out the redux stuff for now
+  // onSubmit = (event) => {
+  //   event.preventDefault()
+  //   let maxTemp = 110
+  //   let minTemp = 32
+  //   let glassesSold = 0
+  //   let productForsale = this.refs.amount.value
+  //   let marketing = this.refs.marketing.value
+  //   let unitPrice = this.refs.price.value
+  //   console.log(this.props.prod)
+  //   if (productForsale > (this.props.prod)) {
+  //     // these should be modals and not alerts!
+  //     return alert('You don\'t have the inventory. You can only sell the amount of products you have')
+  //   } if (marketing > this.props.cash) {
+  //     return alert('You dont have enough money. You can\'t afford to spend that much on marketing')
+  //   } else {
 
-      let marketingEffect = Math.floor(Math.random() * (maxTemp - minTemp))
-      let tempToday = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp)
-      // console.log("temp today is = " + tempToday)
+  //     let marketingEffect = Math.floor(Math.random() * (maxTemp - minTemp))
+  //     let tempToday = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp)
+  //     // console.log("temp today is = " + tempToday)
 
 
-      glassesSold = Math.floor(tempToday / unitPrice) + marketingEffect
-      if (glassesSold > productForsale) {
-        alert('you sold out')
-        glassesSold = productForsale
-      } else { console.log('nah') }
-      let newBank = glassesSold * unitPrice - marketing
-      this.props.SAVEPROD(productForsale)
-      console.log('$ ' + newBank + ' is the amount of money you made')
-      //  newBank = (this.props.cash);
-      //  console.log(newBank);
-      this.props.saveBank(newBank)
-      console.log(glassesSold + ' Glasses Sold')
-      console.log('marketing effect =  ' + marketingEffect)
-      console.log(newBank + ' Ultimate Baller Kids')
+  //     glassesSold = Math.floor(tempToday / unitPrice) + marketingEffect
+  //     if (glassesSold > productForsale) {
+  //       alert('you sold out')
+  //       glassesSold = productForsale
+  //     } else { console.log('nah') }
+  //     let newBank = glassesSold * unitPrice - marketing
+  //     this.props.SAVEPROD(productForsale)
+  //     console.log('$ ' + newBank + ' is the amount of money you made')
+  //     //  newBank = (this.props.cash);
+  //     //  console.log(newBank);
+  //     this.props.saveBank(newBank)
+  //     console.log(glassesSold + ' Glasses Sold')
+  //     console.log('marketing effect =  ' + marketingEffect)
+  //     console.log(newBank + ' Ultimate Baller Kids')
 
-    }
+  //   }
 
-  };
+  // };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.onSubmit} >
+        {/* <form onSubmit={this.onSubmit} >
           <input type="number" ref="amount" />
           <p>Amount of goods you would like to display</p>
           <input type="number" ref="price" />
@@ -60,7 +61,10 @@ class CCMarket extends Component {
           // onClick={this.props.GAME}
             onClick={this.props.startSelling} 
             className="btn" >Begin!</button>
-        </form>
+        </form> */}
+        <button className='btn' onClick={this.props.startSelling}>
+          Begin!
+        </button>
       </div>
     )
   }
