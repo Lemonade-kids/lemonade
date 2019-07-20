@@ -1,11 +1,23 @@
 import React from 'react'
 import '../../../App.css'
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 
 class CCGarden extends React.Component {
   state = {
-    buttonReady: true
+    buttonReady: false
+  }
+
+  constructor(props) {
+    super(props)
+    this.showBtn()
+  }
+
+  showBtn = () => {
+    setTimeout(() => {
+      this.setState({buttonReady: true})
+    }, 7000)
   }
   render() {
     return (
@@ -18,9 +30,20 @@ class CCGarden extends React.Component {
           data-valuename="weedBtn"
           onClick={this.props.tendGarden}>Weed</button>
 
-        <button className={ this.state.buttonReady ? 'showBtn btn' : 'hideBtn' }
-          data-valuename="harvestBtn"
-          onClick={this.props.tendGarden}>Harvest</button>
+        {this.state.buttonReady ?
+          <button className={ this.props.harvested ? 'hideBtn' : 'btn' }
+            data-valuename="harvestBtn"
+            onClick={this.props.tendGarden}>Harvest</button>
+          : null}
+        <NavLink to={{
+          pathname: '/store',
+          produceProps:{
+            producePicked: this.props.producePicked
+          }
+        }}>
+          <button className={ this.props.harvested ? 'btn' : 'hideBtn' }
+          >Get supplies!</button>
+        </NavLink>
       </div>
     )
   }
@@ -29,7 +52,9 @@ class CCGarden extends React.Component {
 CCGarden.propTypes = {
   watered: PropTypes.bool,
   weeded: PropTypes.bool,
-  tendGarden: PropTypes.func
+  harvested: PropTypes.bool,
+  tendGarden: PropTypes.func,
+  producePicked: PropTypes.string
 }
 
 export default CCGarden

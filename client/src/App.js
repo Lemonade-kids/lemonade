@@ -30,11 +30,16 @@ class App extends React.Component {
     eggTotal: 0,
     runningTotal: 0,
     readyToSell: false,
-    show: true
+    marketBtn: false
   }
 
   pickProduce = (crop) => {
-    this.setState({producePicked: crop})
+    this.setState({
+      producePicked: crop,
+      watered: false,
+      weeded: false,
+      harvested: false,
+    })
   }
 
   tendGarden = (event) => {
@@ -64,8 +69,8 @@ class App extends React.Component {
     })
   }
 
-  goToMarket = () => {
-    window.location.replace('/market')
+  showGoToMarketBtn = () => {
+    this.setState({marketBtn: true})
   }
 
   grabCrop = (crop) => {

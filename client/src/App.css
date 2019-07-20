@@ -422,8 +422,8 @@ a {
   height: 30em;
   float: none;
   position: absolute;
-  margin: 0.5em 30% 0 -45%;
-  width: 90%;
+  /* margin: 0.5em 30% 0 0; */
+  width: 95%;
   border-radius: 30px;
   -webkit-animation-name: water;
   -webkit-animation-duration: 4s;
