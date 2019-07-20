@@ -45,7 +45,6 @@ class Produce extends Component {
   }
 
   render() {
-    console.log('from produce.js---', this.props.producePicked)
     const { className, crop } = this.state
     return (
       <div className="Produce">

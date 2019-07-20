@@ -129,13 +129,7 @@ class App extends React.Component {
       // sugarTotal,
       // runningTotal,
       producePicked } = this.state
-    // console.log(buyEggs, buySugar, buyFlour, buyMilk)
-    // console.log('eggTotal', typeof eggTotal)
-    // console.log('milkTotal', milkTotal)
-    // console.log('flourTotal', typeof flourTotal)
-    // console.log('sugarTotal', sugarTotal)
-    // console.log('runningTotal', runningTotal)
-    console.log('vkhgvkgvk', producePicked, this.props)
+    // console.log('vkhgvkgvk', producePicked, this.props)
     return (
       <div className="App">
         <Header producePicked={producePicked} />

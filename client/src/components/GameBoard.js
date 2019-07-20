@@ -21,19 +21,17 @@ class GameBoard extends Component {
           <Route exact path='/' component={LogIn} />
           <Route path='/garden' exact render={(props) => <Garden {...props}
             grabCrop={this.props.grabCrop}
-            // tendGarden={this.props.tendGarden}
+            watered={this.props.watered}
+            weeded={this.props.weeded}
+            harvested={this.props.harvested}
           />} />
           <Route path="/start-over" component={StartScreen} />
-          {/* <Route path="/garden" component={Garden} /> */}
-          {/* <Route path='/store' component={SupplyStore} /> */}
           <Route path='/store' exact render={(props) => <SupplyStore {...props}
             grabCrop={this.props.grabCrop}
           />} />
-          {/* <Route path='/kitchen' component={Kitchen} /> */}
           <Route path='/kitchen' exact render={(props) => <Kitchen {...props}
             grabCrop={this.props.grabCrop}
           />} />
-          {/* <Route path='/market' component={SellingStand} /> */}
           <Route path='/market' exact render={(props) => <SellingStand {...props}
             grabCrop={this.props.grabCrop}
           />} />
@@ -45,7 +43,10 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-  grabCrop: PropTypes.func
+  grabCrop: PropTypes.func,
+  weeded: PropTypes.bool,
+  watered: PropTypes.bool,
+  harvested: PropTypes.bool
 }
 
 export default GameBoard

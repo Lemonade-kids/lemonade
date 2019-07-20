@@ -16,7 +16,7 @@ class Garden extends Component {
     }
   }
   render() {
-    // console.log(this.props)
+    console.log(this.props)
     const crop = this.props.location.produceProps ? this.props.location.produceProps.producePicked : null
     return (
       crop !== null ?

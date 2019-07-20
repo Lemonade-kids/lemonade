@@ -26,7 +26,7 @@ class GardenGrid extends Component {
             data-valuename='weed'>
             <Weeds />
           </div>
-          <div className="grid-item-garden"
+          <div className={this.props.harvested ? 'weeded' : 'grid-item-garden'}
             data-valuename='produce'>
             <Produce
               producePicked={this.props.producePicked}

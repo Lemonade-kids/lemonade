@@ -12,15 +12,15 @@ class CCGarden extends React.Component {
       <div className="CCGarden">
         <button className={ this.props.watered ? 'hideBtn' : 'btn' }
           data-valuename="waterBtn"
-          onClick={this.props.onClick}>Water</button>
+          onClick={this.props.tendGarden}>Water</button>
 
         <button className={ this.props.weeded ? 'hideBtn' : 'btn' }
           data-valuename="weedBtn"
-          onClick={this.props.onClick}>Weed</button>
+          onClick={this.props.tendGarden}>Weed</button>
 
         <button className={ this.state.buttonReady ? 'showBtn btn' : 'hideBtn' }
           data-valuename="harvestBtn"
-          onClick={this.props.onClick}>Harvest</button>
+          onClick={this.props.tendGarden}>Harvest</button>
       </div>
     )
   }
@@ -29,7 +29,7 @@ class CCGarden extends React.Component {
 CCGarden.propTypes = {
   watered: PropTypes.bool,
   weeded: PropTypes.bool,
-  onClick: PropTypes.func
+  tendGarden: PropTypes.func
 }
 
 export default CCGarden

@@ -17,7 +17,6 @@ class ControlCenter extends Component {
   }
   render() {
     const { producePicked } = this.props
-    console.log('cc-----', this.props)
     return (
       <div className="ControlCenter">
 
