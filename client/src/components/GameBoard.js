@@ -25,6 +25,11 @@ class GameBoard extends Component {
           <Route path="/start-over" component={StartScreen} />
           <Route path='/store' exact render={(props) => <SupplyStore {...props}
             grabCrop={this.props.grabCrop}
+            buySugar={this.props.buySugar}
+            buyFlour={this.props.buyFlour}
+            buyMilk={this.props.buyMilk}
+            buyEggs={this.props.buyEggs}
+            addToCart={this.props.addToCart}
           />} />
           <Route path='/kitchen' exact render={(props) => <Kitchen {...props}
             grabCrop={this.props.grabCrop}
@@ -48,7 +53,12 @@ GameBoard.propTypes = {
   harvested: PropTypes.bool,
   bakeBtn: PropTypes.bool,
   startSelling: PropTypes.func,
-  readyToSell: PropTypes.bool
+  readyToSell: PropTypes.bool,
+  buyEggs: PropTypes.number || PropTypes.string,
+  buyFlour: PropTypes.number || PropTypes.string,
+  buyMilk: PropTypes.number || PropTypes.string,
+  buySugar: PropTypes.number || PropTypes.string,
+  addToCart: PropTypes.func
 }
 
 export default GameBoard
