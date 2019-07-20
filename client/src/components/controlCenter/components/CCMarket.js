@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import '../../../App.css'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 
 class CCMarket extends Component {
 
   // commenting out the redux stuff for now
+
   // onSubmit = (event) => {
   //   event.preventDefault()
   //   let maxTemp = 110
@@ -62,9 +63,10 @@ class CCMarket extends Component {
             onClick={this.props.startSelling} 
             className="btn" >Begin!</button>
         </form> */}
-        <button className='btn' onClick={this.props.startSelling}>
+        {this.props.readyToSell ? null :
+          <button className='btn' onClick={this.props.startSelling}>
           Begin!
-        </button>
+          </button>}
       </div>
     )
   }
@@ -72,41 +74,47 @@ class CCMarket extends Component {
 
 }
 
-const mapStateToProps = state => {
-  return {
-    lem: state.Lemons,
-    cash: state.Bank,
-    prod: state.product,
-    sug: state.sugar,
-    win: state.winnings
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    GAME: () => dispatch({ type: 'GAME' }),
-    SAVEPROD(val) {
-      dispatch({
-        type: 'SAVEPROD',
-        inventory: val
-      })
+// commenting out redux stuff for now
 
-    },
-    saveBank(val) {
-      dispatch({
-        type: 'SAVE',
-        Bank: val
-      })
+// const mapStateToProps = state => {
+//   return {
+//     lem: state.Lemons,
+//     cash: state.Bank,
+//     prod: state.product,
+//     sug: state.sugar,
+//     win: state.winnings
+//   }
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     GAME: () => dispatch({ type: 'GAME' }),
+//     SAVEPROD(val) {
+//       dispatch({
+//         type: 'SAVEPROD',
+//         inventory: val
+//       })
 
-    }
-  }
-}
+//     },
+//     saveBank(val) {
+//       dispatch({
+//         type: 'SAVE',
+//         Bank: val
+//       })
+
+//     }
+//   }
+// }
 
 CCMarket.propTypes = {
   lem: PropTypes.number,
   sug: PropTypes.number,
   prod: PropTypes.number,
   cash: PropTypes.number,
-  producePicked: PropTypes.string
+  producePicked: PropTypes.string,
+  startSelling: PropTypes.func,
+  readyToSell: PropTypes.bool
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CCMarket)
+// export default connect(mapStateToProps, mapDispatchToProps)(CCMarket)
+
+export default CCMarket

@@ -4,18 +4,22 @@ import PropTypes from 'prop-types'
 
 class CCKitchen extends Component {
   render() {
+    console.log(this.props)
     return (
       <div className="CCKitchen">
         <button 
           className="btn"
-          onClick={this.props.showBar}>Bake</button>
+          onClick={this.props.showBar}>
+          {this.props.producePicked === 'lemon' 
+            ? 'Prepare the Lemonade!' : 'Bake'}</button>
       </div>
     )
   }
 }
 
 CCKitchen.propTypes = {
-  showBar: PropTypes.func
+  showBar: PropTypes.func,
+  producePicked: PropTypes.string
 }
 
 export default CCKitchen

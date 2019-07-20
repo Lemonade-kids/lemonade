@@ -11,9 +11,6 @@ import Help from './Help'
 import PropTypes from 'prop-types'
 
 class GameBoard extends Component {
-  goBack = () => {
-    window.history.back()
-  }
   render() {
     return (
       <div className="Gameboard">
@@ -35,7 +32,6 @@ class GameBoard extends Component {
           />} />
           <Route path='/market' exact render={(props) => <SellingStand {...props}
             grabCrop={this.props.grabCrop}
-            // startSelling={this.props.startSelling}
             readyToSell={this.props.readyToSell}
           />} />
           <Route path='/help' component={Help} />

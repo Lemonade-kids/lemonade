@@ -173,6 +173,7 @@ class App extends React.Component {
                   harvested={this.state.harvested}
                   showBar={this.showBar}
                   startSelling={this.startSelling}
+                  readyToSell={this.state.readyToSell}
                 />} />                
               </Switch>
             </div>

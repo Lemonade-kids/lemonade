@@ -4,6 +4,7 @@ import Sugar from '../../../images/sugar.png'
 import Flour from '../../../images/flour.png'
 import Milk from '../../../images/milk.png'
 import Eggs from '../../../images/eggs.png'
+import PropTypes from 'prop-types'
 
 /** TO DO:
  * validation for numbers only in fields
@@ -71,6 +72,17 @@ class StoreGrid extends Component {
       </div>
     )
   }
+}
+
+StoreGrid.propTypes = {
+  producePicked: PropTypes.string,
+  location: PropTypes.object,
+  grabCrop: PropTypes.func,
+  buyEggs: PropTypes.func,
+  buyFlour: PropTypes.func,
+  buyMilk: PropTypes.func,
+  buySugar: PropTypes.func,
+  addToCart: PropTypes.func
 }
 
 export default StoreGrid
