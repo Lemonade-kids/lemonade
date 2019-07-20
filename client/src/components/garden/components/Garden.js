@@ -5,74 +5,86 @@ import GardenGrid from './GardenGrid'
 
 
 class Garden extends Component {
+  state = {
+    producePicked: ''
+  }
+  componentDidMount() {
+    if (this.props.location && this.props.location.produceProps) {
+      const crop = this.props.location.produceProps.producePicked
+      this.setState({producePicked: crop})
+      this.props.grabCrop(crop)
+    }
+  }
   render() {
-    console.log(this.props.producePicked)
+    // console.log(this.props)
+    const crop = this.props.location.produceProps ? this.props.location.produceProps.producePicked : null
     return (
-      <div className="grid-container garden-grid">
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-        <div className="grid-item grid-item-garden">
-          <GardenGrid
-            producePicked={this.props.producePicked}
-            weeded={this.props.weeded}
-            harvested={this.props.harvested}
-            watered={this.props.watered} />
-        </div>
-      </div>
+      crop !== null ?
+        <div className="grid-container garden-grid">
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+          <div className="grid-item grid-item-garden">
+            <GardenGrid
+              producePicked={crop}
+              weeded={this.props.weeded}
+              harvested={this.props.harvested}
+              watered={this.props.watered} />
+          </div>
+        </div> : <div>Something went wrong.</div>
     )
   }
 }
@@ -81,7 +93,9 @@ Garden.propTypes = {
   producePicked: PropTypes.string,
   harvested: PropTypes.bool,
   weeded: PropTypes.bool,
-  watered: PropTypes.bool
+  watered: PropTypes.bool,
+  location: PropTypes.object,
+  grabCrop: PropTypes.func
 }
 
 export default Garden

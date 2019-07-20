@@ -88,8 +88,17 @@ a {
 
 .btn {
   font-family: 'Love Ya Like A Sister', cursive;
-  margin: 5px;
+  margin: .1em;
   background-color: aliceblue;
+}
+
+.btn-active {
+  font-family: 'Love Ya Like A Sister', cursive;
+  margin: .1em;
+  color: #fff;
+  border-radius: 5px;
+  border: gray 1px solid;
+  background-color: #69bae0;
 }
 
 .Gameboard {
@@ -298,8 +307,9 @@ a {
 .workspace {
   /* height: 20em; */
   position: absolute;
-  top: 40%;
-  right: 10%;
+  top: 4em;
+  right: 1em;
+  width: 100%;
 }
 
 #make { 
@@ -378,17 +388,18 @@ a {
 @-webkit-keyframes kitchen-button {0%  { opacity: 0;} 100%{ opacity: 1;}  }
 
 .oven, .counter {
-  float: right;
+  /* float: right; */
+  display: flex-end;
 }
 
 .oven {
-  width: 90%;
-  /* margin-top: 2em; */
+  width: 70%;
+  margin-top: 2em;
 }
 
 .counter {
   width: 98%;
-  margin-top: -2%;
+  margin-top: -2em;
 }
 
 .rooster {

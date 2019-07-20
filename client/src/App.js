@@ -1,22 +1,16 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+// import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css'
-import { connect } from 'react-redux'
-import Rooster from './images/rooster.png'
-import Garden from './components/garden/components/Garden'
-import SellingStand from './components/market/components/SellingStand'
-import SupplyStore from './components/supplyStore/components/SupplyStore'
-import Kitchen from './components/kitchen/components/Kitchen'
+// import { connect } from 'react-redux'
 import ControlCenter from './components/controlCenter/ControlCenter'
-import StartScreen from './components/StartScreen'
-import LogIn from './components/LogIn'
-import Help from './components/Help'
 import CCGarden from './components/controlCenter/components/CCGarden'
 import CCKitchen from './components/controlCenter/components/CCKitchen'
 import CCMarket from './components/controlCenter/components/CCMarket'
 import CCStore from './components/controlCenter/components/CCStore'
 import water from './images/water.png'
-
+import Header from './components/Header'
+import GameBoard from './components/GameBoard'
 
 class App extends React.Component {
   state = {
@@ -35,26 +29,12 @@ class App extends React.Component {
     milkTotal: 0,
     eggTotal: 0,
     runningTotal: 0,
-    readyToSell: false
+    readyToSell: false,
+    show: true
   }
-  /** pick produce, set state with picked, pass on to props with which one picked
-   * grows in garden, gets made in kitchen, sells-- need to figure out how flow happens, could use react router & window.loc.replace
-   */
-  // pickProduce = (event) => {
-  //   this.setState({
-  //     // producePicked: event.target.dataset.valuename
-  //     producePicked: event.target.value
-  //   })
-  //   console.log(this.state.producePicked)
-  // }
 
   pickProduce = (crop) => {
     this.setState({producePicked: crop})
-  }
-
-  playWithProduce = (event) => {
-    event.preventDefault()
-    console.log(this.state.producePicked)
   }
 
   tendGarden = (event) => {
@@ -86,6 +66,10 @@ class App extends React.Component {
 
   goToMarket = () => {
     window.location.replace('/market')
+  }
+
+  grabCrop = (crop) => {
+    this.setState({producePicked: crop})
   }
 
   calculateTotal = () => {
@@ -124,24 +108,6 @@ class App extends React.Component {
       [e.target.name]: value,
       runningTotal: eggTotal + milkTotal + flourTotal + sugarTotal
     })
-    // let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
-    // this.calculateTotal()
-    // let eggTotal
-    // let milkTotal
-    // let flourTotal
-    // let sugarTotal
-    // this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
-    // this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
-    // this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
-    // this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
-    // let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
-    // this.setState({
-    //   eggTotal,
-    //   milkTotal,
-    //   flourTotal,
-    //   sugarTotal,
-    //   runningTotal
-    // })
     
   }
 
@@ -155,227 +121,47 @@ class App extends React.Component {
     console.log(this.state.runningTotal)
   }
 
-  handleClick = (event) => {
-    let id = event.target.id
-    this.setState({
-      whichComponent: this.showComponent(id),
-      whichCCComponent: this.showCCComponent(id)
-    })
-  }
-
-  // case switch for rendering the right component on the gameboard
-  // showComponent(id) {
-  //   switch (id) {
-  //     case 'garden':
-  //       return <div className="Garden">
-  //         {this.state.watered}
-  //         <Garden />
-  //       </div>
-  //     case 'supply':
-  //       return <SupplyStore />
-  //     case 'stand':
-  //       return <SellingStand />
-  //     case 'kitchen':
-  //       return <div className="Kitchen">
-  //         <Kitchen />
-  //         <KitchenButton />
-  //       </div>
-  //     case 'startover':
-  //       return <div className="StartScreen">
-  //         <div className="start-border">
-  //           <StartScreen />
-  //           <StartScreenButtons />
-  //         </div>
-  //       </div>
-  //     case 'help':
-  //       return <Help />
-  //     case 'start-over':
-  //       return <LogIn
-  //         playWithProduce={this.playWithProduce}
-  //         pickProduce={this.pickProduce} />
-  //     case 'nevermind':
-  //       return <div className="Garden">
-  //         {this.state.watered}
-  //         <Garden />
-  //       </div>
-  //     case 'go-to-market':
-  //       return <SellingStand />
-  //     case 'lets-play':
-  //       return <div className="Garden">
-  //         {this.state.watered}
-  //         <Garden />
-  //       </div>
-  //     default:
-  //       return null
-  //   }
-  // }
-
-  // buttons in control center
-  showCCComponent(id) {
-    switch (id) {
-    case 'garden':
-      return <div className="CCGarden">
-        <CCGarden
-          // onClick={this.tendGarden}
-          playWithProduce={this.playWithProduce}
-          pickProduce={this.pickProduce}
-          producePicked={this.state.producePicked}
-          weeded={this.state.weeded}
-          harvested={this.state.harvested}
-          watered={this.state.watered} />
-      </div>
-    case 'supply' || window.location.pathname.includes('/store'):
-      return <CCStore runningTotal={this.state.runningTotal} />
-    case 'stand' || window.location.pathname.includes('/market'):
-      return <CCMarket />
-    case 'kitchen' || window.location.pathname.includes('/kitchen'):
-      return <CCKitchen showBar={this.showBar} />
-    case 'go-to-market' || window.location.pathname.includes('/market'):
-      return <CCMarket />
-    case 'nevermind':
-      return <div className="CCGarden">
-        <CCGarden onClick={this.tendGarden} />
-      </div>
-    default:
-      if (window.location.pathname.includes('/market')) {
-        return <CCMarket />
-      }
-      if (window.location.pathname.includes('/store')) {
-        return <CCStore />
-      }
-      if (window.location.pathname.includes('/kitchen')) {
-        return <CCKitchen showBar={this.showBar} />
-      }
-    }
-  }
-
   render() {
-    const { buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
-      milkTotal,
-      flourTotal,
-      sugarTotal,
-      runningTotal } = this.state
-    console.log(buyEggs, buySugar, buyFlour, buyMilk)
-    console.log('eggTotal', typeof eggTotal)
-    console.log('milkTotal', milkTotal)
-    console.log('flourTotal', typeof flourTotal)
-    console.log('sugarTotal', sugarTotal)
-    console.log('runningTotal', runningTotal)
+    const { 
+      // buyEggs, buySugar, buyFlour, buyMilk, eggTotal,
+      // milkTotal,
+      // flourTotal,
+      // sugarTotal,
+      // runningTotal,
+      producePicked } = this.state
+    // console.log(buyEggs, buySugar, buyFlour, buyMilk)
+    // console.log('eggTotal', typeof eggTotal)
+    // console.log('milkTotal', milkTotal)
+    // console.log('flourTotal', typeof flourTotal)
+    // console.log('sugarTotal', sugarTotal)
+    // console.log('runningTotal', runningTotal)
+    console.log('vkhgvkgvk', producePicked, this.props)
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">
-            <img src={Rooster}
-              alt="rooster logo"
-              width="70px"
-              className="rooster" />CFK Market Stand</h1>
-        </header>
-        <ul className="nav justify-content-center">
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/start-over'
-              id="startover"
-              onClick={this.handleClick}>Start Over</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/garden'
-              id="garden"
-              onClick={this.handleClick}>Garden</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/store'
-              id="supply"
-              onClick={this.handleClick}>Supply Store</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/kitchen'
-              id="kitchen"
-              onClick={this.handleClick}>Kitchen</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/market'
-              id="stand"
-              onClick={this.handleClick}>Market</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link"
-              href='/help'
-              id="help"
-              onClick={this.handleClick}>Help</a>
-          </li>
-        </ul>
+        <Header producePicked={producePicked} />
         <div className="container">
           <div className="row">
             <div className="col-sm-3 Control-Center">
-              <ControlCenter />
-              {/* {this.state.whichCCComponent} */}
-              <BrowserRouter basename={process.env.PUBLIC_URL}>
-                <Switch>
-                  {/* <Route path="/" exact component={LogIn} /> */}
-                  {/* <Route path="/start-over" exact component={StartScreen} /> */}
-                  <Route path="/garden" exact render={(props) => <CCGarden {...props}
-                    playWithProduce={this.playWithProduce}
-                    pickProduce={this.pickProduce}
-                    producePicked={this.state.producePicked}
-                    onClick={this.tendGarden}
-                  />} />
-                  <Route path='/store' exact render={(props) => <CCStore {...props}
-                    runningTotal={this.state.runningTotal}
-                    makePurchase={this.makePurchase}
-                  />} />
-                  <Route path="/kitchen" exact render={(props) => <CCKitchen {...props}
-                    selectedProduce={this.state.producePicked}
-                    showBar={this.showBar}
-                  // playWithProduce={this.playWithProduce}
-                  // pickProduce={this.pickProduce}
-                  />} />
-                  <Route path='/market' exact render={(props) => <CCMarket {...props}
-                    readyToSell={this.state.readyToSell}
-                    startSelling={this.startSelling} 
-                  />} />
-                  {/* <Route path='/help' exact component={Help} /> */}
-                </Switch>
-              </BrowserRouter>
+              <ControlCenter producePicked={producePicked} />
+              <Switch>
+                <Route path='/garden' exact render={(props) => <CCGarden {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                />} />
+                <Route path='/store' component={CCStore} />
+                <Route path='/kitchen' component={CCKitchen} />
+                <Route path='/market' component={CCMarket} />
+              </Switch>
             </div>
             <div className="col-sm-9">
-              <div className="Gameboard">
-                {/* {this.showComponent} */}
-                <BrowserRouter basename={process.env.PUBLIC_URL}>
-                  <Switch>
-                    <Route path="/" exact render={(props) => <LogIn {...props}
-                      playWithProduce={this.playWithProduce}
-                      pickProduce={this.pickProduce}
-                    />} />
-                    <Route path="/start-over" exact component={StartScreen} />
-                    <Route path="/garden" exact render={(props) => <Garden {...props}
-                      playWithProduce={this.playWithProduce}
-                      pickProduce={this.pickProduce}
-                      producePicked={this.state.producePicked}
-                      weeded={this.state.weeded}
-                      harvested={this.state.harvested}
-                      watered={this.state.watered}
-                    />} />
-                    <Route path='/store' exact render={(props) => <SupplyStore {...props}
-                      buySugar={this.state.buySugar}
-                      buyFlour={this.state.buyFlour}
-                      buyMilk={this.state.buyMilk}
-                      buyEggs={this.state.buyEggs}
-                      addToCart={this.addToCart}
-                    />} />
-                    <Route path="/kitchen" exact render={(props) => <Kitchen {...props}
-                      producePicked={this.props.producePicked}
-                      bakeBtn={this.state.bakeBtn}
-                      goToMarket={this.goToMarket}
-                    />} />
-                    <Route path='/market' exact component={SellingStand} />
-                    <Route path='/help' exact component={Help} />
-                  </Switch>
-                </BrowserRouter>
-              </div>
+              <GameBoard 
+                grabCrop={this.grabCrop} 
+                watered={this.state.watered}
+                weeded={this.state.weeded}
+                harvested={this.state.harvested} />
             </div>
           </div>
         </div>
@@ -387,24 +173,24 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    producePicked: state.producePicked
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     producePicked: state.producePicked
+//   }
+// }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    chooseProduce: (seed) => {
-      dispatch({
-        type: 'SAVECHOICE',
-        payload: seed
-      })
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     chooseProduce: (seed) => {
+//       dispatch({
+//         type: 'SAVECHOICE',
+//         payload: seed
+//       })
+//     }
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+// export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
-// export default App
+export default App

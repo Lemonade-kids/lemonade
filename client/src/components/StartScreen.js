@@ -1,6 +1,7 @@
 import React from 'react'
 import '../App.css'
 import StartScreenButtons from './StartScreenButtons'
+import { withRouter } from 'react-router-dom'
 
 class StartScreen extends React.Component {
   render() {
@@ -14,4 +15,4 @@ class StartScreen extends React.Component {
   }
 }
 
-export default StartScreen
+export default withRouter(StartScreen)
