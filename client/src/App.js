@@ -58,12 +58,14 @@ class App extends React.Component {
     }
     if (id === 'harvestBtn') {
       this.setState({
-        harvested: true
+        harvested: true,
+        watered: false
       })
     }
   }
 
   showBar = () => {
+    console.log('show da bar!')
     this.setState({
       bakeBtn: true
     })
@@ -150,8 +152,23 @@ class App extends React.Component {
                   weeded={this.state.weeded}
                   harvested={this.state.harvested}
                 />} />
-                <Route path='/store' component={CCStore} />
-                <Route path='/kitchen' component={CCKitchen} />
+                <Route path='/store' exact render={(props) => <CCStore {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                />} />
+                {/* <Route path='/store' component={CCStore} /> */}
+                <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
+                  producePicked={producePicked}
+                  tendGarden={this.tendGarden}
+                  watered={this.state.watered}
+                  weeded={this.state.weeded}
+                  harvested={this.state.harvested}
+                  showBar={this.showBar}
+                />} />
+                {/* <Route path='/kitchen' component={CCKitchen} /> */}
                 <Route path='/market' component={CCMarket} />
               </Switch>
             </div>
@@ -160,7 +177,8 @@ class App extends React.Component {
                 grabCrop={this.grabCrop} 
                 watered={this.state.watered}
                 weeded={this.state.weeded}
-                harvested={this.state.harvested} />
+                harvested={this.state.harvested}
+                bakeBtn={this.state.bakeBtn} />
             </div>
           </div>
         </div>

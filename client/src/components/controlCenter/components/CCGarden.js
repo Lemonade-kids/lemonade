@@ -17,14 +17,15 @@ class CCGarden extends React.Component {
   showBtn = () => {
     setTimeout(() => {
       this.setState({buttonReady: true})
-    }, 7000)
+    }, 8000)
   }
   render() {
     return (
       <div className="CCGarden">
-        <button className={ this.props.watered ? 'hideBtn' : 'btn' }
-          data-valuename="waterBtn"
-          onClick={this.props.tendGarden}>Water</button>
+        {this.props.harvested ? null : 
+          <button className={this.props.watered ? 'hideBtn' : 'btn' }
+            data-valuename="waterBtn"
+            onClick={this.props.tendGarden}>Water</button>}
 
         <button className={ this.props.weeded ? 'hideBtn' : 'btn' }
           data-valuename="weedBtn"

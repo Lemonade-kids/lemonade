@@ -31,6 +31,7 @@ class GameBoard extends Component {
           />} />
           <Route path='/kitchen' exact render={(props) => <Kitchen {...props}
             grabCrop={this.props.grabCrop}
+            bakeBtn={this.props.bakeBtn}
           />} />
           <Route path='/market' exact render={(props) => <SellingStand {...props}
             grabCrop={this.props.grabCrop}
@@ -46,7 +47,8 @@ GameBoard.propTypes = {
   grabCrop: PropTypes.func,
   weeded: PropTypes.bool,
   watered: PropTypes.bool,
-  harvested: PropTypes.bool
+  harvested: PropTypes.bool,
+  bakeBtn: PropTypes.bool
 }
 
 export default GameBoard
