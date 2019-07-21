@@ -82,6 +82,7 @@ class App extends React.Component {
   checks on these values in there and returns them back here (putting them in state),
   so any changes get passed throughout other parts of the app */
   grabData = (crop, bank, cropAmount) => {
+    console.log('grab data being hit')
     this.setState({producePicked: crop, bank, cropAmount})
   }
 
@@ -105,23 +106,19 @@ class App extends React.Component {
     return runningTotal
   }
 
-  addToCart = (e) => {
+  addToCart = (buyEggs, buyFlour, buyMilk, buySugar) => {
     let eggTotal
     let milkTotal
     let flourTotal
     let sugarTotal
-    this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
-    this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
-    this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
-    this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
-    console.log('add to cart!')
-    let value = parseInt(e.target.value)
-    value ? value : value = 0
+    buyEggs === '' ? eggTotal = 0 : eggTotal = buyEggs * 1
+    buyMilk === '' ? milkTotal = 0 : milkTotal = buyMilk * 4
+    buyFlour === '' ? flourTotal = 0 : flourTotal = buyFlour * 3
+    buySugar === '' ? sugarTotal = 0 : sugarTotal = buySugar * 6
     this.setState({
-      [e.target.name]: value,
+      buyEggs, buyFlour, buyMilk, buySugar,
       runningTotal: eggTotal + milkTotal + flourTotal + sugarTotal
     })
-    
   }
 
   startSelling = () => {
@@ -153,6 +150,7 @@ class App extends React.Component {
       bakeBtn,
       bank,
       cropAmount } = this.state
+    console.log(runningTotal)
     return (
       <div className="App">
         <Header 

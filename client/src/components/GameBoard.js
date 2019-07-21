@@ -16,6 +16,9 @@ class GameBoard extends Component {
       <div className="Gameboard">
         <Switch>
           <Route exact path='/' component={LogIn} />
+          <Route path='/' exact render={(props) => <LogIn {...props}
+            grabData={this.props.grabData}
+          />} />
           <Route path='/garden' exact render={(props) => <Garden {...props}
             grabData={this.props.grabData}
             watered={this.props.watered}

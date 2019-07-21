@@ -17,7 +17,6 @@ class Garden extends Component {
       const cropAmount = this.props.location.produceProps.cropAmount
       this.setState({producePicked: crop, bank, cropAmount})
       this.props.grabData(crop, bank, cropAmount)
-      console.log('from garden', crop, bank, cropAmount)
     }
   }
   render() {
