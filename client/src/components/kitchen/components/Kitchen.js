@@ -24,6 +24,7 @@ class Kitchen extends Component {
     }
   }
   render() {
+    const { producePicked, bank, cropAmount } = this.state
     return (
       <div className='Kitchen'>
         {this.props.bakeBtn ? <LoadingBar /> : null }
@@ -31,9 +32,9 @@ class Kitchen extends Component {
           <NavLink to={{
             pathname: '/market',
             produceProps:{
-              producePicked: this.props.producePicked,
-              bank: this.props.bank,
-              cropAmount: this.props.cropAmount
+              producePicked: producePicked,
+              bank: bank,
+              cropAmount: cropAmount
             }
           }}>
             <KitchenButton />

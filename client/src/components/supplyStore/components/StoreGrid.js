@@ -14,6 +14,54 @@ import PropTypes from 'prop-types'
  */
 
 class StoreGrid extends Component {
+  state = {
+    buyEggs: '',
+    buyFlour: '',
+    buyMilk: '',
+    buySugar: ''
+  }
+
+  componentDidMount() {
+    const newState = {
+      buyEggs: 0,
+      buyFlour: 0,
+      buyMilk: 0,
+      buySugar: 0
+    }
+    const { buyEggs, buyFlour, buyMilk, buySugar } = this.props
+    if (buyEggs && buyEggs > 0) {
+      newState.buyEggs = buyEggs
+    }
+    if (buyFlour && buyFlour > 0) {
+      newState.buyFlour = buyFlour
+    }
+    if (buyMilk && buyMilk > 0) {
+      newState.buyMilk = buyMilk
+    }
+    if (buySugar && buySugar > 0) {
+      newState.buySugar = buySugar
+    }
+    this.setState({newState})
+  }
+
+  addToCart = (e) => {
+    let { buyEggs, buyFlour, buyMilk, buySugar } = this.props
+    // regex to accept value only if it is a number
+    let value = /^[0-9]+$/.test(e.target.value) ? e.target.value : 0
+    if (e.target.name === 'buyEggs') {
+      buyEggs = value
+    }
+    if (e.target.name === 'buyFlour') {
+      buyFlour = value
+    }
+    if (e.target.name === 'buyMilk') {
+      buyMilk = value
+    }
+    if (e.target.name === 'buySugar') {
+      buySugar = value
+    }
+    this.props.addToCart(buyEggs, buyFlour, buyMilk, buySugar)
+  }
   render() {
     return (
       <div className="StoreGrid">
@@ -28,7 +76,7 @@ class StoreGrid extends Component {
               placeholder="0"
               name='buySugar'
               value={this.props.buySugar}
-              onChange={this.props.addToCart} />
+              onChange={this.addToCart} />
           </div>
           <div className="grid-item-store">
             <img src={Flour} alt="flour" className="flour" />
@@ -40,7 +88,7 @@ class StoreGrid extends Component {
               placeholder="0"
               name='buyFlour'
               value={this.props.buyFlour}
-              onChange={this.props.addToCart} />
+              onChange={this.addToCart} />
           </div>
           <div className="grid-item-store">
             <img src={Milk} alt="milk" className="milk" />
@@ -52,7 +100,7 @@ class StoreGrid extends Component {
               placeholder="0"
               name='buyMilk'
               value={this.props.buyMilk}
-              onChange={this.props.addToCart} />
+              onChange={this.addToCart} />
 
           </div>
           <div className="grid-item-store">
@@ -65,7 +113,7 @@ class StoreGrid extends Component {
               placeholder="0"
               name='buyEggs'
               value={this.props.buyEggs}
-              onChange={this.props.addToCart} />
+              onChange={this.addToCart} />
           </div>
         </div>
 

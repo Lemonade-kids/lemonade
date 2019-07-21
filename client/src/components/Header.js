@@ -10,7 +10,6 @@ class Header extends Component {
 //   }
   render() {
     const { producePicked, bank, cropAmount } = this.props
-    console.log(this.props)
     return (
       <div>
         <header className="App-header">

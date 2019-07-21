@@ -5,9 +5,6 @@ import { NavLink } from 'react-router-dom'
 // import StoreGrid from '../StoreGrid';
 
 class CCStore extends Component {
-  // runningTotal() {
-  //   this.props.grabTotal(this.state.purchase)
-  // }
   render() {
     const { runningTotal } = this.props
     return (

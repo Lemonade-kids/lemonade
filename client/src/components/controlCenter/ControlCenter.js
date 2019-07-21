@@ -7,7 +7,6 @@ import PropTypes from 'prop-types'
 class ControlCenter extends Component {
   render() {
     const { producePicked, bank, cropAmount } = this.props
-    console.log('does this match garden?', producePicked, bank, cropAmount)
     return (
       <div className="ControlCenter">
 
