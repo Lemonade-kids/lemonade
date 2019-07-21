@@ -57,10 +57,10 @@ GameBoard.propTypes = {
   bakeBtn: PropTypes.bool,
   startSelling: PropTypes.func,
   readyToSell: PropTypes.bool,
-  buyEggs: PropTypes.number || PropTypes.string,
-  buyFlour: PropTypes.number || PropTypes.string,
-  buyMilk: PropTypes.number || PropTypes.string,
-  buySugar: PropTypes.number || PropTypes.string,
+  buyEggs: PropTypes.any,
+  buyFlour: PropTypes.any,
+  buyMilk: PropTypes.any,
+  buySugar: PropTypes.any,
   addToCart: PropTypes.func
 }
 
