@@ -39,13 +39,11 @@ class LogIn extends React.Component {
   }
 
   componentDidMount() {
-    console.log(!this.props.location, !this.props.location.produceProps)
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank
       const cropAmount = this.props.location.produceProps.cropAmount
       this.setState({producePicked: crop, bank, cropAmount})
-      console.log(crop, bank, cropAmount)
       try {
         this.sendPropsUp(crop, bank, cropAmount)
       } catch (e) {

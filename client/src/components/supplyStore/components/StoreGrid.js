@@ -126,10 +126,10 @@ StoreGrid.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
   grabData: PropTypes.func,
-  buyEggs: PropTypes.number,
-  buyFlour: PropTypes.number,
-  buyMilk: PropTypes.number,
-  buySugar: PropTypes.number,
+  buyEggs: PropTypes.any,
+  buyFlour: PropTypes.any,
+  buyMilk: PropTypes.any,
+  buySugar: PropTypes.any,
   addToCart: PropTypes.func
 }
 

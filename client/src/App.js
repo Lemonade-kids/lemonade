@@ -11,6 +11,7 @@ import CCStore from './components/controlCenter/components/CCStore'
 import water from './images/water.png'
 import Header from './components/Header'
 import GameBoard from './components/GameBoard'
+import Modal from './components/modal'
 
 class App extends React.Component {
   state = {
@@ -33,7 +34,8 @@ class App extends React.Component {
     marketBtn: false,
     bank: 50,
     products: 0,
-    cropAmount: 0
+    cropAmount: 0,
+    modalOpen: false
   }
 
   pickProduce = (crop) => {
@@ -48,7 +50,6 @@ class App extends React.Component {
   tendGarden = (event) => {
     let id = event.target.dataset.valuename
     if (id === 'waterBtn') {
-      console.log('watered')
       this.setState({
         watered: true
       })
@@ -82,28 +83,7 @@ class App extends React.Component {
   checks on these values in there and returns them back here (putting them in state),
   so any changes get passed throughout other parts of the app */
   grabData = (crop, bank, cropAmount) => {
-    console.log('grab data being hit')
     this.setState({producePicked: crop, bank, cropAmount})
-  }
-
-  calculateTotal = () => {
-    let eggTotal
-    let milkTotal
-    let flourTotal
-    let sugarTotal
-    this.state.buyEggs === '' ? eggTotal = 0 : eggTotal = this.state.buyEggs
-    this.state.buyMilk === '' ? milkTotal = 0 : milkTotal = this.state.buyMilk * 4
-    this.state.buyFlour === '' ? flourTotal = 0 : flourTotal = this.state.buyFlour * 3
-    this.state.buySugar === '' ? sugarTotal = 0 : sugarTotal = this.state.buySugar * 6
-    let runningTotal = eggTotal + milkTotal + flourTotal + sugarTotal
-    this.setState({
-      eggTotal,
-      milkTotal,
-      flourTotal,
-      sugarTotal
-      // runningTotal
-    })
-    return runningTotal
   }
 
   addToCart = (buyEggs, buyFlour, buyMilk, buySugar) => {
@@ -128,7 +108,27 @@ class App extends React.Component {
   }
 
   makePurchase = () => {
-    console.log(this.state.runningTotal)
+    const newBank = this.state.bank - this.state.runningTotal
+    if (newBank >= 0) {
+      this.setState({
+        bank: newBank, 
+        buyEggs: 0,
+        buyFlour: 0,
+        buyMilk: 0,
+        buySugar: 0,
+        runningTotal: 0
+      })
+    } else {
+      this.setState({modalOpen: true})
+    }
+  }
+
+  openModal = () => {
+    this.setState({modalOpen: true})
+  }
+
+  closeModal = () => {
+    this.setState({modalOpen: false})
   }
 
   render() {
@@ -149,10 +149,15 @@ class App extends React.Component {
       readyToSell,
       bakeBtn,
       bank,
-      cropAmount } = this.state
-    console.log(runningTotal)
+      cropAmount,
+      modalOpen } = this.state
     return (
       <div className="App">
+        {modalOpen ? 
+          <Modal 
+            message={'Oops! Looks like this purchase costs more than you have!  Please adjust your amounts and try again.'} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
         <Header 
           producePicked={producePicked}
           bank={bank}
@@ -191,6 +196,7 @@ class App extends React.Component {
                   runningTotal={runningTotal}
                   bank={bank}
                   cropAmount={cropAmount}
+                  makePurchase={this.makePurchase}
                 />} />
                 <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
                   producePicked={producePicked}
