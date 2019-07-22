@@ -24,7 +24,11 @@ class StartScreenButtons extends Component {
             {'Yes, I\'m sure!'}
           </button>
         </NavLink>
-        <button className='btn' id="nevermind" onClick={this.goBack}>Nevermind.</button>
+        <button 
+          className='btn' 
+          onClick={this.goBack}>
+          {'Nevermind.'}
+        </button>
       </div>
     )
   }
