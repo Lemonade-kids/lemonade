@@ -11,6 +11,7 @@ import CCStore from './components/controlCenter/components/CCStore'
 import water from './images/water.png'
 import Header from './components/Header'
 import GameBoard from './components/GameBoard'
+import Modal from './components/modal'
 
 class App extends React.Component {
   state = {
@@ -33,7 +34,8 @@ class App extends React.Component {
     marketBtn: false,
     bank: 50,
     products: 0,
-    cropAmount: 0
+    cropAmount: 0,
+    modalOpen: false
   }
 
   pickProduce = (crop) => {
@@ -48,7 +50,6 @@ class App extends React.Component {
   tendGarden = (event) => {
     let id = event.target.dataset.valuename
     if (id === 'waterBtn') {
-      console.log('watered')
       this.setState({
         watered: true
       })
@@ -107,16 +108,27 @@ class App extends React.Component {
   }
 
   makePurchase = () => {
-    console.log(this.state.runningTotal)
     const newBank = this.state.bank - this.state.runningTotal
-    this.setState({
-      bank: newBank, 
-      buyEggs: 0,
-      buyFlour: 0,
-      buyMilk: 0,
-      buySugar: 0,
-      runningTotal: 0
-    })
+    if (newBank >= 0) {
+      this.setState({
+        bank: newBank, 
+        buyEggs: 0,
+        buyFlour: 0,
+        buyMilk: 0,
+        buySugar: 0,
+        runningTotal: 0
+      })
+    } else {
+      this.setState({modalOpen: true})
+    }
+  }
+
+  openModal = () => {
+    this.setState({modalOpen: true})
+  }
+
+  closeModal = () => {
+    this.setState({modalOpen: false})
   }
 
   render() {
@@ -137,9 +149,15 @@ class App extends React.Component {
       readyToSell,
       bakeBtn,
       bank,
-      cropAmount } = this.state
+      cropAmount,
+      modalOpen } = this.state
     return (
       <div className="App">
+        {modalOpen ? 
+          <Modal 
+            message={'Oops! Looks like this purchase costs more than you have!  Please adjust your amounts and try again.'} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
         <Header 
           producePicked={producePicked}
           bank={bank}
