@@ -21,10 +21,10 @@ class App extends React.Component {
     weeded: false,
     harvested: false,
     bakeBtn: false,
-    buySugar: '',
-    buyFlour: '',
-    buyMilk: '',
-    buyEggs: '',
+    buySugar: 0,
+    buyFlour: 0,
+    buyMilk: 0,
+    buyEggs: 0,
     sugarTotal: 0,
     flourTotal: 0,
     milkTotal: 0,
@@ -35,7 +35,11 @@ class App extends React.Component {
     bank: 50,
     products: 0,
     cropAmount: 0,
-    modalOpen: false
+    modalOpen: false,
+    eggInventory: 0,
+    flourInventory: 0,
+    milkInventory: 0,
+    sugarInventory: 0
   }
 
   pickProduce = (crop) => {
@@ -87,14 +91,15 @@ class App extends React.Component {
   }
 
   addToCart = (buyEggs, buyFlour, buyMilk, buySugar) => {
+    console.log(typeof buyEggs, typeof buyFlour, typeof buyMilk, typeof buySugar)
     let eggTotal
     let milkTotal
     let flourTotal
     let sugarTotal
-    buyEggs === '' ? eggTotal = 0 : eggTotal = buyEggs * 1
-    buyMilk === '' ? milkTotal = 0 : milkTotal = buyMilk * 4
-    buyFlour === '' ? flourTotal = 0 : flourTotal = buyFlour * 3
-    buySugar === '' ? sugarTotal = 0 : sugarTotal = buySugar * 6
+    buyEggs > 0 ? eggTotal = buyEggs * 1 : eggTotal = 0
+    buyMilk > 0 ? milkTotal = buyMilk * 4 : milkTotal = 0
+    buyFlour > 0 ? flourTotal = buyFlour * 3 : flourTotal = 0
+    buySugar > 0 ? sugarTotal = buySugar * 6 : sugarTotal = 0
     this.setState({
       buyEggs, buyFlour, buyMilk, buySugar,
       runningTotal: eggTotal + milkTotal + flourTotal + sugarTotal
@@ -109,6 +114,10 @@ class App extends React.Component {
 
   makePurchase = () => {
     const newBank = this.state.bank - this.state.runningTotal
+    const eggInventory = this.state.buyEggs + this.state.eggInventory
+    const flourInventory = this.state.buyFlour + this.state.flourInventory
+    const milkInventory = this.state.buyMilk + this.state.milkInventory
+    const sugarInventory = this.state.buySugar + this.state.sugarInventory
     if (newBank >= 0) {
       this.setState({
         bank: newBank, 
@@ -116,7 +125,11 @@ class App extends React.Component {
         buyFlour: 0,
         buyMilk: 0,
         buySugar: 0,
-        runningTotal: 0
+        runningTotal: 0,
+        eggInventory,
+        flourInventory,
+        milkInventory,
+        sugarInventory
       })
     } else {
       this.setState({modalOpen: true})
@@ -150,7 +163,11 @@ class App extends React.Component {
       bakeBtn,
       bank,
       cropAmount,
-      modalOpen } = this.state
+      modalOpen,
+      eggInventory,
+      flourInventory,
+      milkInventory,
+      sugarInventory } = this.state
     return (
       <div className="App">
         {modalOpen ? 
@@ -168,7 +185,11 @@ class App extends React.Component {
               <ControlCenter 
                 producePicked={producePicked} 
                 bank={bank} 
-                cropAmount={cropAmount} />
+                cropAmount={cropAmount}
+                eggs={eggInventory}
+                flour={flourInventory}
+                milk={milkInventory}
+                sugar={sugarInventory} />
               <Switch>
                 <Route path='/garden' exact render={(props) => <CCGarden {...props}
                   producePicked={producePicked}

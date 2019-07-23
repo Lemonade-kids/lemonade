@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 class ControlCenter extends Component {
   render() {
-    const { producePicked, bank, cropAmount } = this.props
+    const { producePicked, bank, cropAmount, eggs, flour, milk, sugar } = this.props
     return (
       <div className="ControlCenter">
 
@@ -17,10 +17,13 @@ class ControlCenter extends Component {
         {producePicked ? 
           <p>{producePicked}: {cropAmount ? cropAmount : 0}</p>
           : null}
-        {/* <p>Lemons: {this.props.lem}</p>
-        <p>Sugar: {this.props.sug } cups</p>
-        <p>Product: {this.props.prod} </p> */}
-
+        <p>Supplies</p>
+        <div className='inventoryBox'>
+          <p>Eggs: {eggs}</p>
+          <p>Flour: {flour} cups</p>
+          <p>Milk: {milk} cups</p>
+          <p>Sugar: {sugar} cups</p>
+        </div>
         <div className="dropdown-divider"></div>
 
         <p className="ctrl-title">Bank: {bank ? 
@@ -39,7 +42,11 @@ ControlCenter.propTypes = {
   products: PropTypes.number,
   cropAmount: PropTypes.number,
   bank: PropTypes.number,
-  producePicked: PropTypes.string
+  producePicked: PropTypes.string,
+  eggs: PropTypes.number,
+  flour: PropTypes.number,
+  milk: PropTypes.number,
+  sugar: PropTypes.number
 }
 
 // const mapStateToProps = state => {

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import '../../../App.css'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-// import StoreGrid from '../StoreGrid';
 
 class CCStore extends Component {
   render() {

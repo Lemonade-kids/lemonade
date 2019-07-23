@@ -6,19 +6,12 @@ import Milk from '../../../images/milk.png'
 import Eggs from '../../../images/eggs.png'
 import PropTypes from 'prop-types'
 
-/** TO DO:
- * validation for numbers only in fields
- * put inputs in state (app.js)
- * func to calculate - redux or app.js state?
- * 
- */
-
 class StoreGrid extends Component {
   state = {
-    buyEggs: '',
-    buyFlour: '',
-    buyMilk: '',
-    buySugar: ''
+    buyEggs: 0,
+    buyFlour: 0,
+    buyMilk: 0,
+    buySugar: 0
   }
 
   componentDidMount() {
@@ -49,16 +42,16 @@ class StoreGrid extends Component {
     // regex to accept value only if it is a number
     let value = /^[0-9]+$/.test(e.target.value) ? e.target.value : 0
     if (e.target.name === 'buyEggs') {
-      buyEggs = value
+      buyEggs = parseInt(value)
     }
     if (e.target.name === 'buyFlour') {
-      buyFlour = value
+      buyFlour = parseInt(value)
     }
     if (e.target.name === 'buyMilk') {
-      buyMilk = value
+      buyMilk = parseInt(value)
     }
     if (e.target.name === 'buySugar') {
-      buySugar = value
+      buySugar = parseInt(value)
     }
     this.props.addToCart(buyEggs, buyFlour, buyMilk, buySugar)
   }
@@ -101,7 +94,6 @@ class StoreGrid extends Component {
               name='buyMilk'
               value={this.props.buyMilk}
               onChange={this.addToCart} />
-
           </div>
           <div className="grid-item-store">
             <img src={Eggs} alt="eggs" className="eggs" />
@@ -116,7 +108,6 @@ class StoreGrid extends Component {
               onChange={this.addToCart} />
           </div>
         </div>
-
       </div>
     )
   }
