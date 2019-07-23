@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 class CCKitchen extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="CCKitchen">
         <button 

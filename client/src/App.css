@@ -77,6 +77,11 @@ p {
   background-color: silver;
 }
 
+.inventoryBox {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
 .form-control {
   align-self: right;
   text-align: center;

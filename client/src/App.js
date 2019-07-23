@@ -114,7 +114,7 @@ class App extends React.Component {
 
   makePurchase = () => {
     const newBank = this.state.bank - this.state.runningTotal
-    const eggInventory = this.state.buyEggs + this.state.eggsInventory
+    const eggInventory = this.state.buyEggs + this.state.eggInventory
     const flourInventory = this.state.buyFlour + this.state.flourInventory
     const milkInventory = this.state.buyMilk + this.state.milkInventory
     const sugarInventory = this.state.buySugar + this.state.sugarInventory

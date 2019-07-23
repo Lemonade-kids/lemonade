@@ -18,11 +18,12 @@ class ControlCenter extends Component {
           <p>{producePicked}: {cropAmount ? cropAmount : 0}</p>
           : null}
         <p>Supplies</p>
-        <p>Eggs: {eggs}</p>
-        <p>Flour: {flour} cups</p>
-        <p>Milk: {milk} cups</p>
-        <p>Sugar: {sugar} cups</p>
-
+        <div className='inventoryBox'>
+          <p>Eggs: {eggs}</p>
+          <p>Flour: {flour} cups</p>
+          <p>Milk: {milk} cups</p>
+          <p>Sugar: {sugar} cups</p>
+        </div>
         <div className="dropdown-divider"></div>
 
         <p className="ctrl-title">Bank: {bank ? 
