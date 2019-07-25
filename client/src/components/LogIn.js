@@ -34,20 +34,21 @@ class LogIn extends React.Component {
     })
   }
 
-  sendPropsUp = (crop, bank, cropAmount) => {
-    this.props.grabData(crop, bank, cropAmount)
+  sendPropsUp = () => {
+    this.props.restart()
   }
 
   componentDidMount() {
+    console.log(this.props.location)
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank
       const cropAmount = this.props.location.produceProps.cropAmount
       this.setState({producePicked: crop, bank, cropAmount})
       try {
-        this.sendPropsUp(crop, bank, cropAmount)
+        this.sendPropsUp(this.state)
       } catch (e) {
-        console.log(e, e.message, 'error with grabData func')
+        console.log(e, e.message, 'error')
       }
     }
   }
@@ -147,7 +148,7 @@ class LogIn extends React.Component {
 
 LogIn.propTypes = {
   pickProduce: PropTypes.func,
-  grabData: PropTypes.func,
+  restart: PropTypes.func,
   location: PropTypes.object,
 }
 
