@@ -74,9 +74,41 @@ class App extends React.Component {
   }
 
   showBar = () => {
-    this.setState({
-      bakeBtn: true
-    })
+    let { eggInventory, flourInventory,
+      milkInventory, sugarInventory} = this.state
+    if (this.state.producePicked === 'Lemon') {
+      sugarInventory -= 5
+      this.setState({
+        bakeBtn: true,
+        sugarInventory
+      })
+    }
+    if (this.state.producePicked === 'Blueberry') {
+      eggInventory -= 2
+      milkInventory -= 1
+      flourInventory -= 1
+      sugarInventory -= 2
+      this.setState({
+        bakeBtn: true,
+        eggInventory,
+        flourInventory,
+        milkInventory,
+        sugarInventory
+      })
+    }
+    if (this.state.producePicked === 'Squash') {
+      eggInventory -= 2
+      milkInventory -= 1
+      flourInventory -= 1
+      sugarInventory -= 1
+      this.setState({
+        bakeBtn: true,
+        eggInventory,
+        flourInventory,
+        milkInventory,
+        sugarInventory
+      })
+    }
   }
 
   showGoToMarketBtn = () => {

@@ -11,7 +11,7 @@ class CCKitchen extends Component {
           onClick={this.props.showBar}>
           {this.props.producePicked === 'Lemon' 
             ? 'Prepare the Lemonade!' : this.props.producePicked === 'Blueberry' 
-              ? 'Bake the Blueberry Muffins!' : 'Bake the Squash Bread!'}</button>
+              ? 'Bake the Muffins!' : 'Bake the Squash Bread!'}</button>
       </div>
     )
   }
