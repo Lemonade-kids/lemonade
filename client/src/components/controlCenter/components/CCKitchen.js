@@ -10,7 +10,8 @@ class CCKitchen extends Component {
           className="btn"
           onClick={this.props.showBar}>
           {this.props.producePicked === 'Lemon' 
-            ? 'Prepare the Lemonade!' : 'Bake'}</button>
+            ? 'Prepare the Lemonade!' : this.props.producePicked === 'Blueberry' 
+              ? 'Bake the Blueberry Muffins!' : 'Bake the Squash Bread!'}</button>
       </div>
     )
   }
