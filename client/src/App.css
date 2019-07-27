@@ -19,7 +19,7 @@ footer {
   top: 50%;
   left: 50%;
   max-width: 25em;
-  max-height: 15em;
+  max-height: fit-content;
   transform: translate(-30%, -30%);
   display: inline;
   background-color: aliceblue;
@@ -101,6 +101,12 @@ input:focus {
   color: #fff;
 }
 
+.ingredients {
+  color: lightskyblue;
+  font-family: 'Love Ya Like A Sister', cursive;
+  cursor: pointer;
+}
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;
@@ -115,6 +121,10 @@ a {
   font-family: 'Love Ya Like A Sister', cursive;
   margin: .1em;
   background-color: aliceblue;
+}
+
+.modalBtn {
+  margin: 1em .1em;
 }
 
 .btn-active {
@@ -304,6 +314,10 @@ a {
   background-color: rgba(49, 34, 6, 0.8);
   background-image: url('./images/dirt.png');
   background-size: cover;
+}
+
+.none {
+  display: none;
 }
 
 .grid-item-store {
@@ -665,4 +679,32 @@ a {
   background-color: rgb(80, 133, 177);
   border: 6px solid black;
   border-radius: 30px;
+}
+
+@media only screen and (max-width: 1001px) {
+  .grid-item-store {
+    height: 11em;
+    width: 15em;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: auto;
+  }
+  .grid-item-store {
+    height: 8em;
+    width: 10em;
+  }
+  .eggs {
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: -1%;
+  }
+}
+@media only screen and (max-width: 501px) {
+  .grid-container-store {
+    display: grid;
+    grid-template-columns: auto;
+  }
 }

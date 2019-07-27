@@ -11,7 +11,7 @@ class Modal extends Component {
           {this.props.message}
         </div>
         <button
-          className="btn btn-outline-secondary"
+          className="btn btn-outline-secondary modalBtn"
           onClick={this.props.closeModal}>
           {this.props.confirm}
         </button>

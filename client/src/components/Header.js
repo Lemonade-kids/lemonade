@@ -22,7 +22,8 @@ class Header extends Component {
         <NavBar 
           producePicked={producePicked}
           bank={bank}
-          cropAmount={cropAmount} />
+          cropAmount={cropAmount}
+          openModal={this.props.openModal} />
       </div>
     )
   }
@@ -31,7 +32,8 @@ class Header extends Component {
 Header.propTypes = {
   producePicked: PropTypes.string,
   bank: PropTypes.number,
-  cropAmount: PropTypes.number
+  cropAmount: PropTypes.number,
+  openModal: PropTypes.func
 }
 
 export default Header
