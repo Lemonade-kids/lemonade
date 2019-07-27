@@ -35,11 +35,12 @@ class App extends React.Component {
     bank: 50,
     products: 0,
     cropAmount: 0,
-    modalOpen: false,
+    storeModalOpen: false,
+    kitchenModalOpen: false,
     eggInventory: 0,
     flourInventory: 0,
     milkInventory: 0,
-    sugarInventory: 0
+    sugarInventory: 0,
   }
 
   pickProduce = (crop) => {
@@ -73,41 +74,56 @@ class App extends React.Component {
     }
   }
 
+  // function to show loading bar in kitchen and "make" the product
   showBar = () => {
     let { eggInventory, flourInventory,
       milkInventory, sugarInventory} = this.state
     if (this.state.producePicked === 'Lemon') {
       sugarInventory -= 5
-      this.setState({
-        bakeBtn: true,
-        sugarInventory
-      })
+      if (sugarInventory > 0) {
+        this.setState({
+          bakeBtn: true,
+          sugarInventory
+        })
+      } else {
+        this.setState({kitchenModalOpen: true, modal: 'kitchen'})
+      }
     }
     if (this.state.producePicked === 'Blueberry') {
       eggInventory -= 2
       milkInventory -= 1
       flourInventory -= 1
       sugarInventory -= 2
-      this.setState({
-        bakeBtn: true,
-        eggInventory,
-        flourInventory,
-        milkInventory,
-        sugarInventory
-      })
+      if (eggInventory > 0 && flourInventory > 0 
+        && milkInventory > 0 && sugarInventory > 0) {
+        this.setState({
+          bakeBtn: true,
+          eggInventory,
+          flourInventory,
+          milkInventory,
+          sugarInventory
+        })
+      } else {
+        this.setState({kitchenModalOpen: true, modal: 'kitchen'})
+      }
     }
     if (this.state.producePicked === 'Squash') {
       eggInventory -= 2
       milkInventory -= 1
       flourInventory -= 1
       sugarInventory -= 1
-      this.setState({
-        bakeBtn: true,
-        eggInventory,
-        flourInventory,
-        milkInventory,
-        sugarInventory
-      })
+      if (eggInventory > 0 && flourInventory > 0 
+        && milkInventory > 0 && sugarInventory > 0) {
+        this.setState({
+          bakeBtn: true,
+          eggInventory,
+          flourInventory,
+          milkInventory,
+          sugarInventory
+        })
+      } else {
+        this.setState({kitchenModalOpen: true, modal: 'kitchen'})
+      }
     }
   }
 
@@ -194,16 +210,18 @@ class App extends React.Component {
         sugarInventory
       })
     } else {
-      this.setState({modalOpen: true})
+      this.setState({storeModalOpen: true, modal: 'store'})
     }
   }
 
   openModal = () => {
-    this.setState({modalOpen: true})
+    const modal = `${this.state.modal}ModalOpen`
+    this.setState({[modal]: true})
   }
 
   closeModal = () => {
-    this.setState({modalOpen: false})
+    const modal = `${this.state.modal}ModalOpen`
+    this.setState({[modal]: false})
   }
 
   render() {
@@ -225,7 +243,8 @@ class App extends React.Component {
       bakeBtn,
       bank,
       cropAmount,
-      modalOpen,
+      storeModalOpen,
+      kitchenModalOpen,
       eggInventory,
       flourInventory,
       milkInventory,
@@ -233,9 +252,14 @@ class App extends React.Component {
     console.log(this.state)
     return (
       <div className="App">
-        {modalOpen ? 
+        {storeModalOpen ? 
           <Modal 
             message={'Oops! Looks like this purchase costs more than you have!  Please adjust your amounts and try again.'} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
+        {kitchenModalOpen ? 
+          <Modal 
+            message={'Oops! Looks like you\'re all out of an important ingredient!'} 
             confirm={'Okay'} 
             closeModal={this.closeModal} /> : null}
         <Header 
