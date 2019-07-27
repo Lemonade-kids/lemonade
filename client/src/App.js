@@ -12,6 +12,7 @@ import water from './images/water.png'
 import Header from './components/Header'
 import GameBoard from './components/GameBoard'
 import Modal from './components/modal'
+import { calculateProductSold, calculateTemperature } from './modules/marketController'
 
 class App extends React.Component {
   state = {
@@ -42,14 +43,19 @@ class App extends React.Component {
     flourInventory: 0,
     milkInventory: 0,
     sugarInventory: 0,
+    product: 0,
+    temperature: ''
   }
 
   pickProduce = (crop) => {
+    let temp = this.getTodaysTemp()
+    console.log(temp, 'temp')
     this.setState({
       producePicked: crop,
       watered: false,
       weeded: false,
       harvested: false,
+      temperature: temp
     })
   }
 
@@ -86,7 +92,8 @@ class App extends React.Component {
         this.setState({
           bakeBtn: true,
           sugarInventory,
-          cropAmount
+          cropAmount,
+          product: 30
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -106,7 +113,8 @@ class App extends React.Component {
           flourInventory,
           milkInventory,
           sugarInventory,
-          cropAmount
+          cropAmount,
+          product: 30
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -126,7 +134,8 @@ class App extends React.Component {
           flourInventory,
           milkInventory,
           sugarInventory,
-          cropAmount
+          cropAmount,
+          product: 30
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -191,9 +200,21 @@ class App extends React.Component {
     })
   }
 
+  getTodaysTemp = () => calculateTemperature()
+
+  calculateProductSold = (product) => calculateProductSold(product)
+
   startSelling = () => {
+    let { bank, product, temperature, producePicked } = this.state
+    bank += 32
+    // product -= 26
+    product = this.calculateProductSold(producePicked)
+    temperature = this.getTodaysTemp()
     this.setState({
-      readyToSell: true
+      readyToSell: true,
+      bank,
+      product,
+      temperature
     })
   }
 
@@ -260,7 +281,9 @@ class App extends React.Component {
       eggInventory,
       flourInventory,
       milkInventory,
-      sugarInventory } = this.state
+      sugarInventory,
+      product,
+      temperature } = this.state
     return (
       <div className="App">
         {storeModalOpen ? 
@@ -299,7 +322,7 @@ class App extends React.Component {
           cropAmount={cropAmount}
           openModal={this.openIngredientsModal} />
         <div className="container">
-          <div className="row">
+          <div className="row app-container">
             <div className="col-sm-3 Control-Center">
               <ControlCenter 
                 producePicked={producePicked} 
@@ -308,7 +331,9 @@ class App extends React.Component {
                 eggs={eggInventory}
                 flour={flourInventory}
                 milk={milkInventory}
-                sugar={sugarInventory} />
+                sugar={sugarInventory}
+                product={product}
+                temperature={temperature} />
               <Switch>
                 <Route path='/garden' exact render={(props) => <CCGarden {...props}
                   producePicked={producePicked}
@@ -347,6 +372,7 @@ class App extends React.Component {
                   showBar={this.showBar}
                   bank={bank}
                   cropAmount={cropAmount}
+                  product={product}
                 />} />
                 <Route path='/market' exact render={(props) => <CCMarket {...props}
                   producePicked={producePicked}
@@ -359,6 +385,7 @@ class App extends React.Component {
                   readyToSell={readyToSell}
                   bank={bank}
                   cropAmount={cropAmount}
+                  product={product}
                 />} />                
               </Switch>
             </div>
@@ -376,7 +403,8 @@ class App extends React.Component {
                 buyEggs={buyEggs}
                 addToCart={this.addToCart}
                 bank={bank}
-                restart={this.restart} />
+                restart={this.restart}
+                product={product} />
             </div>
           </div>
         </div>
