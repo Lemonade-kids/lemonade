@@ -75,7 +75,7 @@ class NavBar extends Component {
             >Market
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink className="nav-link"
               to={{
                 pathname: '/help',
@@ -87,6 +87,9 @@ class NavBar extends Component {
               }}
             >Help
             </NavLink>
+          </li> */}
+          <li className="nav-item">
+            <span className="nav-link ingredients" onClick={this.props.openModal}>What ingredients do I need?</span>
           </li>
         </ul>
       </div>
@@ -98,7 +101,8 @@ NavBar.propTypes = {
   producePicked: PropTypes.string,
   harvested: PropTypes.bool,
   bank: PropTypes.number,
-  cropAmount: PropTypes.number
+  cropAmount: PropTypes.number,
+  openModal: PropTypes.func
 }
 
 export default NavBar

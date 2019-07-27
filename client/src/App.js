@@ -37,6 +37,7 @@ class App extends React.Component {
     cropAmount: 0,
     storeModalOpen: false,
     kitchenModalOpen: false,
+    ingredientsModalOpen: false,
     eggInventory: 0,
     flourInventory: 0,
     milkInventory: 0,
@@ -77,49 +78,55 @@ class App extends React.Component {
   // function to show loading bar in kitchen and "make" the product
   showBar = () => {
     let { eggInventory, flourInventory,
-      milkInventory, sugarInventory} = this.state
+      milkInventory, sugarInventory, cropAmount} = this.state
     if (this.state.producePicked === 'Lemon') {
       sugarInventory -= 5
-      if (sugarInventory > 0) {
+      cropAmount -= 15
+      if (cropAmount >= 0 && sugarInventory >= 0) {
         this.setState({
           bakeBtn: true,
-          sugarInventory
+          sugarInventory,
+          cropAmount
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
       }
     }
     if (this.state.producePicked === 'Blueberry') {
+      cropAmount -= 15
       eggInventory -= 2
       milkInventory -= 1
       flourInventory -= 1
       sugarInventory -= 2
-      if (eggInventory > 0 && flourInventory > 0 
-        && milkInventory > 0 && sugarInventory > 0) {
+      if (cropAmount >= 0 && eggInventory >= 0 && flourInventory >= 0 
+        && milkInventory >= 0 && sugarInventory >= 0) {
         this.setState({
           bakeBtn: true,
           eggInventory,
           flourInventory,
           milkInventory,
-          sugarInventory
+          sugarInventory,
+          cropAmount
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
       }
     }
     if (this.state.producePicked === 'Squash') {
+      cropAmount -= 15
       eggInventory -= 2
       milkInventory -= 1
       flourInventory -= 1
       sugarInventory -= 1
-      if (eggInventory > 0 && flourInventory > 0 
-        && milkInventory > 0 && sugarInventory > 0) {
+      if (cropAmount >= 0 && eggInventory >= 0 && flourInventory >= 0 
+        && milkInventory >= 0 && sugarInventory >= 0) {
         this.setState({
           bakeBtn: true,
           eggInventory,
           flourInventory,
           milkInventory,
-          sugarInventory
+          sugarInventory,
+          cropAmount
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -214,9 +221,13 @@ class App extends React.Component {
     }
   }
 
-  openModal = () => {
-    const modal = `${this.state.modal}ModalOpen`
-    this.setState({[modal]: true})
+  openModal = (component) => {
+    const modal = `${component}ModalOpen`
+    this.setState({[modal]: true, modal: [component]})
+  }
+  
+  openIngredientsModal = () => {
+    this.setState({ingredientsModalOpen: true, modal: 'ingredients'})
   }
 
   closeModal = () => {
@@ -245,11 +256,11 @@ class App extends React.Component {
       cropAmount,
       storeModalOpen,
       kitchenModalOpen,
+      ingredientsModalOpen,
       eggInventory,
       flourInventory,
       milkInventory,
       sugarInventory } = this.state
-    console.log(this.state)
     return (
       <div className="App">
         {storeModalOpen ? 
@@ -259,13 +270,34 @@ class App extends React.Component {
             closeModal={this.closeModal} /> : null}
         {kitchenModalOpen ? 
           <Modal 
-            message={'Oops! Looks like you\'re all out of an important ingredient!'} 
+            message={'Oops! Looks like you don\'t have enough of an important ingredient!'} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
+        {ingredientsModalOpen && producePicked === 'Lemon' ?
+          <Modal 
+            message={<div><h3>Lemonade</h3><p>{'You\'ll need 5 cups of sugar and 15 lemons to make enough lemonade to sell!'}</p></div>}
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
+        {ingredientsModalOpen && producePicked === 'Blueberry' ?
+          <Modal 
+            message={<div><h3>Blueberry Muffins</h3><p>{'You\'ll need 2 eggs, 2 cups of sugar, 1 pound of flour, 1 pint of milk, and 15 pounds of blueberries to make enough muffins to sell!'}</p></div>} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
+        {ingredientsModalOpen && producePicked === 'Squash' ?
+          <Modal 
+            message={<div><h3>Squash Bread</h3><p>{'You\'ll need 2 eggs, 1 cup of sugar, 1 pound of flour, 1 pint of milk, and 15 squash to make enough bread to sell!'}</p></div>} 
+            confirm={'Okay'} 
+            closeModal={this.closeModal} /> : null}
+        {ingredientsModalOpen && producePicked === '' ?
+          <Modal 
+            message={'You need to select a crop first before you can get the ingredients for a recipe!'} 
             confirm={'Okay'} 
             closeModal={this.closeModal} /> : null}
         <Header 
           producePicked={producePicked}
           bank={bank}
-          cropAmount={cropAmount} />
+          cropAmount={cropAmount}
+          openModal={this.openIngredientsModal} />
         <div className="container">
           <div className="row">
             <div className="col-sm-3 Control-Center">

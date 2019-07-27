@@ -19,7 +19,7 @@ footer {
   top: 50%;
   left: 50%;
   max-width: 25em;
-  max-height: 15em;
+  max-height: fit-content;
   transform: translate(-30%, -30%);
   display: inline;
   background-color: aliceblue;
@@ -101,6 +101,11 @@ input:focus {
   color: #fff;
 }
 
+.ingredients {
+  color: lightskyblue;
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;
@@ -115,6 +120,10 @@ a {
   font-family: 'Love Ya Like A Sister', cursive;
   margin: .1em;
   background-color: aliceblue;
+}
+
+.modalBtn {
+  margin: 1em .1em;
 }
 
 .btn-active {
