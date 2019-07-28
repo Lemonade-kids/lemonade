@@ -15,9 +15,9 @@ class GameBoard extends Component {
     return (
       <div className="Gameboard">
         <Switch>
-          <Route exact path='/' component={LogIn} />
           <Route path='/' exact render={(props) => <LogIn {...props}
             restart={this.props.restart}
+            getTodaysTemp={this.props.getTodaysTemp}
           />} />
           <Route path='/garden' exact render={(props) => <Garden {...props}
             grabData={this.props.grabData}
@@ -62,7 +62,8 @@ GameBoard.propTypes = {
   buyMilk: PropTypes.any,
   buySugar: PropTypes.any,
   addToCart: PropTypes.func,
-  restart: PropTypes.func
+  restart: PropTypes.func,
+  getTodaysTemp: PropTypes.func
 }
 
 export default GameBoard

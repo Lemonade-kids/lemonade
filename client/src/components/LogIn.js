@@ -17,20 +17,28 @@ class LogIn extends React.Component {
     // gender: 'male',
     producePicked: '',
     bank: 50,
-    cropAmount: 0
+    cropAmount: 0,
+    temperature: 0
   }
 
   // function that wraps another function passed down in props
   // they have the same name because they're working together for the same thing
-  pickProduce = () => {
-    const crop = this.state.producePicked
-    this.props.pickProduce(crop)
-  }
+  // pickProduce = () => {
+  //   const crop = this.state.producePicked
+  //   this.props.pickProduce(crop)
+  // }
 
   handleChoice = (event) => {
     const { name, value } = event.target
+    let temperature = 0
+    try{
+      temperature = this.props.getTodaysTemp()
+    } catch (e) {
+      console.log(e.message)
+    }
     this.setState({
-      [name]: value
+      [name]: value,
+      temperature
     })
   }
 
@@ -39,7 +47,7 @@ class LogIn extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location)
+    console.log(this.props)
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank
@@ -84,7 +92,7 @@ class LogIn extends React.Component {
 
   render() {
     // console.log('produce in start---', this.state.producePicked)
-    console.log('props???', this.props)
+    console.log('temp', this.state.temperature)
     const { producePicked } = this.state
     return (
       <div>
@@ -129,7 +137,8 @@ class LogIn extends React.Component {
               produceProps:{
                 producePicked: this.state.producePicked,
                 bank: this.state.bank,
-                cropAmount: this.state.cropAmount
+                cropAmount: this.state.cropAmount,
+                temperature: this.state.temperature
               }
             }}>
               <button
@@ -150,6 +159,7 @@ LogIn.propTypes = {
   pickProduce: PropTypes.func,
   restart: PropTypes.func,
   location: PropTypes.object,
+  getTodaysTemp: PropTypes.func
 }
 
 // const mapStateToProps = state => {

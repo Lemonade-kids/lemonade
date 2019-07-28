@@ -41,7 +41,8 @@ class CCGarden extends React.Component {
           produceProps:{
             producePicked: this.props.producePicked,
             bank: this.props.bank,
-            cropAmount: this.props.cropAmount
+            cropAmount: this.props.cropAmount,
+            temperature: this.props.temperature
           }
         }}>
           <button className={ this.props.harvested ? 'btn' : 'hideBtn' }
@@ -59,7 +60,8 @@ CCGarden.propTypes = {
   tendGarden: PropTypes.func,
   producePicked: PropTypes.string,
   bank: PropTypes.number,
-  cropAmount: PropTypes.number
+  cropAmount: PropTypes.number,
+  temperature: PropTypes.number
 }
 
 export default CCGarden

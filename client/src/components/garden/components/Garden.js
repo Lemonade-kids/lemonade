@@ -15,8 +15,9 @@ class Garden extends Component {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank
       const cropAmount = this.props.location.produceProps.cropAmount
+      const temperature = this.props.location.produceProps.temperature
       this.setState({producePicked: crop, bank, cropAmount})
-      this.props.grabData(crop, bank, cropAmount)
+      this.props.grabData(crop, bank, cropAmount, temperature)
     }
   }
   render() {
