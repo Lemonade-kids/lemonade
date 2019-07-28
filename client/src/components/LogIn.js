@@ -5,28 +5,15 @@ import PropTypes from 'prop-types'
 import Blueberries from '../images/blueberries.png'
 import Lemons from '../images/lemons.png'
 import Squashes from '../images/squashes.png'
-// import API from '../utils/API'
-// import {connect} from 'react-redux'
-// import { withRouter } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 class LogIn extends React.Component {
   state = {
-    // user: '',
-    // pwd: '',
-    // gender: 'male',
     producePicked: '',
     bank: 50,
     cropAmount: 0,
     temperature: 0
   }
-
-  // function that wraps another function passed down in props
-  // they have the same name because they're working together for the same thing
-  // pickProduce = () => {
-  //   const crop = this.state.producePicked
-  //   this.props.pickProduce(crop)
-  // }
 
   handleChoice = (event) => {
     const { name, value } = event.target
@@ -60,39 +47,7 @@ class LogIn extends React.Component {
       }
     }
   }
-
-  // handleLoginClick = (event) => {
-  //   event.preventDefault()
-  //   API.login(this.state).then(() => {
-  //     console.log('this is wrking')
-  //     //axios.post("login", {user: this.state.username, pwd: this.state.password})
-  //   })
-  //   // todo: check to see if login worked
-  //   this.setState({
-  //     letsPlay: <StartScreen />,
-  //     gender: 'female'
-  //   })
-  // }
-
-  // handleNewUserClick = (event) => {
-  //   event.preventDefault()
-  //   API.newUser(this.state).then(() => {
-  //     console.log('hit thi nw')
-  //     //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
-  //   })
-  //   // todo: check to see if user exists, etc.
-  //   //   this.setState({
-  //   //     letsPlay: <StartScreen/>,
-  //   //     user: document.getElementById('user').value,
-  //   //     pwd: document.getElementById('pwd').value,
-  //   //     gender: 'female'
-  //   //   })
-
-  // }
-
   render() {
-    // console.log('produce in start---', this.state.producePicked)
-    console.log('temp', this.state.temperature)
     const { producePicked } = this.state
     return (
       <div>
@@ -143,12 +98,9 @@ class LogIn extends React.Component {
             }}>
               <button
                 className={producePicked ? 'btn btn-start' : 'btn-disabled'}
-                // onClick={this.pickProduce}
               >{'Let\'s play!'}</button>
             </NavLink>
           </div>
-          {/* </form> */}
-
         </div>
       </div>
     )

@@ -6,10 +6,9 @@ import PropTypes from 'prop-types'
 
 class StartScreen extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <div className='startscreen'>
-        <p className='start'>{`Are you sure you want to start over?
+        <p className='start'>{`Are you sure you want to start completely over?
       You'll lose any progress you've made so far!`}</p>
         <StartScreenButtons />
       </div>

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 class NavBar extends Component {
   render() {
-    const { producePicked, bank, cropAmount } = this.props
+    const { producePicked, bank, cropAmount, temperature } = this.props
     return (
       <div className="navBar">
         <ul className="nav justify-content-center">
@@ -16,7 +16,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
             >{'Start Over'}
@@ -29,7 +30,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
               className="nav-link"
@@ -43,7 +45,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
             >Supply Store
@@ -56,7 +59,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
             >Kitchen
@@ -69,7 +73,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
             >Market
@@ -82,7 +87,8 @@ class NavBar extends Component {
                 produceProps:{
                   producePicked: producePicked,
                   bank: bank,
-                  cropAmount: cropAmount
+                  cropAmount: cropAmount,
+                  temperature: temperature
                 }
               }}
             >Help
@@ -102,7 +108,8 @@ NavBar.propTypes = {
   harvested: PropTypes.bool,
   bank: PropTypes.number,
   cropAmount: PropTypes.number,
-  openModal: PropTypes.func
+  openModal: PropTypes.func,
+  temperature: PropTypes.number
 }
 
 export default NavBar

@@ -46,18 +46,6 @@ class App extends React.Component {
     temperature: ''
   }
 
-  // pickProduce = (crop) => {
-  //   let {temperature} = this.state
-  //   temperature = this.getTodaysTemp()
-  //   this.setState({
-  //     producePicked: crop,
-  //     watered: false,
-  //     weeded: false,
-  //     harvested: false,
-  //     temperature
-  //   })
-  // }
-
   tendGarden = (event) => {
     let id = event.target.dataset.valuename
     if (id === 'waterBtn') {
@@ -153,8 +141,7 @@ class App extends React.Component {
     this.setState({producePicked: crop, bank, cropAmount, temperature})
   }
 
-  restart = (state) => {
-    console.log('restart hit', state)
+  restart = () => {
     this.setState({
       whichComponent: '',
       producePicked: '',
@@ -322,7 +309,8 @@ class App extends React.Component {
           producePicked={producePicked}
           bank={bank}
           cropAmount={cropAmount}
-          openModal={this.openIngredientsModal} />
+          openModal={this.openIngredientsModal}
+          temperature={temperature} />
         <div className="container">
           <div className="row app-container">
             <div className="col-sm-3 Control-Center">
