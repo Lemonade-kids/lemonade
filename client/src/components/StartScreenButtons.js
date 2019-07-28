@@ -8,7 +8,6 @@ class StartScreenButtons extends Component {
     window.history.back()
   }
   render() {
-    // const { producePicked, bank, cropAmount } = this.props
     return (
       <div className="StartScreenButtons">
         <NavLink to={{
@@ -16,8 +15,7 @@ class StartScreenButtons extends Component {
           produceProps:{
             producePicked: '',
             bank: 50,
-            cropAmount: 0
-          }
+            cropAmount: 0          }
         }}>
           <button 
             className='btn'>

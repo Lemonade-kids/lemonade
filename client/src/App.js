@@ -155,33 +155,37 @@ class App extends React.Component {
 
   restart = (state) => {
     console.log('restart hit', state)
-    // this.setState({
-    //   whichComponent: '',
-    //   producePicked: '',
-    //   watered: false,
-    //   weeded: false,
-    //   harvested: false,
-    //   bakeBtn: false,
-    //   buySugar: 0,
-    //   buyFlour: 0,
-    //   buyMilk: 0,
-    //   buyEggs: 0,
-    //   sugarTotal: 0,
-    //   flourTotal: 0,
-    //   milkTotal: 0,
-    //   eggTotal: 0,
-    //   runningTotal: 0,
-    //   readyToSell: false,
-    //   marketBtn: false,
-    //   bank: 50,
-    //   products: 0,
-    //   cropAmount: 0,
-    //   modalOpen: false,
-    //   eggInventory: 0,
-    //   flourInventory: 0,
-    //   milkInventory: 0,
-    //   sugarInventory: 0
-    // })
+    this.setState({
+      whichComponent: '',
+      producePicked: '',
+      watered: false,
+      weeded: false,
+      harvested: false,
+      bakeBtn: false,
+      buySugar: 0,
+      buyFlour: 0,
+      buyMilk: 0,
+      buyEggs: 0,
+      sugarTotal: 0,
+      flourTotal: 0,
+      milkTotal: 0,
+      eggTotal: 0,
+      runningTotal: 0,
+      readyToSell: false,
+      marketBtn: false,
+      bank: 50,
+      products: 0,
+      cropAmount: 0,
+      storeModalOpen: false,
+      kitchenModalOpen: false,
+      ingredientsModalOpen: false,
+      eggInventory: 0,
+      flourInventory: 0,
+      milkInventory: 0,
+      sugarInventory: 0,
+      product: 0,
+      temperature: ''
+    })
   }
 
   addToCart = (buyEggs, buyFlour, buyMilk, buySugar) => {

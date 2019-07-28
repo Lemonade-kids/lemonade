@@ -6,15 +6,12 @@ import PropTypes from 'prop-types'
 
 class StartScreen extends React.Component {
   render() {
-    const { producePicked, bank, cropAmount } = this.props
+    console.log(this.props)
     return (
       <div className='startscreen'>
         <p className='start'>{`Are you sure you want to start over?
       You'll lose any progress you've made so far!`}</p>
-        <StartScreenButtons
-          producePicked={producePicked}
-          bank={bank}
-          cropAmount={cropAmount} />
+        <StartScreenButtons />
       </div>
     )
   }
