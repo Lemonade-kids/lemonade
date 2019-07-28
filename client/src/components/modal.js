@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
 import PropTypes from 'prop-types'
-// import { NavLink } from 'react-router-dom'
 
 class Modal extends Component {
   render() {
@@ -20,7 +19,7 @@ class Modal extends Component {
   }
 }
 Modal.propTypes = {
-  message: PropTypes.string,
+  message: PropTypes.any,
   confirm: PropTypes.string,
   closeModal: PropTypes.func
 }

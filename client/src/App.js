@@ -1,5 +1,4 @@
 import React from 'react'
-// import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 // import { connect } from 'react-redux'
@@ -45,18 +44,6 @@ class App extends React.Component {
     sugarInventory: 0,
     product: 0,
     temperature: ''
-  }
-
-  pickProduce = (crop) => {
-    let temp = this.getTodaysTemp()
-    console.log(temp, 'temp')
-    this.setState({
-      producePicked: crop,
-      watered: false,
-      weeded: false,
-      harvested: false,
-      temperature: temp
-    })
   }
 
   tendGarden = (event) => {
@@ -150,39 +137,42 @@ class App extends React.Component {
   /* function that gets passed to child components that
   checks on these values in there and returns them back here (putting them in state),
   so any changes get passed throughout other parts of the app */
-  grabData = (crop, bank, cropAmount) => {
-    this.setState({producePicked: crop, bank, cropAmount})
+  grabData = (crop, bank, cropAmount, temperature) => {
+    this.setState({producePicked: crop, bank, cropAmount, temperature})
   }
 
-  restart = (state) => {
-    console.log('restart hit', state)
-    // this.setState({
-    //   whichComponent: '',
-    //   producePicked: '',
-    //   watered: false,
-    //   weeded: false,
-    //   harvested: false,
-    //   bakeBtn: false,
-    //   buySugar: 0,
-    //   buyFlour: 0,
-    //   buyMilk: 0,
-    //   buyEggs: 0,
-    //   sugarTotal: 0,
-    //   flourTotal: 0,
-    //   milkTotal: 0,
-    //   eggTotal: 0,
-    //   runningTotal: 0,
-    //   readyToSell: false,
-    //   marketBtn: false,
-    //   bank: 50,
-    //   products: 0,
-    //   cropAmount: 0,
-    //   modalOpen: false,
-    //   eggInventory: 0,
-    //   flourInventory: 0,
-    //   milkInventory: 0,
-    //   sugarInventory: 0
-    // })
+  restart = () => {
+    this.setState({
+      whichComponent: '',
+      producePicked: '',
+      watered: false,
+      weeded: false,
+      harvested: false,
+      bakeBtn: false,
+      buySugar: 0,
+      buyFlour: 0,
+      buyMilk: 0,
+      buyEggs: 0,
+      sugarTotal: 0,
+      flourTotal: 0,
+      milkTotal: 0,
+      eggTotal: 0,
+      runningTotal: 0,
+      readyToSell: false,
+      marketBtn: false,
+      bank: 50,
+      products: 0,
+      cropAmount: 0,
+      storeModalOpen: false,
+      kitchenModalOpen: false,
+      ingredientsModalOpen: false,
+      eggInventory: 0,
+      flourInventory: 0,
+      milkInventory: 0,
+      sugarInventory: 0,
+      product: 0,
+      temperature: ''
+    })
   }
 
   addToCart = (buyEggs, buyFlour, buyMilk, buySugar) => {
@@ -205,17 +195,16 @@ class App extends React.Component {
   calculateProductSold = (product) => calculateProductSold(product)
 
   startSelling = () => {
-    let { bank, product, temperature, producePicked } = this.state
+    let { bank, product, producePicked } = this.state
     bank += 32
-    // product -= 26
     product = this.calculateProductSold(producePicked)
-    temperature = this.getTodaysTemp()
-    this.setState({
-      readyToSell: true,
-      bank,
-      product,
-      temperature
-    })
+    if (product > 0) {
+      this.setState({
+        readyToSell: true,
+        bank,
+        product
+      })
+    }
   }
 
   makePurchase = () => {
@@ -320,7 +309,8 @@ class App extends React.Component {
           producePicked={producePicked}
           bank={bank}
           cropAmount={cropAmount}
-          openModal={this.openIngredientsModal} />
+          openModal={this.openIngredientsModal}
+          temperature={temperature} />
         <div className="container">
           <div className="row app-container">
             <div className="col-sm-3 Control-Center">
@@ -343,6 +333,7 @@ class App extends React.Component {
                   harvested={harvested}
                   bank={bank}
                   cropAmount={cropAmount}
+                  temperature={temperature}
                 />} />
                 <Route path='/store' exact render={(props) => <CCStore {...props}
                   producePicked={producePicked}
@@ -362,6 +353,7 @@ class App extends React.Component {
                   bank={bank}
                   cropAmount={cropAmount}
                   makePurchase={this.makePurchase}
+                  temperature={temperature}
                 />} />
                 <Route path='/kitchen' exact render={(props) => <CCKitchen {...props}
                   producePicked={producePicked}
@@ -373,6 +365,7 @@ class App extends React.Component {
                   bank={bank}
                   cropAmount={cropAmount}
                   product={product}
+                  temperature={temperature}
                 />} />
                 <Route path='/market' exact render={(props) => <CCMarket {...props}
                   producePicked={producePicked}
@@ -386,6 +379,7 @@ class App extends React.Component {
                   bank={bank}
                   cropAmount={cropAmount}
                   product={product}
+                  temperature={temperature}
                 />} />                
               </Switch>
             </div>
@@ -404,7 +398,8 @@ class App extends React.Component {
                 addToCart={this.addToCart}
                 bank={bank}
                 restart={this.restart}
-                product={product} />
+                product={product}
+                getTodaysTemp={this.getTodaysTemp} />
             </div>
           </div>
         </div>

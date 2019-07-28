@@ -38,15 +38,38 @@ export const calculateProductSold = (product) => {
     }
   }
   if (product === 'Squash') {
-    console.log('bread')
+    if (temp > 70) {
+      productSold = product * .5
+    }
+    if (temp < 70 && temp > 60 && crowd > 7) {
+      productSold = product * .2
+    }
+    if (temp < 70 && temp > 60 && crowd < 7) {
+      productSold = product * .4
+    }
+    if (temp < 60 && crowd > 7) {
+      productSold = product * .3
+    }
+    if (temp < 60 && crowd < 7) {
+      productSold = product * .2
+    }
   }
   if (product === 'Blueberry') {
-    console.log('muffins')
+    if (temp > 70) {
+      productSold = product * .4
+    }
+    if (temp < 70 && temp > 60 && crowd > 7) {
+      productSold = product * .2
+    }
+    if (temp < 70 && temp > 60 && crowd < 7) {
+      productSold = product * .4
+    }
+    if (temp < 60 && crowd > 7) {
+      productSold = product * .3
+    }
+    if (temp < 60 && crowd < 7) {
+      productSold = product * .1
+    }
   }
   return productSold
 }
-generateRandom()
-
-console.log(calculateCrowd(), calculateTemperature())
-
-// export const 

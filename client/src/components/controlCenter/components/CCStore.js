@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 class CCStore extends Component {
   render() {
     const { runningTotal } = this.props
+    console.log(this.props.temperature)
     return (
       <div className="CCStore">
         <p>Shopping Cart: {runningTotal > 0 ? `$${runningTotal}` : runningTotal}</p>
@@ -18,7 +19,8 @@ class CCStore extends Component {
           produceProps:{
             producePicked: this.props.producePicked,
             bank: this.props.bank,
-            cropAmount: this.props.cropAmount
+            cropAmount: this.props.cropAmount,
+            temperature: this.props.temperature
           }
         }}>
           <button className='btn'
@@ -34,7 +36,8 @@ CCStore.propTypes = {
   runningTotal: PropTypes.number,
   producePicked: PropTypes.string,
   bank: PropTypes.number,
-  cropAmount: PropTypes.number
+  cropAmount: PropTypes.number,
+  temperature: PropTypes.number
 }
 
 export default CCStore

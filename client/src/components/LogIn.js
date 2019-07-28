@@ -5,32 +5,27 @@ import PropTypes from 'prop-types'
 import Blueberries from '../images/blueberries.png'
 import Lemons from '../images/lemons.png'
 import Squashes from '../images/squashes.png'
-// import API from '../utils/API'
-// import {connect} from 'react-redux'
-// import { withRouter } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 class LogIn extends React.Component {
   state = {
-    // user: '',
-    // pwd: '',
-    // gender: 'male',
     producePicked: '',
     bank: 50,
-    cropAmount: 0
-  }
-
-  // function that wraps another function passed down in props
-  // they have the same name because they're working together for the same thing
-  pickProduce = () => {
-    const crop = this.state.producePicked
-    this.props.pickProduce(crop)
+    cropAmount: 0,
+    temperature: 0
   }
 
   handleChoice = (event) => {
     const { name, value } = event.target
+    let temperature = 0
+    try{
+      temperature = this.props.getTodaysTemp()
+    } catch (e) {
+      console.log(e.message)
+    }
     this.setState({
-      [name]: value
+      [name]: value,
+      temperature
     })
   }
 
@@ -39,7 +34,7 @@ class LogIn extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location)
+    console.log(this.props)
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank
@@ -52,39 +47,7 @@ class LogIn extends React.Component {
       }
     }
   }
-
-  // handleLoginClick = (event) => {
-  //   event.preventDefault()
-  //   API.login(this.state).then(() => {
-  //     console.log('this is wrking')
-  //     //axios.post("login", {user: this.state.username, pwd: this.state.password})
-  //   })
-  //   // todo: check to see if login worked
-  //   this.setState({
-  //     letsPlay: <StartScreen />,
-  //     gender: 'female'
-  //   })
-  // }
-
-  // handleNewUserClick = (event) => {
-  //   event.preventDefault()
-  //   API.newUser(this.state).then(() => {
-  //     console.log('hit thi nw')
-  //     //axios.post("api/newUser", {user: this.state.username, pwd: this.state.password})
-  //   })
-  //   // todo: check to see if user exists, etc.
-  //   //   this.setState({
-  //   //     letsPlay: <StartScreen/>,
-  //   //     user: document.getElementById('user').value,
-  //   //     pwd: document.getElementById('pwd').value,
-  //   //     gender: 'female'
-  //   //   })
-
-  // }
-
   render() {
-    // console.log('produce in start---', this.state.producePicked)
-    console.log('props???', this.props)
     const { producePicked } = this.state
     return (
       <div>
@@ -129,17 +92,15 @@ class LogIn extends React.Component {
               produceProps:{
                 producePicked: this.state.producePicked,
                 bank: this.state.bank,
-                cropAmount: this.state.cropAmount
+                cropAmount: this.state.cropAmount,
+                temperature: this.state.temperature
               }
             }}>
               <button
                 className={producePicked ? 'btn btn-start' : 'btn-disabled'}
-                // onClick={this.pickProduce}
               >{'Let\'s play!'}</button>
             </NavLink>
           </div>
-          {/* </form> */}
-
         </div>
       </div>
     )
@@ -150,6 +111,7 @@ LogIn.propTypes = {
   pickProduce: PropTypes.func,
   restart: PropTypes.func,
   location: PropTypes.object,
+  getTodaysTemp: PropTypes.func
 }
 
 // const mapStateToProps = state => {
