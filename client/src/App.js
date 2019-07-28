@@ -60,11 +60,34 @@ class App extends React.Component {
       })
     }
     if (id === 'harvestBtn') {
-      this.setState({
-        harvested: true,
-        watered: false,
-        cropAmount: 18
-      })
+      if (this.state.watered && this.state.weeded) {
+        this.setState({
+          harvested: true,
+          watered: false,
+          cropAmount: 20
+        })
+      }
+      if (this.state.watered && !this.state.weeded) {
+        this.setState({
+          harvested: true,
+          watered: false,
+          cropAmount: 17
+        })
+      }
+      if (!this.state.watered && this.state.weeded) {
+        this.setState({
+          harvested: true,
+          watered: false,
+          cropAmount: 17
+        })
+      }
+      if (!this.state.watered && !this.state.weeded) {
+        this.setState({
+          harvested: true,
+          watered: false,
+          cropAmount: 15
+        })
+      }
     }
   }
 
@@ -399,7 +422,9 @@ class App extends React.Component {
                 bank={bank}
                 restart={this.restart}
                 product={product}
-                getTodaysTemp={this.getTodaysTemp} />
+                getTodaysTemp={this.getTodaysTemp}
+                temperature={temperature}
+                cropAmount={cropAmount} />
             </div>
           </div>
         </div>
