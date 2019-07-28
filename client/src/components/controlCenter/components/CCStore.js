@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 class CCStore extends Component {
   render() {
     const { runningTotal } = this.props
-    console.log(this.props.temperature)
     return (
       <div className="CCStore">
         <p>Shopping Cart: {runningTotal > 0 ? `$${runningTotal}` : runningTotal}</p>

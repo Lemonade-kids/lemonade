@@ -26,7 +26,7 @@ class Kitchen extends Component {
     }
   }
   render() {
-    const { producePicked, bank, cropAmount, temperature } = this.state
+    const { producePicked, bank, cropAmount, temperature } = this.props
     return (
       <div className='Kitchen'>
         {this.props.bakeBtn ? <LoadingBar /> : null }
@@ -43,7 +43,10 @@ class Kitchen extends Component {
             <KitchenButton />
           </NavLink> : null }
         <div className="workspace">
-          {this.state.producePicked === 'Lemon' ? <Counter /> : <Oven />}
+          {this.state.producePicked === 'Lemon' ? <Counter /> 
+            : this.state.producePicked === 'Squash' ? <Oven /> 
+              : this.state.producePicked === 'Blueberry' ? <Oven /> 
+                : null}
         </div>
       </div>
     )
@@ -57,7 +60,8 @@ Kitchen.propTypes = {
   location: PropTypes.object,
   grabData: PropTypes.func,
   bank: PropTypes.number,
-  cropAmount: PropTypes.number
+  cropAmount: PropTypes.number,
+  temperature: PropTypes.number
 }
 
 export default Kitchen

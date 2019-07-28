@@ -34,7 +34,6 @@ class LogIn extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     if (this.props.location && this.props.location.produceProps) {
       const crop = this.props.location.produceProps.producePicked
       const bank = this.props.location.produceProps.bank

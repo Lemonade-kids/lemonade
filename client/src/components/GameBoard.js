@@ -37,6 +37,10 @@ class GameBoard extends Component {
           <Route path='/kitchen' exact render={(props) => <Kitchen {...props}
             grabData={this.props.grabData}
             bakeBtn={this.props.bakeBtn}
+            bank={this.props.bank}
+            product={this.props.product}
+            temperature={this.props.temperature}
+            cropAmount={this.props.cropAmount}
           />} />
           <Route path='/market' exact render={(props) => <SellingStand {...props}
             grabData={this.props.grabData}
@@ -63,7 +67,11 @@ GameBoard.propTypes = {
   buySugar: PropTypes.any,
   addToCart: PropTypes.func,
   restart: PropTypes.func,
-  getTodaysTemp: PropTypes.func
+  getTodaysTemp: PropTypes.func,
+  bank: PropTypes.number,
+  product: PropTypes.number,
+  temperature: PropTypes.number,
+  cropAmount: PropTypes.number
 }
 
 export default GameBoard

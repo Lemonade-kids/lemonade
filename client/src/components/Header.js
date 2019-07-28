@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 
 class Header extends Component {
   render() {
-    const { producePicked, bank, cropAmount, temperature, openModal } = this.props
+    const { producePicked, bank, cropAmount, 
+      temperature, openModal } = this.props
     return (
       <div>
         <header className="App-header">
