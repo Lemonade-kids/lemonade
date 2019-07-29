@@ -11,7 +11,10 @@ import water from './images/water.png'
 import Header from './components/Header'
 import GameBoard from './components/GameBoard'
 import Modal from './components/modal'
-import { calculateProductSold, calculateTemperature } from './modules/marketController'
+import { calculateProductSold, 
+  calculateTemperature,
+  calculateMoneyMade,
+  calculateCrowd } from './modules/marketController'
 
 class App extends React.Component {
   state = {
@@ -43,7 +46,8 @@ class App extends React.Component {
     milkInventory: 0,
     sugarInventory: 0,
     product: 0,
-    temperature: ''
+    temperature: '',
+    customers: 0
   }
 
   tendGarden = (event) => {
@@ -93,8 +97,9 @@ class App extends React.Component {
 
   // function to show loading bar in kitchen and "make" the product
   showBar = () => {
-    let { eggInventory, flourInventory,
+    let { customers, eggInventory, flourInventory,
       milkInventory, sugarInventory, cropAmount} = this.state
+    customers = calculateCrowd()
     if (this.state.producePicked === 'Lemon') {
       sugarInventory -= 5
       cropAmount -= 15
@@ -103,7 +108,8 @@ class App extends React.Component {
           bakeBtn: true,
           sugarInventory,
           cropAmount,
-          product: 30
+          product: 30,
+          customers
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -124,7 +130,8 @@ class App extends React.Component {
           milkInventory,
           sugarInventory,
           cropAmount,
-          product: 30
+          product: 30,
+          customers
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -145,7 +152,8 @@ class App extends React.Component {
           milkInventory,
           sugarInventory,
           cropAmount,
-          product: 30
+          product: 30,
+          customers
         })
       } else {
         this.setState({kitchenModalOpen: true, modal: 'kitchen'})
@@ -194,7 +202,8 @@ class App extends React.Component {
       milkInventory: 0,
       sugarInventory: 0,
       product: 0,
-      temperature: ''
+      temperature: '',
+      customers: 0
     })
   }
 
@@ -215,13 +224,18 @@ class App extends React.Component {
 
   getTodaysTemp = () => calculateTemperature()
 
-  calculateProductSold = (product) => calculateProductSold(product)
+  calculateProductSold = (producePicked, product, temp, crowd) => calculateProductSold(producePicked, product, temp, crowd)
 
   startSelling = () => {
-    let { bank, product, producePicked } = this.state
-    bank += 32
-    product = this.calculateProductSold(producePicked)
+    let { bank, product, producePicked, temperature, customers } = this.state
+    console.log('customers', customers)
+    let productSold = 0
+    productSold = this.calculateProductSold(producePicked, product, temperature, customers)
+    console.log(productSold)
+    product -= productSold
+    console.log(product)
     if (product > 0) {
+      bank += calculateMoneyMade(productSold)
       this.setState({
         readyToSell: true,
         bank,
@@ -295,7 +309,9 @@ class App extends React.Component {
       milkInventory,
       sugarInventory,
       product,
-      temperature } = this.state
+      temperature,
+      customers } = this.state
+    console.log(customers)
     return (
       <div className="App">
         {storeModalOpen ? 
@@ -424,7 +440,9 @@ class App extends React.Component {
                 product={product}
                 getTodaysTemp={this.getTodaysTemp}
                 temperature={temperature}
-                cropAmount={cropAmount} />
+                cropAmount={cropAmount}
+                producePicked={producePicked}
+                customers={customers} />
             </div>
           </div>
         </div>

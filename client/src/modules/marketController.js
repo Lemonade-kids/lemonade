@@ -16,11 +16,11 @@ export const calculateCrowd = () => {
   return crowd
 }
 
-export const calculateProductSold = (product) => {
-  const temp = calculateTemperature()
-  const crowd = calculateCrowd()
+export const calculateProductSold = (producePicked, product, 
+  temp, crowd) => {
   let productSold = 0
-  if (product === 'Lemon') {
+  if (producePicked === 'Lemon') {
+    console.log('lemon', product, temp, crowd)
     if (temp > 70) {
       productSold = product * .1
     }
@@ -37,7 +37,7 @@ export const calculateProductSold = (product) => {
       productSold = product * .8
     }
   }
-  if (product === 'Squash') {
+  if (producePicked === 'Squash') {
     if (temp > 70) {
       productSold = product * .5
     }
@@ -54,7 +54,7 @@ export const calculateProductSold = (product) => {
       productSold = product * .2
     }
   }
-  if (product === 'Blueberry') {
+  if (producePicked === 'Blueberry') {
     if (temp > 70) {
       productSold = product * .4
     }
@@ -71,5 +71,10 @@ export const calculateProductSold = (product) => {
       productSold = product * .1
     }
   }
-  return productSold
+  console.log(productSold, product - productSold)
+  return product - productSold
+}
+
+export const calculateMoneyMade = (sold, price = 2) => {
+  return sold * price
 }
