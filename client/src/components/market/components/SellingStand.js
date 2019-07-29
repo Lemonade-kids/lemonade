@@ -30,7 +30,7 @@ class SellingStand extends Component {
             <img src={cloud} alt="cloud" className="cloud" />
             <img src={cloud} alt="cloud" className="cloud-two" />
             <img src={stand} alt="stand" className="stand" />
-            <People /> 
+            <People amount={this.props.customers} /> 
           </div> : null}
       </div> 
     )
@@ -41,7 +41,8 @@ SellingStand.propTypes = {
   producePicked: PropTypes.string,
   location: PropTypes.object,
   grabData: PropTypes.func,
-  readyToSell: PropTypes.bool
+  readyToSell: PropTypes.bool,
+  customers: PropTypes.number
 }
 
 export default SellingStand
