@@ -47,7 +47,11 @@ class App extends React.Component {
     sugarInventory: 0,
     product: 0,
     temperature: '',
-    customers: 0
+    customers: 0,
+    showSold: true,
+    amountSold: 0,
+    showCustomersAmount: true,
+    customersAmount: 0
   }
 
   tendGarden = (event) => {
@@ -203,7 +207,10 @@ class App extends React.Component {
       sugarInventory: 0,
       product: 0,
       temperature: '',
-      customers: 0
+      customers: 0,
+      showSold: false,
+      amountSold: 0,
+      showCustomersAmount: true,
     })
   }
 
@@ -239,7 +246,10 @@ class App extends React.Component {
       this.setState({
         readyToSell: true,
         bank,
-        product
+        product,
+        amountSold: productSold,
+        showCustomersAmount: true,
+        showSold: true
       })
     }
   }
@@ -310,8 +320,11 @@ class App extends React.Component {
       sugarInventory,
       product,
       temperature,
-      customers } = this.state
-    console.log(customers)
+      customers,
+      showSold,
+      amountSold,
+      showCustomersAmount
+    } = this.state
     return (
       <div className="App">
         {storeModalOpen ? 
@@ -419,6 +432,10 @@ class App extends React.Component {
                   cropAmount={cropAmount}
                   product={product}
                   temperature={temperature}
+                  showSold={showSold}
+                  amountSold={amountSold}
+                  showCustomersAmount={showCustomersAmount}
+                  customersAmount={customers}
                 />} />                
               </Switch>
             </div>
