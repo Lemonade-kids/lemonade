@@ -18,8 +18,9 @@ export const calculateCrowd = () => {
 
 export const calculateProductSold = (producePicked, product, 
   temp, crowd) => {
+  // need to accommodate 0 or less than 3 for crowd!
   let productSold = 0
-  if (producePicked === 'Lemon') {
+  if (producePicked === 'Lemon' && crowd > 0) {
     if (temp > 70) {
       productSold = product * .1
     }
@@ -36,7 +37,7 @@ export const calculateProductSold = (producePicked, product,
       productSold = product * .8
     }
   }
-  if (producePicked === 'Squash') {
+  if (producePicked === 'Squash' && crowd > 0) {
     if (temp > 70) {
       productSold = product * .5
     }
@@ -53,7 +54,7 @@ export const calculateProductSold = (producePicked, product,
       productSold = product * .2
     }
   }
-  if (producePicked === 'Blueberry') {
+  if (producePicked === 'Blueberry' && crowd > 0) {
     if (temp > 70) {
       productSold = product * .4
     }
@@ -69,6 +70,9 @@ export const calculateProductSold = (producePicked, product,
     if (temp < 60 && crowd < 7) {
       productSold = product * .1
     }
+  }
+  if (!crowd) {
+    productSold = 0
   }
   return product - productSold
 }

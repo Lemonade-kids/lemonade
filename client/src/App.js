@@ -70,8 +70,8 @@ class App extends React.Component {
       })
     }
     if (id === 'harvestBtn') {
-      cropAmount = Math.floor(cropAmount += 20)
-      if (this.state.watered && this.state.weeded) {
+      if (this.state.watered && !this.state.weeded) {
+        cropAmount = Math.floor(cropAmount += 20)
         this.setState({
           harvested: true,
           watered: false,
