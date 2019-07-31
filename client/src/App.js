@@ -51,10 +51,12 @@ class App extends React.Component {
     showSold: true,
     amountSold: 0,
     showCustomersAmount: true,
-    customersAmount: 0
+    customersAmount: 0,
+    showPlayAgainBtn: false
   }
 
   tendGarden = (event) => {
+    let { cropAmount } = this.state
     let id = event.target.dataset.valuename
     if (id === 'waterBtn') {
       this.setState({
@@ -68,32 +70,36 @@ class App extends React.Component {
       })
     }
     if (id === 'harvestBtn') {
+      cropAmount = Math.floor(cropAmount += 20)
       if (this.state.watered && this.state.weeded) {
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount: 20
+          cropAmount
         })
       }
       if (this.state.watered && !this.state.weeded) {
+        cropAmount = Math.floor(cropAmount += 17)
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount: 17
+          cropAmount
         })
       }
       if (!this.state.watered && this.state.weeded) {
+        cropAmount = Math.floor(cropAmount += 16)
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount: 17
+          cropAmount
         })
       }
       if (!this.state.watered && !this.state.weeded) {
+        cropAmount = Math.floor(cropAmount += 15)
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount: 15
+          cropAmount
         })
       }
     }
@@ -102,17 +108,19 @@ class App extends React.Component {
   // function to show loading bar in kitchen and "make" the product
   showBar = () => {
     let { customers, eggInventory, flourInventory,
-      milkInventory, sugarInventory, cropAmount} = this.state
+      milkInventory, sugarInventory, cropAmount, product} = this.state
     customers = calculateCrowd()
+    console.log('customers', customers)
     if (this.state.producePicked === 'Lemon') {
       sugarInventory -= 5
       cropAmount -= 15
+      product += 30
       if (cropAmount >= 0 && sugarInventory >= 0) {
         this.setState({
           bakeBtn: true,
           sugarInventory,
           cropAmount,
-          product: 30,
+          product,
           customers
         })
       } else {
@@ -120,6 +128,7 @@ class App extends React.Component {
       }
     }
     if (this.state.producePicked === 'Blueberry') {
+      product += 30
       cropAmount -= 15
       eggInventory -= 2
       milkInventory -= 1
@@ -134,7 +143,7 @@ class App extends React.Component {
           milkInventory,
           sugarInventory,
           cropAmount,
-          product: 30,
+          product,
           customers
         })
       } else {
@@ -142,6 +151,7 @@ class App extends React.Component {
       }
     }
     if (this.state.producePicked === 'Squash') {
+      product += 30
       cropAmount -= 15
       eggInventory -= 2
       milkInventory -= 1
@@ -156,7 +166,7 @@ class App extends React.Component {
           milkInventory,
           sugarInventory,
           cropAmount,
-          product: 30,
+          product,
           customers
         })
       } else {
@@ -176,6 +186,7 @@ class App extends React.Component {
     this.setState({producePicked: crop, bank, cropAmount, temperature})
   }
 
+  // hard restart, wipes all progress
   restart = () => {
     this.setState({
       whichComponent: '',
@@ -210,7 +221,38 @@ class App extends React.Component {
       customers: 0,
       showSold: false,
       amountSold: 0,
-      showCustomersAmount: true,
+      showCustomersAmount: false,
+      showPlayAgainBtn: false
+    })
+  }
+
+  // play again, keeps progress but resets garden, kitchen
+  handlePlayAgain = () => {
+    this.setState({
+      // producePicked: '',
+      watered: false,
+      weeded: false,
+      harvested: false,
+      bakeBtn: false,
+      buySugar: 0,
+      buyFlour: 0,
+      buyMilk: 0,
+      buyEggs: 0,
+      sugarTotal: 0,
+      flourTotal: 0,
+      milkTotal: 0,
+      eggTotal: 0,
+      runningTotal: 0,
+      readyToSell: false,
+      marketBtn: false,
+      storeModalOpen: false,
+      kitchenModalOpen: false,
+      ingredientsModalOpen: false,
+      customers: 0,
+      showSold: false,
+      amountSold: 0,
+      showCustomersAmount: false,
+      showPlayAgainBtn: false
     })
   }
 
@@ -238,18 +280,20 @@ class App extends React.Component {
     console.log('customers', customers)
     let productSold = 0
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
+    productSold = Math.floor(productSold)
     console.log(productSold)
-    product -= productSold
+    product = Math.floor(product -= productSold)
     console.log(product)
     if (product > 0) {
-      bank += calculateMoneyMade(productSold)
+      bank = Math.floor(bank += calculateMoneyMade(productSold))
       this.setState({
         readyToSell: true,
         bank,
         product,
         amountSold: productSold,
         showCustomersAmount: true,
-        showSold: true
+        showSold: true,
+        showPlayAgainBtn: true
       })
     }
   }
@@ -323,7 +367,8 @@ class App extends React.Component {
       customers,
       showSold,
       amountSold,
-      showCustomersAmount
+      showCustomersAmount,
+      showPlayAgainBtn
     } = this.state
     return (
       <div className="App">
@@ -436,6 +481,8 @@ class App extends React.Component {
                   amountSold={amountSold}
                   showCustomersAmount={showCustomersAmount}
                   customersAmount={customers}
+                  playAgain={this.handlePlayAgain}
+                  showPlayAgainBtn={showPlayAgainBtn}
                 />} />                
               </Switch>
             </div>

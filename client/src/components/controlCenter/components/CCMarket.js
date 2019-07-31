@@ -69,6 +69,10 @@ class CCMarket extends Component {
           <button className='btn' onClick={this.props.startSelling}>
           Begin!
           </button>}
+        {this.props.showPlayAgainBtn ?
+          <button className='btn' onClick={this.props.playAgain}>
+          Play again?
+          </button> : null}
       </div>
     )
   }
@@ -118,7 +122,9 @@ CCMarket.propTypes = {
   showSold: PropTypes.bool,
   amountSold: PropTypes.number,
   showCustomersAmount: PropTypes.bool,
-  customersAmount: PropTypes.number
+  customersAmount: PropTypes.number,
+  showPlayAgainBtn: PropTypes.bool,
+  playAgain: PropTypes.func
 }
 
 // export default connect(mapStateToProps, mapDispatchToProps)(CCMarket)
