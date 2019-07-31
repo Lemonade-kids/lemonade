@@ -110,7 +110,6 @@ class App extends React.Component {
     let { customers, eggInventory, flourInventory,
       milkInventory, sugarInventory, cropAmount, product} = this.state
     customers = calculateCrowd()
-    console.log('customers', customers)
     if (this.state.producePicked === 'Lemon') {
       sugarInventory -= 5
       cropAmount -= 15
@@ -277,13 +276,10 @@ class App extends React.Component {
 
   startSelling = () => {
     let { bank, product, producePicked, temperature, customers } = this.state
-    console.log('customers', customers)
     let productSold = 0
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.floor(productSold)
-    console.log(productSold)
     product = Math.floor(product -= productSold)
-    console.log(product)
     if (product > 0) {
       bank = Math.floor(bank += calculateMoneyMade(productSold))
       this.setState({
