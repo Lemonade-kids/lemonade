@@ -4,11 +4,9 @@ import {people} from './data'
 import PropTypes from 'prop-types'
 
 class People extends Component {
-
   render() {
     const {amount} = this.props 
     const peeps = people.slice(0, amount)
-    console.log(amount)
     return (
       <div className="People">
         {peeps.map(i => {return(

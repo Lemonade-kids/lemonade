@@ -20,7 +20,6 @@ export const calculateProductSold = (producePicked, product,
   temp, crowd) => {
   let productSold = 0
   if (producePicked === 'Lemon') {
-    console.log('lemon', product, temp, crowd)
     if (temp > 70) {
       productSold = product * .1
     }
@@ -71,7 +70,6 @@ export const calculateProductSold = (producePicked, product,
       productSold = product * .1
     }
   }
-  console.log(productSold, product - productSold)
   return product - productSold
 }
 
