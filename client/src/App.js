@@ -70,7 +70,7 @@ class App extends React.Component {
       })
     }
     if (id === 'harvestBtn') {
-      if (this.state.watered && !this.state.weeded) {
+      if (this.state.watered && this.state.weeded) {
         cropAmount = Math.floor(cropAmount += 20)
         this.setState({
           harvested: true,
@@ -278,10 +278,10 @@ class App extends React.Component {
     let { bank, product, producePicked, temperature, customers } = this.state
     let productSold = 0
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
-    productSold = Math.floor(productSold)
+    productSold = Math.ceil(productSold)
     product = Math.floor(product -= productSold)
     if (product > 0) {
-      bank = Math.floor(bank += calculateMoneyMade(productSold))
+      bank = Math.ceil(bank += calculateMoneyMade(productSold))
       this.setState({
         readyToSell: true,
         bank,
