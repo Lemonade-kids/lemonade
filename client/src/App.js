@@ -237,6 +237,7 @@ class App extends React.Component {
 
   // play again, keeps progress but resets garden, kitchen
   handlePlayAgain = () => {
+    this.getMoreCustomers()
     this.setState({
       // producePicked: '',
       watered: false,
@@ -258,7 +259,6 @@ class App extends React.Component {
       kitchenModalOpen: false,
       ingredientsModalOpen: false,
       marketModalOpen: false,
-      customers: 0,
       showSold: false,
       amountSold: 0,
       showCustomersAmount: false,
@@ -292,7 +292,7 @@ class App extends React.Component {
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.ceil(productSold)
     product = Math.floor(product -= productSold)
-    if (product > 0 && customers > 0) {
+    if (product > -1 && customers > 0) {
       bank = Math.ceil(bank += calculateMoneyMade(productSold))
       this.setState({
         readyToSell: true,

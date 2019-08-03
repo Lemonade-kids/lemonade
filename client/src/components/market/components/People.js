@@ -25,6 +25,7 @@ render() {
   return (
     <div className="People">
       {peeps.map(i => {return(
+        console.log('what are the ids?', `p${peeps.indexOf(i)}`),
         <img 
           key={`p${Math.random()}`} 
           src={i} 
