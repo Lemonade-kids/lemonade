@@ -87,4 +87,5 @@ export const randomizePeople = (people) => {
     const j = Math.floor(Math.random() * (i + 1));
     [people[i], people[j]] = [people[j], people[i]]
   }
+  return people
 }

@@ -15,20 +15,18 @@ componentDidMount() {
   const {amount} = this.props
   if (amount) {
     customers = this.randomize(people)
-    // customers = customers.slice(0, amount)
+    customers = customers.slice(0, amount)
     console.log('custys', customers)
     this.setState({customers})
   }
 }
 render() {
-  // const {amount} = this.props 
   const peeps = this.state.customers
-  console.log('hiiiiiiiii', peeps, this.state.customers)
   return (
     <div className="People">
       {peeps.map(i => {return(
         <img 
-          key={`p${peeps.indexOf(i)}`} 
+          key={`p${Math.random()}`} 
           src={i} 
           className='peeps' 
           alt='person' 
