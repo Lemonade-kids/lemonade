@@ -41,6 +41,7 @@ class App extends React.Component {
     storeModalOpen: false,
     kitchenModalOpen: false,
     ingredientsModalOpen: false,
+    marketModalOpen: false,
     eggInventory: 0,
     flourInventory: 0,
     milkInventory: 0,
@@ -178,6 +179,14 @@ class App extends React.Component {
     this.setState({marketBtn: true})
   }
 
+  getMoreCustomers = () => {
+    const customers = calculateCrowd()
+    this.setState({
+      marketModalOpen: false,
+      customers
+    })
+  }
+  
   /* function that gets passed to child components that
   checks on these values in there and returns them back here (putting them in state),
   so any changes get passed throughout other parts of the app */
@@ -211,6 +220,7 @@ class App extends React.Component {
       storeModalOpen: false,
       kitchenModalOpen: false,
       ingredientsModalOpen: false,
+      marketModalOpen: false,
       eggInventory: 0,
       flourInventory: 0,
       milkInventory: 0,
@@ -247,6 +257,7 @@ class App extends React.Component {
       storeModalOpen: false,
       kitchenModalOpen: false,
       ingredientsModalOpen: false,
+      marketModalOpen: false,
       customers: 0,
       showSold: false,
       amountSold: 0,
@@ -355,6 +366,7 @@ class App extends React.Component {
       storeModalOpen,
       kitchenModalOpen,
       ingredientsModalOpen,
+      marketModalOpen,
       eggInventory,
       flourInventory,
       milkInventory,
@@ -399,6 +411,11 @@ class App extends React.Component {
             message={'You need to select a crop first before you can get the ingredients for a recipe!'} 
             confirm={'Okay'} 
             closeModal={this.closeModal} /> : null}
+        {marketModalOpen ?
+          <Modal 
+            message={'You didn\'t get any customers!'} 
+            confirm={'Try selling again'} 
+            closeModal={this.getMoreCustomers} /> : null}
         <Header 
           producePicked={producePicked}
           bank={bank}
