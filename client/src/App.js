@@ -186,7 +186,7 @@ class App extends React.Component {
       customers
     })
   }
-  
+
   /* function that gets passed to child components that
   checks on these values in there and returns them back here (putting them in state),
   so any changes get passed throughout other parts of the app */
@@ -292,7 +292,7 @@ class App extends React.Component {
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.ceil(productSold)
     product = Math.floor(product -= productSold)
-    if (product > 0) {
+    if (product > 0 && customers > 0) {
       bank = Math.ceil(bank += calculateMoneyMade(productSold))
       this.setState({
         readyToSell: true,
@@ -303,6 +303,9 @@ class App extends React.Component {
         showSold: true,
         showPlayAgainBtn: true
       })
+    }
+    if (customers < 1) {
+      this.setState({marketModalOpen: true})
     }
   }
 
