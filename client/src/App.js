@@ -14,7 +14,7 @@ import Modal from './components/modal'
 import { calculateProductSold, 
   calculateTemperature,
   calculateMoneyMade,
-  calculateCrowd } from './modules/marketController'
+  calculateCrowd} from './modules/marketController'
 
 class App extends React.Component {
   state = {
@@ -276,6 +276,7 @@ class App extends React.Component {
 
   startSelling = () => {
     let { bank, product, producePicked, temperature, customers } = this.state
+    console.log('stuff', bank, product, producePicked, temperature, customers)
     let productSold = 0
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.ceil(productSold)
