@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
-// import { connect } from 'react-redux'
 import ControlCenter from './components/controlCenter/ControlCenter'
 import CCGarden from './components/controlCenter/components/CCGarden'
 import CCKitchen from './components/controlCenter/components/CCKitchen'
@@ -534,26 +533,5 @@ class App extends React.Component {
     )
   }
 }
-
-// commenting out all the redux stuff for now
-// const mapStateToProps = (state) => {
-//   return {
-//     producePicked: state.producePicked
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     chooseProduce: (seed) => {
-//       dispatch({
-//         type: 'SAVECHOICE',
-//         payload: seed
-//       })
-//     }
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App)
-
 
 export default App

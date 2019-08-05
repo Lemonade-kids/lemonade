@@ -16,7 +16,7 @@ componentDidMount() {
   if (amount) {
     customers = this.randomize(people)
     customers = customers.slice(0, amount)
-    console.log('custys', customers)
+    console.log(customers)
     this.setState({customers})
   }
 }
@@ -25,7 +25,6 @@ render() {
   return (
     <div className="People">
       {peeps.map(i => {return(
-        console.log('what are the ids?', `p${peeps.indexOf(i)}`),
         <img 
           key={`p${Math.random()}`} 
           src={i} 

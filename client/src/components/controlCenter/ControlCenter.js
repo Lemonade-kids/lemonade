@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../../App.css'
-// import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 
@@ -55,17 +54,5 @@ ControlCenter.propTypes = {
   product: PropTypes.number,
   temperature: PropTypes.number
 }
-
-// const mapStateToProps = state => {
-//   return{
-//     lem: state.Lemons,
-//     cash: state.Bank,
-//     prod: state.product,
-//     sug: state.sugar,
-//     producePicked: state.producePicked
-//   }
-// }
-
-// export default connect(mapStateToProps)(ControlCenter)
 
 export default ControlCenter
