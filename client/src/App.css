@@ -110,6 +110,36 @@ input:focus {
   cursor: pointer;
 }
 
+.ingredients-obvious {
+  color: rgb(12, 57, 85);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 1.1em;
+  cursor: pointer;
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  border: rgb(12, 57, 85) double 10px;
+  background-color: rgb(245, 134, 255);
+  border-radius: 20px;
+  transform: rotate(20deg);
+  z-index: 100000000;
+  animation: wiggleIngredients 1s ease-in-out;
+}
+
+@-webkit-keyframes wiggleIngredients {
+  0% {transform: rotate(25deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(25deg);}
+  100% {transform: rotate(20deg);}
+}
+
+@keyframes wiggleIngredients {
+  0% {transform: rotate(25deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(25deg);}
+  100% {transform: rotate(20deg);}
+}
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;

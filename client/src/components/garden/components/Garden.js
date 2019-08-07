@@ -21,11 +21,13 @@ class Garden extends Component {
     }
   }
   render() {
-    const crop = this.props.location.produceProps ? this.props.location.produceProps.producePicked : null
+    const crop = this.props.location.produceProps 
+      ? this.props.location.produceProps.producePicked : null
     return (
       crop !== null ?
         <div className="grid-container garden-grid">
-          {this.props.watered ? <img src={Water} className={'water'} /> : null}
+          {this.props.watered 
+            ? <img src={Water} alt='water' className={'water'} /> : null}
           <div className="grid-item grid-item-garden">
             <GardenGrid
               producePicked={crop}
