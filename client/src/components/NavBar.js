@@ -95,7 +95,9 @@ class NavBar extends Component {
             </NavLink>
           </li> */}
           <li className="nav-item">
-            <span className="nav-link ingredients" onClick={this.props.openModal}>What ingredients do I need?</span>
+            <span 
+              className={window.location.pathname === '/store' ? 'nav-link ingredients-obvious' : 'nav-link ingredients'} 
+              onClick={this.props.openModal}>What ingredients do I need?</span>
           </li>
         </ul>
       </div>

@@ -110,6 +110,36 @@ input:focus {
   cursor: pointer;
 }
 
+.ingredients-obvious {
+  color: rgb(12, 57, 85);
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 1.1em;
+  cursor: pointer;
+  position: absolute;
+  top: 12%;
+  right: 5%;
+  border: rgb(12, 57, 85) double 10px;
+  background-color: rgb(245, 134, 255);
+  border-radius: 20px;
+  transform: rotate(20deg);
+  z-index: 100000000;
+  animation: wiggleIngredients 1s ease-in-out;
+}
+
+@-webkit-keyframes wiggleIngredients {
+  0% {transform: rotate(25deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(25deg);}
+  100% {transform: rotate(20deg);}
+}
+
+@keyframes wiggleIngredients {
+  0% {transform: rotate(25deg);}
+  50% {transform: rotate(20deg);}
+  75% {transform: rotate(25deg);}
+  100% {transform: rotate(20deg);}
+}
+
 a {
   color: #fff;
   font-family: 'Love Ya Like A Sister', cursive;
@@ -654,6 +684,76 @@ a {
 #p14 {
   animation-delay: 8.5s;
   margin-left: 90px;
+}
+
+#p15 {
+  animation-delay: 8s;
+  margin-left: -10px;
+}
+
+#p16 {
+  animation-delay: 2.5s;
+  margin-left: -20px;
+}
+
+#p17 {
+  animation-delay: 7s;
+  margin-left: -40px;
+}
+
+#p18 {
+  animation-delay: 4s;
+  margin-left: -50px;
+}
+
+#p19 {
+  animation-delay: 9s;
+  margin-left: -60px;
+}
+
+#p20 {
+  animation-delay: 1.5s;
+  margin-left: -70px;
+}
+
+#p21 {
+  animation-delay: 8s;
+  margin-left: -80px;
+}
+
+#p22 {
+  animation-delay: 7s;
+  margin-left: -90px;
+}
+
+#p23 {
+  animation-delay: 1s;
+  margin-left: -100px;
+}
+
+#p24 {
+  animation-delay: 2.5s;
+  margin-left: -20px;
+}
+
+#p25 {
+  animation-delay: 9.5s;
+  margin-left: -30px;
+}
+
+#p26 {
+  animation-delay: 3s;
+  margin-left: -45px;
+}
+
+#p27 {
+  animation-delay: 2.5s;
+  margin-left: -100px;
+}
+
+#p28 {
+  animation-delay: 3.5s;
+  margin-left: -90px;
 }
 
 /* Safari 4.0 - 8.0 */

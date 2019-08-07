@@ -18,7 +18,6 @@ export const calculateCrowd = () => {
 
 export const calculateProductSold = (producePicked, product, 
   temp, crowd) => {
-  // need to accommodate 0 or less than 3 for crowd!
   let productSold = 0
   if (producePicked === 'Lemon' && crowd > 0) {
     if (temp > 70) {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
-// import { connect } from 'react-redux'
 import ControlCenter from './components/controlCenter/ControlCenter'
 import CCGarden from './components/controlCenter/components/CCGarden'
 import CCKitchen from './components/controlCenter/components/CCKitchen'
@@ -237,6 +236,7 @@ class App extends React.Component {
 
   // play again, keeps progress but resets garden, kitchen
   handlePlayAgain = () => {
+    this.getMoreCustomers()
     this.setState({
       // producePicked: '',
       watered: false,
@@ -258,7 +258,6 @@ class App extends React.Component {
       kitchenModalOpen: false,
       ingredientsModalOpen: false,
       marketModalOpen: false,
-      customers: 0,
       showSold: false,
       amountSold: 0,
       showCustomersAmount: false,
@@ -292,7 +291,7 @@ class App extends React.Component {
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.ceil(productSold)
     product = Math.floor(product -= productSold)
-    if (product > 0 && customers > 0) {
+    if (product > -1 && customers > 0) {
       bank = Math.ceil(bank += calculateMoneyMade(productSold))
       this.setState({
         readyToSell: true,
@@ -534,26 +533,5 @@ class App extends React.Component {
     )
   }
 }
-
-// commenting out all the redux stuff for now
-// const mapStateToProps = (state) => {
-//   return {
-//     producePicked: state.producePicked
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     chooseProduce: (seed) => {
-//       dispatch({
-//         type: 'SAVECHOICE',
-//         payload: seed
-//       })
-//     }
-//   }
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App)
-
 
 export default App
