@@ -424,9 +424,9 @@ class App extends React.Component {
           cropAmount={cropAmount}
           openModal={this.openIngredientsModal}
           temperature={temperature} />
-        <div className="container">
-          <div className="row app-container">
-            <div className="col-sm-3 Control-Center">
+        <div className="">
+          <div className="app-container">
+            <div className="Control-Center">
               <ControlCenter 
                 producePicked={producePicked} 
                 bank={bank} 
@@ -502,7 +502,7 @@ class App extends React.Component {
                 />} />                
               </Switch>
             </div>
-            <div className="col-sm-9">
+            <div className="gameboard">
               <GameBoard 
                 grabData={this.grabData} 
                 watered={watered}

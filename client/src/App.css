@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.app-container {
+  display: grid;
+  grid-template-columns: 25% auto;
+}
+
 footer {
   margin-top: 10px;
   clear: both;
@@ -391,6 +396,7 @@ a {
 /* Kitchen */
 
 .Kitchen {
+  position: relative;
   height: 31em;
   background-image: url('./images/kitchenwall.png');
   background-size: cover;
@@ -400,10 +406,11 @@ a {
 
 .workspace {
   /* height: 20em; */
-  position: absolute;
-  top: 4em;
-  right: 1em;
-  width: 100%;
+  /* position: absolute; */
+  position: 100% 100%;
+  padding: 5em 0 0 5em;
+  /* width: 85%; */
+  margin-top: 2em;
 }
 
 #make { 
@@ -481,19 +488,18 @@ a {
 @keyframes kitchen-button {0%  { opacity: 0;} 100%{ opacity: 1;}  }
 @-webkit-keyframes kitchen-button {0%  { opacity: 0;} 100%{ opacity: 1;}  }
 
-.oven, .counter {
-  /* float: right; */
-  display: flex-end;
-}
-
 .oven {
-  width: 60%;
-  margin-top: 2em;
+  max-width: 70%;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 .counter {
-  width: 98%;
-  margin-top: -2em;
+  width: 80%;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
 }
 
 .rooster {
@@ -503,12 +509,19 @@ a {
 /* Market */
 
 .SellingStand {
+  position: relative;
   background-image: url('./images/marketbackground.png');
   height: 31em;
-  background-size: contain;
+  background-size: cover;
+  background-position: 100% 100%;
   background-repeat: repeat-x;
   border: 6px solid black;
   border-radius: 30px;
+}
+
+.people {
+  margin-top: 5em;
+  position: absolute;
 }
 
 .water {
@@ -516,7 +529,6 @@ a {
   height: 30em;
   float: none;
   position: absolute;
-  /* margin: 0.5em 30% 0 0; */
   width: 95%;
   border-radius: 30px;
   -webkit-animation-name: water;
@@ -599,9 +611,9 @@ a {
 }
 
 .stand {
-  margin: 13em 30px 0 0;
-  padding: 5px 5px 0 0;
   position: absolute;
+  bottom: 10px;
+  right: 10px;
   width: 30%;
   z-index: 20000;
 }
@@ -609,151 +621,185 @@ a {
 /* Customers animation */
 .peeps {
   position: absolute;
-  display: inline-block;
-  margin-top: 6em;
-  width: 8%;
+  bottom: 10px;
+  right: 1px;
+  /* width: 50%; */
   opacity: 0;
   animation: appear 4s 1;
 }
 
+#p0 {
+  animation-delay: 1.5s;
+  right: 123px;
+  width: 10%;
+}
+
 #p1 {
   animation-delay: 1s;
-  margin-left: 10px;
+  right: 110px;
+  width: 10%;
 }
 
 #p2 {
   animation-delay: 8s;
-  margin-left: 20px;
+  right: 120px;
+  width: 10%;
 }
 
 #p3 {
   animation-delay: 2s;
-  margin-left: 40px;
+  right: 140px;
+  width: 10%;
 }
 
 #p4 {
   animation-delay: 7s;
-  margin-left: 50px;
+  right: 150px;
+  width: 10%;
 }
 
 #p5 {
   animation-delay: 3s;
-  margin-left: 60px;
+  right: 160px;
+  width: 10%;
 }
 
 #p6 {
   animation-delay: 8.5s;
-  margin-left: 70px;
+  right: 170px;
+  width: 10%;
 }
 
 #p7 {
   animation-delay: 6s;
-  margin-left: 80px;
+  right: 180px;
+  width: 10%;
 }
 
 #p8 {
   animation-delay: 4s;
-  margin-left: 90px;
+  right: 190px;
+  width: 10%;
 }
 
 #p9 {
   animation-delay: 7s;
-  margin-left: 100px;
+  right: 1100px;
+  width: 10%;
 }
 
 #p10 {
   animation-delay: 6.5s;
-  margin-left: 20px;
+  right: 120px;
+  width: 10%;
 }
 
 #p11 {
   animation-delay: 5.5s;
-  margin-left: 30px;
+  right: 130px;
+  width: 10%;
 }
 
 #p12 {
   animation-delay: 9s;
-  margin-left: 45px;
+  right: 145px;
+  width: 10%;
 }
 
 #p13 {
   animation-delay: 9.5s;
-  margin-left: 100px;
+  right: 1100px;
+  width: 10%;
 }
 
 #p14 {
   animation-delay: 8.5s;
-  margin-left: 90px;
+  right: 190px;
+  width: 10%;
 }
 
 #p15 {
   animation-delay: 8s;
-  margin-left: -10px;
+  left: -10px;
+  width: 10%;
 }
 
 #p16 {
   animation-delay: 2.5s;
-  margin-left: -20px;
+  left: -20px;
+  width: 10%;
 }
 
 #p17 {
   animation-delay: 7s;
-  margin-left: -40px;
+  left: -40px;
+  width: 10%;
 }
 
 #p18 {
   animation-delay: 4s;
-  margin-left: -50px;
+  left: -50px;
+  width: 10%;
 }
 
 #p19 {
   animation-delay: 9s;
-  margin-left: -60px;
+  left: -60px;
+  width: 10%;
 }
 
 #p20 {
   animation-delay: 1.5s;
-  margin-left: -70px;
+  left: -70px;
+  width: 10%;
 }
 
 #p21 {
   animation-delay: 8s;
-  margin-left: -80px;
+  left: -80px;
+  width: 10%;
 }
 
 #p22 {
   animation-delay: 7s;
-  margin-left: -90px;
+  left: -90px;
+  width: 10%;
 }
 
 #p23 {
   animation-delay: 1s;
-  margin-left: -100px;
+  left: -100px;
+  width: 10%;
 }
 
 #p24 {
   animation-delay: 2.5s;
-  margin-left: -20px;
+  left: -20px;
+  width: 10%;
 }
 
 #p25 {
   animation-delay: 9.5s;
-  margin-left: -30px;
+  left: -30px;
+  width: 10%;
 }
 
 #p26 {
   animation-delay: 3s;
-  margin-left: -45px;
+  left: -45px;
+  width: 10%;
 }
 
 #p27 {
   animation-delay: 2.5s;
-  margin-left: -100px;
+  left: -100px;
+  width: 10%;
 }
 
 #p28 {
   animation-delay: 3.5s;
-  margin-left: -90px;
+  left: -90px;
+  width: 10%;
 }
 
 /* Safari 4.0 - 8.0 */
@@ -791,21 +837,44 @@ a {
   }
 }
 @media only screen and (max-width: 767px) {
+  .App-title {
+    font-size: 2em;
+  }
   .app-container {
     display: grid;
     grid-template-columns: auto;
   }
+  .Control-Center {
+    /* height: 15em; */
+    height: fit-content;
+  }
+  .controlCenterContainer {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+  .dropdown-divider {
+    display: none;
+  }
+  .inventoryBox {
+    grid-template-columns: auto auto auto auto;
+  }
   .grid-item-store {
     height: 8em;
-    width: 10em;
+    width: 12em;
+    margin: 1em;
   }
   .eggs {
     width: 50%;
     margin-top: 0;
     margin-bottom: -1%;
   }
+  .modal {
+    top: 30%;
+    left: 20%;
+  transform: translate(-10%, -31%);
+  }
 }
-@media only screen and (max-width: 501px) {
+@media only screen and (max-width: 430px) {
   .grid-container-store {
     display: grid;
     grid-template-columns: auto;

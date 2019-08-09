@@ -8,8 +8,7 @@ class ControlCenter extends Component {
     const { producePicked, bank, cropAmount, eggs, 
       flour, milk, sugar, product, temperature } = this.props
     return (
-      <div className="ControlCenter">
-
+      <div className="controlCenterContainer">
         <p className="ctrl-title">Inventory</p>
         {producePicked ? 
           <p>Chosen Produce: {producePicked}</p>
