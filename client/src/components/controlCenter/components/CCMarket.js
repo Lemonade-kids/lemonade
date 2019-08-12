@@ -7,18 +7,19 @@ class CCMarket extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.showSold ? <p>You sold: {this.props.amountSold}</p> : null}
-        {this.props.showCustomersAmount ? <p>You had {this.props.customersAmount} customers!</p> : null }
-        {this.props.readyToSell ? null :
-          <button className='btn' onClick={this.props.startSelling}>
+      this.props.producePicked ?
+        <div>
+          {this.props.showSold ? <p>You sold: {this.props.amountSold}</p> : null}
+          {this.props.showCustomersAmount ? <p>You had {this.props.customersAmount} customers!</p> : null }
+          {this.props.readyToSell ? null :
+            <button className='btn' onClick={this.props.startSelling}>
           Begin!
-          </button>}
-        {this.props.showPlayAgainBtn ?
-          <button className='btn' onClick={this.props.playAgain}>
+            </button>}
+          {this.props.showPlayAgainBtn ?
+            <button className='btn' onClick={this.props.playAgain}>
           Play again?
-          </button> : null}
-      </div>
+            </button> : null}
+        </div> : null
     )
   }
 }
