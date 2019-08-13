@@ -52,7 +52,8 @@ class App extends React.Component {
     amountSold: 0,
     showCustomersAmount: true,
     customersAmount: 0,
-    showPlayAgainBtn: false
+    showPlayAgainBtn: false,
+    gameRestarted: false
   }
 
   tendGarden = (event) => {
@@ -75,7 +76,8 @@ class App extends React.Component {
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount
+          cropAmount,
+          gameRestarted: false
         })
       }
       if (this.state.watered && !this.state.weeded) {
@@ -83,7 +85,8 @@ class App extends React.Component {
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount
+          cropAmount,
+          gameRestarted: false
         })
       }
       if (!this.state.watered && this.state.weeded) {
@@ -91,7 +94,8 @@ class App extends React.Component {
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount
+          cropAmount,
+          gameRestarted: false
         })
       }
       if (!this.state.watered && !this.state.weeded) {
@@ -99,7 +103,8 @@ class App extends React.Component {
         this.setState({
           harvested: true,
           watered: false,
-          cropAmount
+          cropAmount,
+          gameRestarted: false
         })
       }
     }
@@ -261,7 +266,8 @@ class App extends React.Component {
       showSold: false,
       amountSold: 0,
       showCustomersAmount: false,
-      showPlayAgainBtn: false
+      showPlayAgainBtn: false,
+      gameRestarted: true
     })
   }
 
@@ -379,7 +385,8 @@ class App extends React.Component {
       showSold,
       amountSold,
       showCustomersAmount,
-      showPlayAgainBtn
+      showPlayAgainBtn,
+      gameRestarted
     } = this.state
     return (
       <div className="App">
@@ -499,6 +506,7 @@ class App extends React.Component {
                   customersAmount={customers}
                   playAgain={this.handlePlayAgain}
                   showPlayAgainBtn={showPlayAgainBtn}
+                  gameRestarted={gameRestarted}
                 />} />                
               </Switch>
             </div>
@@ -522,7 +530,8 @@ class App extends React.Component {
                 temperature={temperature}
                 cropAmount={cropAmount}
                 producePicked={producePicked}
-                customers={customers} />
+                customers={customers}
+                gameRestarted={gameRestarted} />
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ class ControlCenter extends Component {
         {producePicked === 'Lemon' ? <p>Product: {product} Lemonade</p> : 
           producePicked === 'Blueberry' ? <p>Product: {product} Blueberry Muffins</p> : 
             producePicked === 'Squash' ? <p>Product: {product} Squash Bread</p> : null}
-        <div className="dropdown-divider"></div>
+        <div className="dropdown-divider" />
 
         <p className="ctrl-title">Bank: {bank ? 
           `$${bank}` : '$0'}</p>
