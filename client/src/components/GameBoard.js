@@ -48,6 +48,7 @@ class GameBoard extends Component {
             readyToSell={this.props.readyToSell}
             producePicked={this.props.producePicked}
             customers={this.props.customers}
+            gameRestarted={this.props.gameRestarted}
           />} />
           <Route path='/help' component={Help} />
         </Switch>
@@ -76,7 +77,8 @@ GameBoard.propTypes = {
   temperature: PropTypes.number,
   cropAmount: PropTypes.number,
   producePicked: PropTypes.string,
-  customers: PropTypes.number
+  customers: PropTypes.number,
+  gameRestarted: PropTypes.bool
 }
 
 export default GameBoard
