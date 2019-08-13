@@ -215,7 +215,9 @@ a {
 
 .LogIn {
   background-image: url('./images/gingham.jpg');
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 100%;
+  padding: 1em;
 }
 
 #inputPassword {
@@ -223,13 +225,13 @@ a {
 }
 
 .loginChoice {
-  display: inline-grid;
-  grid-template-columns: auto auto;
-  padding: 1%;
+  display: grid;
+  grid-template-columns: auto 20%;
+  padding: .5em;
 }
 
 .loginFruit {
-  width: 50%;
+  height: 5em;
 }
 
 .start-border {
@@ -840,18 +842,6 @@ a {
   .App-title {
     font-size: 2em;
   }
-  .app-container {
-    display: grid;
-    grid-template-columns: auto;
-  }
-  .Control-Center {
-    /* height: 15em; */
-    height: fit-content;
-  }
-  .controlCenterContainer {
-    display: grid;
-    grid-template-columns: auto auto;
-  }
   .dropdown-divider {
     display: none;
   }
@@ -873,7 +863,27 @@ a {
     left: 20%;
   transform: translate(-10%, -31%);
   }
+  .loginChoice {
+    grid-template-columns: auto 30%;
+    padding: .5em;
+  }
 }
+
+@media only screen and (max-width: 500px) {
+.app-container {
+  display: grid;
+  grid-template-columns: auto;
+}
+.Control-Center {
+  /* height: 15em; */
+  height: fit-content;
+}
+.controlCenterContainer {
+  display: grid;
+  grid-template-columns: auto;
+}
+}
+
 @media only screen and (max-width: 430px) {
   .grid-container-store {
     display: grid;

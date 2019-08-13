@@ -64,8 +64,8 @@ class StoreGrid extends Component {
             <h3 className='price'>$6</h3>
             <p>How many cups?</p>
             <input
+              type='number'
               className="form-control"
-              type="text"
               placeholder="0"
               name='buySugar'
               value={this.props.buySugar}
@@ -76,8 +76,8 @@ class StoreGrid extends Component {
             <h3 className='price'>$3</h3>
             <p>How many pounds?</p>
             <input
+              type='number'
               className="form-control"
-              type="text"
               placeholder="0"
               name='buyFlour'
               value={this.props.buyFlour}
@@ -88,8 +88,8 @@ class StoreGrid extends Component {
             <h3 className='price'>$4</h3>
             <p>How many pints?</p>
             <input
+              type='number'
               className="form-control"
-              type="text"
               placeholder="0"
               name='buyMilk'
               value={this.props.buyMilk}
@@ -100,8 +100,8 @@ class StoreGrid extends Component {
             <h3 className='price'>$1</h3>
             <p>How many?</p>
             <input
+              type='number'
               className="form-control"
-              type="text"
               placeholder="0"
               name='buyEggs'
               value={this.props.buyEggs}

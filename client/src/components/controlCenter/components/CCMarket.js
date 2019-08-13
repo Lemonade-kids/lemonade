@@ -38,7 +38,7 @@ class CCMarket extends Component {
                   temperature: this.props.temperature
                 }
               }}
-              style={{color: '#000'}}
+              style={{color: '#000', textDecoration: 'none'}}
             >Go to the garden!
             </NavLink>
           </button>) : null}

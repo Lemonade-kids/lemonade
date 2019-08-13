@@ -49,58 +49,54 @@ class LogIn extends React.Component {
   render() {
     const { producePicked } = this.state
     return (
-      <div>
-        <div className="LogIn">
-          <div>
-            <div className="loginChoice">
-              <img src={Lemons}
-                alt="lemons"
-                className="loginLemon loginFruit" />
-              <button
-                name='producePicked'
-                type="button"
-                className={producePicked === 'Lemon' ? 'btn-active' : 'btn btn-outline-secondary'}
-                data-valuename='Lemon'
-                value='Lemon'
-                onClick={this.handleChoice}>Lemons</button>
+      <div className="LogIn">
+        <div className="loginChoice">
+          <img src={Lemons}
+            alt="lemons"
+            className="loginLemon loginFruit" />
+          <button
+            name='producePicked'
+            type="button"
+            className={producePicked === 'Lemon' ? 'btn-active' : 'btn btn-outline-secondary'}
+            data-valuename='Lemon'
+            value='Lemon'
+            onClick={this.handleChoice}>Lemons</button>
 
-              <img src={Blueberries}
-                alt="blueberry"
-                className="loginBlueberry loginFruit" />
-              <button
-                name='producePicked'
-                type="button"
-                className={producePicked === 'Blueberry' ? 'btn-active' : 'btn btn-outline-secondary'}
-                data-valuename='Blueberry'
-                value='Blueberry'
-                onClick={this.handleChoice}>Blueberries</button>
+          <img src={Blueberries}
+            alt="blueberry"
+            className="loginBlueberry loginFruit" />
+          <button
+            name='producePicked'
+            type="button"
+            className={producePicked === 'Blueberry' ? 'btn-active' : 'btn btn-outline-secondary'}
+            data-valuename='Blueberry'
+            value='Blueberry'
+            onClick={this.handleChoice}>Blueberries</button>
 
-              <img src={Squashes}
-                alt="squash"
-                className="loginSquash loginFruit" />
-              <button
-                name='producePicked'
-                type="button"
-                className={producePicked === 'Squash' ? 'btn-active' : 'btn btn-outline-secondary'}
-                data-valuename="squash"
-                value='Squash'
-                onClick={this.handleChoice}>Squash</button>
-            </div>
-            <NavLink to={{
-              pathname: producePicked ? '/garden' : '/',
-              produceProps:{
-                producePicked: this.state.producePicked,
-                bank: this.state.bank,
-                cropAmount: this.state.cropAmount,
-                temperature: this.state.temperature
-              }
-            }}>
-              <button
-                className={producePicked ? 'btn btn-start' : 'btn-disabled'}
-              >{'Let\'s play!'}</button>
-            </NavLink>
-          </div>
+          <img src={Squashes}
+            alt="squash"
+            className="loginSquash loginFruit" />
+          <button
+            name='producePicked'
+            type="button"
+            className={producePicked === 'Squash' ? 'btn-active' : 'btn btn-outline-secondary'}
+            data-valuename="squash"
+            value='Squash'
+            onClick={this.handleChoice}>Squash</button>
         </div>
+        <NavLink to={{
+          pathname: producePicked ? '/garden' : '/',
+          produceProps:{
+            producePicked: this.state.producePicked,
+            bank: this.state.bank,
+            cropAmount: this.state.cropAmount,
+            temperature: this.state.temperature
+          }
+        }}>
+          <button
+            className={producePicked ? 'btn btn-start' : 'btn-disabled'}
+          >{'Let\'s play!'}</button>
+        </NavLink>
       </div>
     )
   }
