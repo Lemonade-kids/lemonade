@@ -292,7 +292,6 @@ class App extends React.Component {
 
   startSelling = () => {
     let { bank, product, producePicked, temperature, customers } = this.state
-    console.log('stuff', bank, product, producePicked, temperature, customers)
     let productSold = 0
     productSold = this.calculateProductSold(producePicked, product, temperature, customers)
     productSold = Math.ceil(productSold)

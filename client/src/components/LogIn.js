@@ -12,7 +12,8 @@ class LogIn extends React.Component {
     producePicked: '',
     bank: 50,
     cropAmount: 0,
-    temperature: 0
+    temperature: 0,
+    error: ''
   }
 
   handleChoice = (event) => {
@@ -21,7 +22,7 @@ class LogIn extends React.Component {
     try{
       temperature = this.props.getTodaysTemp()
     } catch (e) {
-      console.log(e.message)
+      this.setState({error: e.message})
     }
     this.setState({
       [name]: value,
@@ -42,7 +43,7 @@ class LogIn extends React.Component {
       try {
         this.sendPropsUp(this.state)
       } catch (e) {
-        console.log(e, e.message, 'error')
+        this.setState({error: e.message})
       }
     }
   }
