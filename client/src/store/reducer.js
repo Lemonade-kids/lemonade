@@ -25,11 +25,11 @@ const reducer = (state = initialState, action) => {
     Object.assign({}, state, { Bank: state.Bank + action.Bank })
     Object.assign({}, state, { product: state.product - action.inventory })
   } else if (action.type === 'GAME') {
-    console.log(state.winnings + state.Bank)
+    // console.log(state.winnings + state.Bank)
   } else if (action.type === 'SAVEPROD'){
     return Object.assign({}, state, { product: state.product - action.inventory })
   } else if (action.type === 'SAVECHOICE') {
-    console.log(state.producePicked)
+    // console.log(state.producePicked)
     return Object.assign({}, state, { producePicked: action.producePicked })
   }
   return state

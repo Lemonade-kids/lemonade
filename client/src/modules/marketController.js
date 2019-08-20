@@ -81,7 +81,6 @@ export const calculateMoneyMade = (sold, price = 2) => {
 }
 
 export const randomizePeople = (people) => {
-  console.log('people', people)
   for (let i = people.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [people[i], people[j]] = [people[j], people[i]]

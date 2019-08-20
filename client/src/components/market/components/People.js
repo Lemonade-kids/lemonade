@@ -16,7 +16,6 @@ componentDidMount() {
   if (amount) {
     customers = this.randomize(people)
     customers = customers.slice(0, amount)
-    console.log(customers)
     this.setState({customers})
   }
 }
